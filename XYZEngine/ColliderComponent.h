@@ -19,6 +19,9 @@ namespace XYZEngine
 		virtual void Render() = 0;
 
 		void SetTrigger(bool newIsTrigger);
+		
+		void SetCollision(std::vector<int> vertical);
+		std::vector<int> GetCollision();
 
 		void SubscribeCollision(std::function<void(Collision)> onCollisionAction);
 		void UnsubscribeCollision(std::function<void(Collision)> onCollisionAction);
@@ -34,6 +37,7 @@ namespace XYZEngine
 	protected:
 		sf::FloatRect bounds;
 		bool isTrigger = false;
+		std::vector<int> collision_vertical = {0,0};
 
 		void OnCollision(Collision collision);
 		void OnTriggerEnter(Trigger trigger);

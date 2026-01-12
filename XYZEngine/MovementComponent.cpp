@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "MovementComponent.h"
+#include "ColliderComponent.h"
 
 XYZEngine::MovementComponent::MovementComponent(GameObject* gameObject)
 	: Component(gameObject)
@@ -18,6 +19,11 @@ void XYZEngine::MovementComponent::Update(float deltaTime)
 {
 	float xAxis = input->GetHorizontalAxis();
 	float yAxis = input->GetVerticalAxis();
+
+	auto collision = gameObject->GetComponent<ColliderComponent>();
+		
+	if (collision->GetCollision()[0] == -1*xAxis) xAxis = 0;
+	if (collision->GetCollision()[1] == -1*yAxis) yAxis = 0;
 
 	transform->MoveBy(speed * deltaTime * Vector2Df{ xAxis, yAxis });
 

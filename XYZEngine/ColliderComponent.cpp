@@ -13,6 +13,16 @@ namespace XYZEngine
 		isTrigger = newIsTrigger;
 	}
 
+	void ColliderComponent::SetCollision(std::vector<int> vertical)
+	{
+		collision_vertical = vertical;
+	}
+
+	std::vector<int> ColliderComponent::GetCollision()
+	{
+		return collision_vertical;
+	}
+
 	void ColliderComponent::SubscribeCollision(std::function<void(Collision)> onCollisionAction)
 	{
 		onCollisionActions.push_back(onCollisionAction);

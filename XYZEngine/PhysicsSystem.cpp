@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "PhysicsSystem.h"
 
+const float ERROR_RATE = 7.f;
+
 namespace XYZEngine
 {
 	PhysicsSystem* PhysicsSystem::Instance()
@@ -23,6 +25,8 @@ namespace XYZEngine
 			{
 				continue;
 			}
+			int collisionX = 0;
+			int collisionY = 0;
 
 			for (int j = 0; j < colliders.size(); j++)
 			{
@@ -47,6 +51,7 @@ namespace XYZEngine
 					}
 					else if (!colliders[i]->isTrigger)
 					{
+
 						float intersectionWidth = intersection.width;
 						float intersectionHeight = intersection.height;
 						Vector2Df intersectionPosition = { intersection.left - 0.5f * intersectionWidth, intersection.top - 0.5f * intersectionHeight };
@@ -58,12 +63,16 @@ namespace XYZEngine
 						{
 							if (intersectionPosition.y > aPosition.y)
 							{
-								aTransform->MoveBy({ 0, -intersectionHeight });
+								if (abs(intersectionPosition.y - aPosition.y) > ERROR_RATE) collisionY = -1;
+								else aTransform->MoveBy({ 0, -intersectionHeight });
+
 								std::cout << "Top collision" << std::endl;
 							}
 							else
 							{
-								aTransform->MoveBy({ 0, intersectionHeight });
+								if (abs(intersectionPosition.y - aPosition.y) <= ERROR_RATE) collisionY = 1;
+								else aTransform->MoveBy({ 0, intersectionHeight });
+
 								std::cout << "Down collision" << std::endl;
 							}
 						}
@@ -71,23 +80,36 @@ namespace XYZEngine
 						{
 							if (intersectionPosition.x > aPosition.x)
 							{
-								aTransform->MoveBy({ -intersectionWidth, 0.f });
+								if (abs(intersectionPosition.x - aPosition.x) > ERROR_RATE) collisionX = -1;
+								else aTransform->MoveBy({ -intersectionWidth, 0 });
+
 								std::cout << "Right collision" << std::endl;
 							}
 							else
 							{
-								aTransform->MoveBy({ intersectionWidth, 0.f });
+								if (abs(intersectionPosition.x - aPosition.x) <= ERROR_RATE) collisionX = 1;
+								else aTransform->MoveBy({ intersectionWidth, 0 });
+
 								std::cout << "Left collision" << std::endl;
 							}
 						}
+						CollisionActions.push_back(colliders[j]);
 
 						auto collision = new Collision(colliders[i], colliders[j], intersection);
 						colliders[i]->OnCollision(*collision);
 						colliders[j]->OnCollision(*collision);
 					}
 				}
+				else {
+					for (int k = 0; k < CollisionActions.size(); ++k) {
+						if (CollisionActions[k] == colliders[j]) CollisionActions.erase(std::remove(CollisionActions.begin(), CollisionActions.end(), colliders[j]), CollisionActions.end());
+					}
+				}
 			}
+			colliders[i]->SetCollision({ collisionX, collisionY });
+			if (CollisionActions.empty()) colliders[i]->SetCollision({ 0, 0 });
 		}
+
 
 		for (auto triggeredPair = triggersEnteredPair.cbegin(), nextTriggeredPair = triggeredPair; triggeredPair != triggersEnteredPair.cend(); triggeredPair = nextTriggeredPair)
 		{

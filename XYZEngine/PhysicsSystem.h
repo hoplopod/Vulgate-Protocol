@@ -29,5 +29,7 @@ namespace XYZEngine
 		std::map<ColliderComponent*, ColliderComponent*> triggersEnteredPair;
 
 		float fixedDeltaTime = 0.02f;
+
+		std::vector<ColliderComponent*> CollisionActions;
 	};
 }
