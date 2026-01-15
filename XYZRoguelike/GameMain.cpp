@@ -19,6 +19,8 @@ int main()
 	ResourceSystem::Instance()->LoadTextureMap("player", "Resources/TextureMaps/Player.png", { 48, 63 }, 4, false);
 	ResourceSystem::Instance()->LoadTextureMap("level_floors", "Resources/TextureMaps/Floor.png", { 16, 16 }, 49, false);
 	ResourceSystem::Instance()->LoadTextureMap("level_walls", "Resources/TextureMaps/Wall.png", { 16, 16 }, 48, false);
+	ResourceSystem::Instance()->LoadTextureMap("bone", "Resources/TextureMaps/Bone.png", { 16, 16 }, 48, false);
+	ResourceSystem::Instance()->LoadTextureMap("head", "Resources/TextureMaps/Head.png", { 16, 16 }, 48, false);
 
 	ResourceSystem::Instance()->LoadSound("music", "Resources/Sounds/AppleEat.wav");
 

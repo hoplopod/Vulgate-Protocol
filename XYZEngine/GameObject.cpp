@@ -62,6 +62,14 @@ namespace XYZEngine
 	{
 		children.push_back(child);
 	}
+	GameObject* GameObject::GetChild(std::string child_name)
+	{
+		for (int i = 0; i < children.size(); ++i) {
+			if (children[i]->GetName() == child_name) {
+				return children[i];
+			}
+		}
+	}
 	void GameObject::RemoveChild(GameObject* child)
 	{
 		children.erase(std::remove_if(children.begin(), children.end(), [child](GameObject* obj) { return obj == child; }), children.end());

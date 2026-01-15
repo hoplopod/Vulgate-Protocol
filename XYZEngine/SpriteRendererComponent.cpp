@@ -53,6 +53,16 @@ namespace XYZEngine
 		scale = { (float)newWidth / (float)originalSize.x, -(float)newHeight / (float)originalSize.y };
 	}
 
+	Vector2Df SpriteRendererComponent::GetScaleSizes()
+	{
+		return { Convert<sf::Vector2f, Vector2Df>(transform->GetWorldScale()).x * scale.x, Convert<sf::Vector2f, Vector2Df>(transform->GetWorldScale()).y * scale.y };
+	}
+
+	void SpriteRendererComponent::SetOrigin(float x, float y)
+	{
+		sprite->setOrigin(x, y);
+	}
+
 	void SpriteRendererComponent::FlipX(bool flip)
 	{
 		if (flip != isFlipX)

@@ -35,6 +35,52 @@ namespace XYZRoguelike
 
 		auto animator = gameObject->AddComponent<XYZEngine::SpriteMovementAnimationComponent>();
 		animator->Initialize("player", 6.f);
+
+		createSkeleton();
+	}
+
+	void Player::createSkeleton()
+	{
+		//Body
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("player_body");
+		auto torso = gameObject->AddComponent<XYZEngine::BoneComponent>();
+		auto transform = gameObject->GetComponent<XYZEngine::TransformComponent>();
+		transform->SetWorldPosition(800,800);
+
+		auto renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureMapElementShared("bone", 0));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 0);
+		renderer->SetPixelSize(100, 100);
+		//Arms
+			//Right
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("player_right_upperArm");
+		auto Right_upperArm = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureMapElementShared("bone", 0));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 0);
+		renderer->SetPixelSize(75, 50);
+			//Lower Right
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("player_right_lowerArm");
+		auto Right_lowerArm = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureMapElementShared("bone", 0));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 0);
+		renderer->SetPixelSize(75, 50);
+
+
+		//Create skeleton
+		
+		torso->AddChild({ Right_upperArm, std::default_delete<XYZEngine::BoneComponent>()}, 0.f);
+		Right_upperArm->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetParent(torso->GetGameObject()->GetComponent<XYZEngine::TransformComponent>());
+
+		Right_upperArm->AddChild({ Right_lowerArm, std::default_delete<XYZEngine::BoneComponent>() }, 50.f);
+		Right_lowerArm->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetParent(Right_upperArm->GetGameObject()->GetComponent<XYZEngine::TransformComponent>());
+
+		Right_upperArm->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetLocalRotation(270);
+		Right_lowerArm->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetLocalRotation(30);
+
 	}
 
 	XYZEngine::GameObject* Player::GetGameObject()
