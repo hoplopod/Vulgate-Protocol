@@ -78,7 +78,7 @@ namespace XYZRoguelike
 		//mazeGenerator.Generate(); 
 
 		player = std::make_unique<Player>(std::forward<XYZEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
-		music = std::make_unique<Music>("music");
+		//music = std::make_unique<Music>("music");
 	}
 	void DeveloperLevel::Restart()
 	{
