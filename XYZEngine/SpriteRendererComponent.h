@@ -20,6 +20,7 @@ namespace XYZEngine
 		void SetTexture(const sf::Texture& newTexture);
 		void SetPixelSize(int newWidth, int newHeight);
 		void SetOrigin(float x, float y);
+		void SetRenderLayer(int new_render_layer);
 
 		Vector2Df GetScaleSizes();
 

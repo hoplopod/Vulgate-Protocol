@@ -172,6 +172,7 @@
   <ItemGroup>
     <ClInclude Include="DeveloperLevel.h" />
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="GameLayers.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="MazeGenerator.h" />
     <ClInclude Include="Music.h" />

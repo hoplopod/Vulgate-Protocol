@@ -1,4 +1,5 @@
 #include "Floor.h"
+#include "LayerRenderingComponent.h"
 
 XYZRoguelike::Floor::Floor(const XYZEngine::Vector2Df& position, int textureMapIndex)
 {
@@ -9,4 +10,5 @@ XYZRoguelike::Floor::Floor(const XYZEngine::Vector2Df& position, int textureMapI
 	auto renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
 	renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureMapElementShared("level_floors", textureMapIndex));
 	renderer->SetPixelSize(128, 128);
+	XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(0, renderer);
 }

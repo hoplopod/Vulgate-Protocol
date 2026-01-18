@@ -8,8 +8,10 @@ namespace XYZEngine {
 		transform = gameObject->GetComponent<XYZEngine::TransformComponent>();
 	}
 
-	BoneComponent* BoneComponent::AddChild(std::unique_ptr<BoneComponent> child, float new_length)
+	BoneComponent* BoneComponent::AddChild(std::unique_ptr<BoneComponent> child, float new_length, float new_shift)
 	{
+		child->transform->SetParent(transform);
+		child->shift = new_shift;
 		child->length = new_length;
 		child->parent = this;
 		childrens.push_back(std::move(child));
@@ -23,7 +25,7 @@ namespace XYZEngine {
 		float pi = 3.1415926535;
 
 		Vector2Df localPosition;
-		localPosition.x = sin(parentLocalAngle * pi / 180) * length;
+		localPosition.x = sin(parentLocalAngle * pi / 180) * length + shift;
 		localPosition.y = cos(parentLocalAngle * pi / 180) * length;
 
 		transform->SetWorldPosition(parentWorldPos.x + localPosition.x, parentWorldPos.y - localPosition.y);

@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "SpriteRendererComponent.h"
 #include "TransformComponent.h"
-#include "RenderSystem.h"
 
 namespace XYZEngine
 {
@@ -22,10 +21,6 @@ namespace XYZEngine
 
 	void SpriteRendererComponent::Update(float deltaTime)
 	{
-
-	}
-	void SpriteRendererComponent::Render()
-	{
 		if (sprite != nullptr)
 		{
 			sprite->setPosition(Convert<sf::Vector2f, Vector2Df>(transform->GetWorldPosition()));
@@ -33,8 +28,11 @@ namespace XYZEngine
 
 			auto transformScale = Convert<sf::Vector2f, Vector2Df>(transform->GetWorldScale());
 			sprite->setScale({ scale.x * transformScale.x, scale.y * transformScale.y });
-			RenderSystem::Instance()->Render(*sprite);
 		}
+	}
+	void SpriteRendererComponent::Render()
+	{
+		
 	}
 
 	const sf::Sprite* SpriteRendererComponent::GetSprite() const
@@ -79,4 +77,5 @@ namespace XYZEngine
 			isFlipY = flip;
 		}
 	}
+
 }

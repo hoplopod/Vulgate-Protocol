@@ -7,6 +7,7 @@
 #include "Music.h"
 #include "Floor.h"
 #include "Wall.h"
+#include "GameLayers.h"
 
 using namespace XYZEngine;
 
@@ -24,6 +25,7 @@ namespace XYZRoguelike
 
 	private:
 		std::shared_ptr<Player> player;
+		std::shared_ptr<Layers> layer_system;
 		std::unique_ptr<Music> music;
 
 	};

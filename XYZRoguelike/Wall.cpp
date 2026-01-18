@@ -1,5 +1,6 @@
 #include "Wall.h"
 #include <SpriteMovementAnimationComponent.h>
+#include <LayerRenderingComponent.h>
 #include <SpriteColliderComponent.h>
 
 XYZRoguelike::Wall::Wall(const XYZEngine::Vector2Df position, int textureMapIndex)
@@ -11,6 +12,7 @@ XYZRoguelike::Wall::Wall(const XYZEngine::Vector2Df position, int textureMapInde
 	auto renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
 	renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureMapElementShared("level_walls", textureMapIndex));
 	renderer->SetPixelSize(128, 128);
+	XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(0, renderer);
 
 	auto rigidbody = gameObject->AddComponent<XYZEngine::RigidbodyComponent>();
 	rigidbody->SetKinematic(true);

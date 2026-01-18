@@ -8,6 +8,8 @@ namespace XYZRoguelike
 {
 	void DeveloperLevel::Start()
 	{
+		layer_system = std::make_unique<Layers>();
+
 		int width = 15;
 		int height = 15;
 
