@@ -20,13 +20,15 @@ namespace XYZEngine {
 
 	void BoneComponent::BoneTransform()
 	{
-		Vector2Df parentWorldPos = parent->transform->GetWorldPosition();
-		float parentLocalAngle = parent->transform->GetLocalRotation();
 		float pi = 3.1415926535;
 
+		Vector2Df parentWorldPos = parent->transform->GetWorldPosition();
+		float parentLocalAngle = parent->transform->GetWorldRotation();
+		float childLocalAngleOffset = atan(shift / length);
+
 		Vector2Df localPosition;
-		localPosition.x = sin(parentLocalAngle * pi / 180) * length + shift;
-		localPosition.y = cos(parentLocalAngle * pi / 180) * length;
+		localPosition.x = sin(parentLocalAngle * pi / 180 + childLocalAngleOffset) * length;
+		localPosition.y = cos(parentLocalAngle * pi / 180 + childLocalAngleOffset) * length;
 
 		transform->SetWorldPosition(parentWorldPos.x + localPosition.x, parentWorldPos.y - localPosition.y);
 

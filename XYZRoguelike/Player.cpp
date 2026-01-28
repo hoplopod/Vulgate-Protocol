@@ -51,8 +51,8 @@ namespace XYZRoguelike
 
 		auto renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_head"));
-		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 4, renderer->GetSprite()->getTexture()->getSize().y-12.f);
-		renderer->SetPixelSize(32*player_scale, 32*player_scale);
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 2, renderer->GetSprite()->getTexture()->getSize().y - 7);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
 
 		//Body
@@ -64,7 +64,7 @@ namespace XYZRoguelike
 		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_body"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 0);
-		renderer->SetPixelSize(64 * player_scale, 64 * player_scale);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
 
 		//Arms
@@ -74,8 +74,8 @@ namespace XYZRoguelike
 
 		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_shoulder_left_back"));
-		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 2);
-		renderer->SetPixelSize(32 * player_scale, 32 * player_scale);
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 5.f);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
 
 		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_forearm_left");
@@ -83,22 +83,142 @@ namespace XYZRoguelike
 
 		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_forearm_left_back"));
-		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 1, 5);
-		renderer->SetPixelSize(32 * player_scale, 32 * player_scale);
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f+1,4);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_brush_left");
+		auto player_brush_left = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_brush_left_back"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 1, 2);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+
+		//right
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_shoulder_right");
+		auto player_shoulder_right = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_shoulder_right_front"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 5.f);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
+
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_forearm_right");
+		auto player_forearm_right = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_forearm_right_front"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f+1, 4);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
+
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_brush_right");
+		auto player_brush_right = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_brush_right_front"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 1, 2);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
+
+		//Legs
+		//left
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_hip_left");
+		auto player_hip_left = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_hip_back"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 1, 5.f);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_shin_left");
+		auto player_shin_left = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_shin_back"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 3, 4);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_foot_left");
+		auto player_foot_left = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_foot_back"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 4, 2);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+
+		//right
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_hip_right");
+		auto player_hip_right = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_hip_front"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 1, 5.f);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x* player_scale, renderer->GetSprite()->getTexture()->getSize().y* player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
+
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_shin_right");
+		auto player_shin_right = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_shin_front"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 3, 4);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x* player_scale, renderer->GetSprite()->getTexture()->getSize().y* player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
+
+		gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Player_foot_right");
+		auto player_foot_right = gameObject->AddComponent<XYZEngine::BoneComponent>();
+
+		renderer = gameObject->AddComponent<XYZEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*XYZEngine::ResourceSystem::Instance()->GetTextureCopy("player_foot_front"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 4, 2);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x* player_scale, renderer->GetSprite()->getTexture()->getSize().y* player_scale);
+		XYZEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<XYZEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
 
 		//Create skeleton
 
-		body->AddChild({ head, std::default_delete<XYZEngine::BoneComponent>() }, 0.f, 0.f);
+		body->AddChild({ head, std::default_delete<XYZEngine::BoneComponent>() }, -1*player_scale, 0.f);
 		
-		body->AddChild({ player_shoulder_left, std::default_delete<XYZEngine::BoneComponent>()}, 33.f, 46);
+		//left arm
+		body->AddChild({ player_shoulder_left, std::default_delete<XYZEngine::BoneComponent>()}, 20.f * player_scale,
+			(body->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().x / 2.f + 2) * player_scale );
+		player_shoulder_left->AddChild({ player_forearm_left, std::default_delete<XYZEngine::BoneComponent>() }, 
+			(player_shoulder_left->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 8) * player_scale, 0);
+		player_forearm_left->AddChild({ player_brush_left , std::default_delete<XYZEngine::BoneComponent>() }, 
+			(player_forearm_left->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 6) * player_scale, 0);
 
-		player_shoulder_left->AddChild({ player_forearm_left, std::default_delete<XYZEngine::BoneComponent>() }, 32 * player_scale - 2, 0);
+		//right arm
+		body->AddChild({ player_shoulder_right, std::default_delete<XYZEngine::BoneComponent>() }, 20.f * player_scale,
+			-1*(body->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().x / 2.f + 2)* player_scale);
+		player_shoulder_right->AddChild({ player_forearm_right, std::default_delete<XYZEngine::BoneComponent>() },
+			(player_shoulder_right->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 8)* player_scale, 0);
+		player_forearm_right->AddChild({ player_brush_right , std::default_delete<XYZEngine::BoneComponent>() },
+			(player_forearm_right->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 6)* player_scale, 0);
 
+		//left leg
+		body->AddChild({ player_hip_left, std::default_delete<XYZEngine::BoneComponent>() }, 
+			(body->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y) * player_scale,
+			(body->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().x / 2.f - 9) * player_scale);
+		player_hip_left->AddChild({ player_shin_left, std::default_delete<XYZEngine::BoneComponent>() },
+			(player_hip_left->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 8) * player_scale, 0);
+		player_shin_left->AddChild({ player_foot_left , std::default_delete<XYZEngine::BoneComponent>() },
+			(player_shin_left->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 4.f) * player_scale, -4*player_scale);
+
+		//right leg
+		body->AddChild({ player_hip_right, std::default_delete<XYZEngine::BoneComponent>() },
+			(body->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y)* player_scale,
+			-1*(body->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().x / 2.f - 11)* player_scale);
+		player_hip_right->AddChild({ player_shin_right, std::default_delete<XYZEngine::BoneComponent>() },
+			(player_hip_right->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 8)* player_scale, 0);
+		player_shin_right->AddChild({ player_foot_right , std::default_delete<XYZEngine::BoneComponent>() },
+			(player_shin_right->GetGameObject()->GetComponent < XYZEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 4.f)* player_scale, -4 * player_scale);
 		
-		player_shoulder_left->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetLocalRotation(30);
-		player_forearm_left->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetLocalRotation(60);
-		head->GetGameObject()->GetComponent<XYZEngine::TransformComponent>()->SetLocalRotation(60);
 	}
 
 	XYZEngine::GameObject* Player::GetGameObject()
