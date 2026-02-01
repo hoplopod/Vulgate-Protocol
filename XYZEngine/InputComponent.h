@@ -7,8 +7,8 @@ namespace HopEngine
 {
 	enum class CharacterMoveState {
 		Stand = -1,
-		Walk_Right = 0,
-		Walk_Left = 1
+		Walk_Right,
+		Walk_Left
 	};
 
 	class InputComponent : public Component

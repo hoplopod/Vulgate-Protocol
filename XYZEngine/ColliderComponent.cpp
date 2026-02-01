@@ -23,6 +23,16 @@ namespace HopEngine
 		return collision_vertical;
 	}
 
+	void ColliderComponent::AddIgnoreCollision(ColliderComponent* addCollisionIgnore)
+	{
+		CollisionIgnore.push_back(addCollisionIgnore);
+	}
+
+	std::vector<ColliderComponent*> ColliderComponent::GetCollisionIgnore()
+	{
+		return CollisionIgnore;
+	}
+
 	void ColliderComponent::SubscribeCollision(std::function<void(Collision)> onCollisionAction)
 	{
 		onCollisionActions.push_back(onCollisionAction);

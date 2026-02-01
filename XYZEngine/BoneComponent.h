@@ -17,8 +17,6 @@ namespace HopEngine {
 
 		BoneComponent* AddChild(std::unique_ptr<BoneComponent> child, float new_length, float new_shift);
 
-		void BoneTransform();
-
 	private:
 		TransformComponent* transform;
 		

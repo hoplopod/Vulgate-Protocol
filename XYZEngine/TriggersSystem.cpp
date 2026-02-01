@@ -35,6 +35,15 @@ namespace HopEngine
 					continue;
 				}
 
+				bool ignore = false;
+				for (int l = 0; l < colliders[i]->GetCollisionIgnore().size(); ++l) {
+					if (colliders[i]->GetCollisionIgnore()[l] == colliders[j]) {
+						ignore = true;
+						break;
+					}
+				}
+				if (ignore) continue;
+
 				sf::FloatRect intersection;
 				if (colliders[i]->bounds.intersects(colliders[j]->bounds, intersection))
 				{

@@ -22,6 +22,8 @@ namespace HopEngine
 		
 		void SetCollision(std::vector<int> vertical);
 		std::vector<int> GetCollision();
+		void AddIgnoreCollision(ColliderComponent* addCollisionIgnore);
+		std::vector<ColliderComponent*> GetCollisionIgnore();
 
 		void SubscribeCollision(std::function<void(Collision)> onCollisionAction);
 		void UnsubscribeCollision(std::function<void(Collision)> onCollisionAction);
@@ -42,6 +44,8 @@ namespace HopEngine
 		void OnCollision(Collision collision);
 		void OnTriggerEnter(Trigger trigger);
 		void OnTriggerExit(Trigger trigger);
+
+		std::vector<ColliderComponent*> CollisionIgnore;
 
 		std::vector<std::function<void(Collision)>> onCollisionActions;
 		std::vector<std::function<void(Trigger)>> onTriggerEnterActions;

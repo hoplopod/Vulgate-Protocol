@@ -38,140 +38,155 @@ namespace Roguelike
 	void Player::createSkeleton()
 	{
 		float player_scale = 3.f;
+		std::vector<HopEngine::SpriteColliderComponent*> colliders;
 
 		//Head
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_head");
 		auto head = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		auto renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_head"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 2, renderer->GetSprite()->getTexture()->getSize().y - 7);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		//Body
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_body");
 		auto body = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_body"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 0);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		//Arms
 		//left
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_shoulder_left");
 		auto player_shoulder_left = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_shoulder_left_back"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 5.f);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_forearm_left");
 		auto player_forearm_left = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_forearm_left_back"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f+1,4);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_brush_left");
 		auto player_brush_left = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_brush_left_back"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 1, 2);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		//right
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_shoulder_right");
 		auto player_shoulder_right = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_shoulder_right_front"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 5.f);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_forearm_right");
 		auto player_forearm_right = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_forearm_right_front"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f+1, 4);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_brush_right");
 		auto player_brush_right = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_brush_right_front"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 1, 2);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(3, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		//Legs
 		//left
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_hip_left");
 		auto player_hip_left = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_hip_back"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 1, 5.f);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_shin_left");
 		auto player_shin_left = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_shin_back"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 3, 4);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_foot_left");
 		auto player_foot_left = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_foot_back"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 4, 2);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(1, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		//right
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_hip_right");
 		auto player_hip_right = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_hip_front"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 1, 5.f);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x* player_scale, renderer->GetSprite()->getTexture()->getSize().y* player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_shin_right");
 		auto player_shin_right = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_shin_front"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f + 3, 4);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x* player_scale, renderer->GetSprite()->getTexture()->getSize().y* player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_foot_right");
 		auto player_foot_right = gameObject->AddComponent<HopEngine::BoneComponent>();
-
 		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_foot_front"));
 		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f - 4, 2);
 		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x* player_scale, renderer->GetSprite()->getTexture()->getSize().y* player_scale);
 		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
 		//Create skeleton
 
@@ -211,6 +226,13 @@ namespace Roguelike
 		player_shin_right->AddChild({ player_foot_right , std::default_delete<HopEngine::BoneComponent>() },
 			(player_shin_right->GetGameObject()->GetComponent < HopEngine::SpriteRendererComponent>()->GetSprite()->getTexture()->getSize().y - 4.f)* player_scale, -4 * player_scale);
 		
+		for (int i = 0; i < colliders.size(); ++i) {
+			for (int j = 0; j < colliders.size(); ++j) {
+				if (i == j) continue;
+				colliders[i]->AddIgnoreCollision(colliders[j]);
+			}
+		}
+
 	}
 
 	HopEngine::GameObject* Player::GetGameObject()

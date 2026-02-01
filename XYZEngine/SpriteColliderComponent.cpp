@@ -31,12 +31,12 @@ namespace HopEngine
 	}
 	void SpriteColliderComponent::Render()
 	{
-		sf::RectangleShape rectangle(sf::Vector2f(bounds.width, bounds.height));
+		/*sf::RectangleShape rectangle(sf::Vector2f(bounds.width, bounds.height));
 		rectangle.setPosition(bounds.left, bounds.top);
 		rectangle.setFillColor(sf::Color::Transparent);
 		rectangle.setOutlineColor(sf::Color::White);
 		rectangle.setOutlineThickness(4);
 
-		RenderSystem::Instance()->Render(rectangle);
+		RenderSystem::Instance()->Render(rectangle);*/
 	}
 }
