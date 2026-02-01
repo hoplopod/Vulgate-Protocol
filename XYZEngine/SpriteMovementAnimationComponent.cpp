@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SpriteMovementAnimationComponent.h"
 
-XYZEngine::SpriteMovementAnimationComponent::SpriteMovementAnimationComponent(GameObject* gameObject)
+HopEngine::SpriteMovementAnimationComponent::SpriteMovementAnimationComponent(GameObject* gameObject)
 	: Component(gameObject)
 {
 	movement = gameObject->GetComponent<MovementComponent>();
@@ -19,7 +19,7 @@ XYZEngine::SpriteMovementAnimationComponent::SpriteMovementAnimationComponent(Ga
 	}
 }
 
-void XYZEngine::SpriteMovementAnimationComponent::Initialize(const std::string& textureMapName, float newFramerate)
+void HopEngine::SpriteMovementAnimationComponent::Initialize(const std::string& textureMapName, float newFramerate)
 {
 	for (int i = 0; i < ResourceSystem::Instance()->GetTextureMapElementsCount("player"); i++)
 	{
@@ -29,7 +29,7 @@ void XYZEngine::SpriteMovementAnimationComponent::Initialize(const std::string& 
 	secondsForFrame = 1.f / newFramerate;
 }
 
-void XYZEngine::SpriteMovementAnimationComponent::Update(float deltaTime)
+void HopEngine::SpriteMovementAnimationComponent::Update(float deltaTime)
 {
 	if (movement->GetAccelerationSquared() == 0.f)
 	{
@@ -57,6 +57,6 @@ void XYZEngine::SpriteMovementAnimationComponent::Update(float deltaTime)
 	}
 }
 
-void XYZEngine::SpriteMovementAnimationComponent::Render()
+void HopEngine::SpriteMovementAnimationComponent::Render()
 {
 }

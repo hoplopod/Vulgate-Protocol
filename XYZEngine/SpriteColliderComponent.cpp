@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SpriteColliderComponent.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	SpriteColliderComponent::SpriteColliderComponent(GameObject* gameObject) : ColliderComponent(gameObject)
 	{
@@ -14,7 +14,7 @@ namespace XYZEngine
 		}
 
 		sprite = gameObject->GetComponent<SpriteRendererComponent>()->GetSprite();
-		PhysicsSystem::Instance()->Subscribe(this);
+		TriggerSystem::Instance()->Subscribe(this);
 	}
 	SpriteColliderComponent::~SpriteColliderComponent()
 	{
@@ -22,7 +22,7 @@ namespace XYZEngine
 		{
 			std::destroy_at(&bounds);
 		}
-		PhysicsSystem::Instance()->Unsubscribe(this);
+		TriggerSystem::Instance()->Unsubscribe(this);
 	}
 
 	void SpriteColliderComponent::Update(float deltaTime)

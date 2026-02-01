@@ -5,7 +5,7 @@
 #include "RenderSystem.h"
 #include <SFML/Graphics/Sprite.hpp>
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class SpriteColliderComponent : public ColliderComponent
 	{

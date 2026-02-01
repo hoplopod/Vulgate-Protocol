@@ -4,21 +4,21 @@
 #include "GameObject.h"
 #include"LayerRenderingComponent.h"
 
-namespace XYZRoguelike
+namespace Roguelike
 {
 	class Layers
 	{
 	public:
 		Layers()
 		{
-			gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("layers_system");
-			auto layer_render = gameObject->AddComponent<XYZEngine::LayerRenderingComponent>();
+			gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("layers_system");
+			auto layer_render = gameObject->AddComponent<HopEngine::LayerRenderingComponent>();
 			layer_render->CreateNewNumLayer(4);
 		}
-		XYZEngine::GameObject* GetGameObject();
+		HopEngine::GameObject* GetGameObject();
 
 	private:
-		XYZEngine::GameObject* gameObject;
+		HopEngine::GameObject* gameObject;
 
 	};
 }

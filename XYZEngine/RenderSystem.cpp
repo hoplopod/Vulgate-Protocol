@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RenderSystem.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	RenderSystem* RenderSystem::Instance()
 	{

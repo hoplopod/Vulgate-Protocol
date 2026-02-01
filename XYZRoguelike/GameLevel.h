@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-namespace XYZRoguelike {
+namespace Roguelike {
 
 	class Level {
 

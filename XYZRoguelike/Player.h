@@ -9,17 +9,17 @@
 #include "Vector.h"
 #include "BoneComponent.h"
 
-namespace XYZRoguelike
+namespace Roguelike
 {
 	class Player
 	{
 	public:
-		Player(const XYZEngine::Vector2Df& position);
-		XYZEngine::GameObject* GetGameObject();
+		Player(const HopEngine::Vector2Df& position);
+		HopEngine::GameObject* GetGameObject();
 
 		void createSkeleton();
 	private:
-		XYZEngine::GameObject* gameObject;
+		HopEngine::GameObject* gameObject;
 
 	};
 }

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "LayerRenderingComponent.h"
 
-namespace XYZEngine{
+namespace HopEngine{
 
 LayerRenderingComponent::LayerRenderingComponent(GameObject* gameObject) : Component(gameObject)
 {

@@ -1,22 +1,22 @@
 #include "pch.h"
-#include "PhysicsSystem.h"
+#include "TriggersSystem.h"
 
 const float ERROR_RATE = 7.f;
 
-namespace XYZEngine
+namespace HopEngine
 {
-	PhysicsSystem* PhysicsSystem::Instance()
+	TriggerSystem* TriggerSystem::Instance()
 	{
-		static PhysicsSystem physicsSystem;
-		return &physicsSystem;
+		static TriggerSystem TriggersSystem;
+		return &TriggersSystem;
 	}
 
-	float PhysicsSystem::GetFixedDeltaTime() const
+	float TriggerSystem::GetFixedDeltaTime() const
 	{
 		return fixedDeltaTime;
 	}
 
-	void PhysicsSystem::Update()
+	void TriggerSystem::Update()
 	{
 		for (int i = 0; i < colliders.size(); i++)
 		{
@@ -125,12 +125,12 @@ namespace XYZEngine
 		}
 	}
 
-	void PhysicsSystem::Subscribe(ColliderComponent* collider)
+	void TriggerSystem::Subscribe(ColliderComponent* collider)
 	{
 		std::cout << "Subscribe " << collider << std::endl;
 		colliders.push_back(collider);
 	}
-	void PhysicsSystem::Unsubscribe(ColliderComponent* collider)
+	void TriggerSystem::Unsubscribe(ColliderComponent* collider)
 	{
 		std::cout << "Unsubscribe " << collider << std::endl;
 

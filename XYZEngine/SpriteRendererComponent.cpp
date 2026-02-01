@@ -2,7 +2,7 @@
 #include "SpriteRendererComponent.h"
 #include "TransformComponent.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	SpriteRendererComponent::SpriteRendererComponent(GameObject* gameObject) : Component(gameObject)
 	{

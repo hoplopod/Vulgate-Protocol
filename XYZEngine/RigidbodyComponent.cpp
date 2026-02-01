@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RigidbodyComponent.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	RigidbodyComponent::RigidbodyComponent(GameObject* gameObject) : Component(gameObject)
 	{

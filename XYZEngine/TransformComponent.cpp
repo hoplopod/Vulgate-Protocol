@@ -3,7 +3,7 @@
 #include <cmath>
 #include <iostream>
 
-namespace XYZEngine
+namespace HopEngine
 {
 	TransformComponent::TransformComponent(GameObject* gameObject) : Component(gameObject) {}
 

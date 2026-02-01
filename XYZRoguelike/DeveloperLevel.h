@@ -9,9 +9,9 @@
 #include "Wall.h"
 #include "GameLayers.h"
 
-using namespace XYZEngine;
+using namespace HopEngine;
 
-namespace XYZRoguelike
+namespace Roguelike
 {
 	class DeveloperLevel : public Scene
 	{

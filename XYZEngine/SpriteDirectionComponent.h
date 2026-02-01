@@ -1,9 +1,9 @@
 #pragma once
 #include "GameObject.h"
-#include "InputComponent.h"
+#include "MovementComponent.h"
 #include "SpriteRendererComponent.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class SpriteDirectionComponent : public Component
 	{
@@ -13,7 +13,7 @@ namespace XYZEngine
 		void Update(float deltaTime) override;
 		void Render() override;
 	private:
-		InputComponent* input;
+		MovementComponent* move;
 		SpriteRendererComponent* spriteRenderer;
 	};
 }

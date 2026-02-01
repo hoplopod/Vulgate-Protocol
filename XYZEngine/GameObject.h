@@ -3,7 +3,7 @@
 #include "TransformComponent.h"
 #include <iostream>
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class TransformComponent;
 

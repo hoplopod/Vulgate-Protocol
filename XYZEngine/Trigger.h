@@ -1,6 +1,6 @@
 #pragma once
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class ColliderComponent;
 	struct Trigger

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ResourceSystem.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	ResourceSystem* ResourceSystem::Instance()
 	{

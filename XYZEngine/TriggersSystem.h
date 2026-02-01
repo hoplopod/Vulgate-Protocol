@@ -6,12 +6,12 @@
 #include "RigidbodyComponent.h"
 #include "Vector.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
-	class PhysicsSystem
+	class TriggerSystem
 	{
 	public:
-		static PhysicsSystem* Instance();
+		static TriggerSystem* Instance();
 
 		void Update();
 
@@ -19,11 +19,11 @@ namespace XYZEngine
 		void Subscribe(ColliderComponent* collider);
 		void Unsubscribe(ColliderComponent* collider);
 	private:
-		PhysicsSystem() {}
-		~PhysicsSystem() {}
+		TriggerSystem() {}
+		~TriggerSystem() {}
 
-		PhysicsSystem(PhysicsSystem const&) = delete;
-		PhysicsSystem& operator= (PhysicsSystem const&) = delete;
+		TriggerSystem(TriggerSystem const&) = delete;
+		TriggerSystem& operator= (TriggerSystem const&) = delete;
 
 		std::vector<ColliderComponent*> colliders;
 		std::map<ColliderComponent*, ColliderComponent*> triggersEnteredPair;

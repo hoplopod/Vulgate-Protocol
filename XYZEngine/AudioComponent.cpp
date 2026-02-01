@@ -1,42 +1,42 @@
 #include "pch.h"
 #include "AudioComponent.h"
 
-XYZEngine::AudioComponent::AudioComponent(GameObject* gameObject)
+HopEngine::AudioComponent::AudioComponent(GameObject* gameObject)
 	: Component(gameObject)
 {
 	sound = new sf::Sound();
 }
 
-XYZEngine::AudioComponent::~AudioComponent()
+HopEngine::AudioComponent::~AudioComponent()
 {
 	sound->stop();
 	delete sound;
 }
 
-void XYZEngine::AudioComponent::Update(float deltaTime)
+void HopEngine::AudioComponent::Update(float deltaTime)
 {
 }
 
-void XYZEngine::AudioComponent::Render()
+void HopEngine::AudioComponent::Render()
 {
 }
 
-void XYZEngine::AudioComponent::SetAudio(const sf::SoundBuffer& audio)
+void HopEngine::AudioComponent::SetAudio(const sf::SoundBuffer& audio)
 {
 	sound->setBuffer(audio);
 }
 
-void XYZEngine::AudioComponent::SetLoop(bool loop)
+void HopEngine::AudioComponent::SetLoop(bool loop)
 {
 	sound->setLoop(loop);
 }
 
-void XYZEngine::AudioComponent::SetVolume(float volume)
+void HopEngine::AudioComponent::SetVolume(float volume)
 {
 	sound->setVolume(volume);
 }
 
-void XYZEngine::AudioComponent::Play()
+void HopEngine::AudioComponent::Play()
 {
 	if (sound->getStatus() != sf::SoundSource::Playing)
 	{
@@ -44,17 +44,17 @@ void XYZEngine::AudioComponent::Play()
 	}
 }
 
-void XYZEngine::AudioComponent::Stop()
+void HopEngine::AudioComponent::Stop()
 {
 	sound->stop();
 }
 
-void XYZEngine::AudioComponent::Pause()
+void HopEngine::AudioComponent::Pause()
 {
 	sound->pause();
 }
 
-void XYZEngine::AudioComponent::Resume()
+void HopEngine::AudioComponent::Resume()
 {
 	if (sound->getStatus() != sf::SoundSource::Playing)
 	{

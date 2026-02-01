@@ -7,7 +7,7 @@
 #include "Vector.h"
 #include "Matrix2D.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class TransformComponent : public Component
 	{

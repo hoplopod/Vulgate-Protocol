@@ -2,9 +2,9 @@
 
 Music::Music(const std::string& soundName)
 {
-	auto gameObject = XYZEngine::GameWorld::Instance()->CreateGameObject("Music: " + soundName);
-	auto music = gameObject->AddComponent<XYZEngine::AudioComponent>();
-	music->SetAudio(*XYZEngine::ResourceSystem::Instance()->GetSound(soundName));
+	auto gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Music: " + soundName);
+	auto music = gameObject->AddComponent<HopEngine::AudioComponent>();
+	music->SetAudio(*HopEngine::ResourceSystem::Instance()->GetSound(soundName));
 	music->SetLoop(false);
 	music->Play();
 }

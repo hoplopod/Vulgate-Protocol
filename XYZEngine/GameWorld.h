@@ -1,9 +1,9 @@
 #pragma once
 
 #include "GameObject.h"
-#include "PhysicsSystem.h"
+#include "TriggersSystem.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class GameWorld
 	{

@@ -6,9 +6,9 @@
 #include "Component.h"
 #include "Collision.h"
 #include "Trigger.h"
-#include "PhysicsSystem.h"
+#include "TriggersSystem.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class ColliderComponent : public Component
 	{
@@ -32,7 +32,7 @@ namespace XYZEngine
 		void SubscribeTriggerExit(std::function<void(Trigger)> onTriggerExitAction);
 		void UnsubscribeTriggerExit(std::function<void(Trigger)> onTriggerExitAction);
 
-		friend class PhysicsSystem;
+		friend class TriggerSystem;
 
 	protected:
 		sf::FloatRect bounds;

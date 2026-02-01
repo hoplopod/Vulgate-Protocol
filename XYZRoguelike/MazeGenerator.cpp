@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
-namespace XYZRoguelike
+namespace Roguelike
 {
     // Constructor: Initializes the maze generator with the given dimensions and level reference.
     MazeGenerator::MazeGenerator(int width, int height, DeveloperLevel* level)
@@ -97,15 +97,15 @@ namespace XYZRoguelike
 
         // Add floors to the current cell and the neighboring cell.
         level->floors.push_back(std::make_unique<Floor>(
-            XYZEngine::Vector2Df{ x1 * 128.f, y1 * 128.f }, 0));
+            HopEngine::Vector2Df{ x1 * 128.f, y1 * 128.f }, 0));
         level->floors.push_back(std::make_unique<Floor>(
-            XYZEngine::Vector2Df{ x2 * 128.f, y2 * 128.f }, 0));
+            HopEngine::Vector2Df{ x2 * 128.f, y2 * 128.f }, 0));
 
         // Add a wall at the midpoint if the cells are not directly adjacent.
         if (wallX != x1 || wallY != y1)
         {
             level->walls.push_back(std::make_unique<Wall>(
-                XYZEngine::Vector2Df{ wallX * 128.f, wallY * 128.f }, 14));
+                HopEngine::Vector2Df{ wallX * 128.f, wallY * 128.f }, 14));
         }
     }
 }

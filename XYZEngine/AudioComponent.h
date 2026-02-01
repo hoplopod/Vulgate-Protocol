@@ -5,7 +5,7 @@
 #include "Component.h"
 
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class AudioComponent : public Component
 	{

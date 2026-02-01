@@ -5,7 +5,7 @@
 #include "SpriteRendererComponent.h"
 #include <memory>
 
-namespace XYZEngine {
+namespace HopEngine {
 
 	class BoneComponent : public Component
 	{
@@ -20,7 +20,7 @@ namespace XYZEngine {
 		void BoneTransform();
 
 	private:
-		XYZEngine::TransformComponent* transform;
+		TransformComponent* transform;
 		
 		float shift = 0.f;
 		float length = 0;

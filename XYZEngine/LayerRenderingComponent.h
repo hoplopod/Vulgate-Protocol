@@ -5,7 +5,7 @@
 #include "RenderSystem.h"
 #include "SpriteRendererComponent.h"
 
-namespace XYZEngine {
+namespace HopEngine {
 
 	class LayerRenderingComponent : public Component {
 

@@ -1,11 +1,11 @@
 #include "pch.h"
 #include "BoneComponent.h"
 
-namespace XYZEngine {
+namespace HopEngine {
 
 	BoneComponent::BoneComponent(GameObject* gameObject) : Component(gameObject) {
 
-		transform = gameObject->GetComponent<XYZEngine::TransformComponent>();
+		transform = gameObject->GetComponent<HopEngine::TransformComponent>();
 	}
 
 	BoneComponent* BoneComponent::AddChild(std::unique_ptr<BoneComponent> child, float new_length, float new_shift)

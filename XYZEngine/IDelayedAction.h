@@ -2,7 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include <memory>
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class IDelayedAction
 	{
