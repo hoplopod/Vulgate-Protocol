@@ -10,6 +10,8 @@ namespace Roguelike
 	{
 		layer_system = std::make_unique<Layers>();
 
+		loader = std::make_unique<LevelLoader>();
+
 		int width = 15;
 		int height = 15;
 
@@ -76,7 +78,7 @@ namespace Roguelike
 		}
 
 		// Maze Generator
-		MazeGenerator mazeGenerator(width, height, this);
+		//MazeGenerator mazeGenerator(width, height, this);
 		//mazeGenerator.Generate(); 
 
 		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));

@@ -8,6 +8,7 @@
 #include "Floor.h"
 #include "Wall.h"
 #include "GameLayers.h"
+#include "GameLevel.h"
 
 using namespace HopEngine;
 
@@ -27,6 +28,7 @@ namespace Roguelike
 		std::shared_ptr<Player> player;
 		std::shared_ptr<Layers> layer_system;
 		std::unique_ptr<Music> music;
+		std::shared_ptr<LevelLoader> loader;
 
 	};
 }

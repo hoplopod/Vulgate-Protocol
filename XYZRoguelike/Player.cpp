@@ -51,8 +51,6 @@ namespace Roguelike
 		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
 		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
-		
-
 		//Arms
 		//left
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_shoulder_left");
