@@ -51,16 +51,7 @@ namespace Roguelike
 		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
 		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
-		//Body
-		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_body");
-		auto body = gameObject->AddComponent<HopEngine::BoneComponent>();
-		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
-		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_body"));
-		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 0);
-		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
-		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
-		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
-		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
+		
 
 		//Arms
 		//left
@@ -188,6 +179,17 @@ namespace Roguelike
 		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
 		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
 
+		//Body
+		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Player_body");
+		auto body = gameObject->AddComponent<HopEngine::BoneComponent>();
+		renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
+		renderer->SetTexture(*HopEngine::ResourceSystem::Instance()->GetTextureCopy("player_body"));
+		renderer->SetOrigin(renderer->GetSprite()->getTexture()->getSize().x / 2.f, 0);
+		renderer->SetPixelSize(renderer->GetSprite()->getTexture()->getSize().x * player_scale, renderer->GetSprite()->getTexture()->getSize().y * player_scale);
+		HopEngine::GameWorld::Instance()->FindGameObject("layers_system")->GetComponent<HopEngine::LayerRenderingComponent>()->AddToLayer(2, renderer);
+		gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+		colliders.push_back(gameObject->AddComponent<HopEngine::SpriteColliderComponent>());
+
 		//Create skeleton
 
 		body->AddChild({ head, std::default_delete<HopEngine::BoneComponent>() }, -1*player_scale, 0.f);
@@ -232,6 +234,10 @@ namespace Roguelike
 				colliders[i]->AddIgnoreCollision(colliders[j]);
 			}
 		}
+
+		player_hip_right->GetGameObject()->GetComponent<HopEngine::TransformComponent>()->SetLocalRotation(-60);
+		player_shin_right->GetGameObject()->GetComponent<HopEngine::TransformComponent>()->SetLocalRotation(-60);
+		player_shoulder_left->GetGameObject()->GetComponent<HopEngine::TransformComponent>()->SetLocalRotation(90);
 
 	}
 

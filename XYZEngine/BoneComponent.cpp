@@ -14,7 +14,9 @@ namespace HopEngine {
 		child->shift = new_shift;
 		child->length = new_length;
 		child->parent = this;
+
 		childrens.push_back(std::move(child));
+
 		return childrens.back().get();
 	}
 
@@ -32,6 +34,7 @@ namespace HopEngine {
 			localPosition.y = cos(parentLocalAngle * pi / 180 + childLocalAngleOffset) * length;
 
 			transform->SetWorldPosition(parentWorldPos.x + localPosition.x, parentWorldPos.y - localPosition.y);
+			
 		}
 
 	}
