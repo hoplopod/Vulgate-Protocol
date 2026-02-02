@@ -7,25 +7,29 @@ namespace Roguelike {
 	{
 		file.open("Resources/levels.config");
 		std::string line;
-		int y = 0, x = 0;
+		int y = 0, x = 0, levelY = 0;
 
 		while (std::getline(file, line)) {
 			if (line.rfind("level ", 0) == 0) {
-				auto level = std::stoi(line.substr(6, line.size() - 6));
 				levels.emplace_back(Level());
-				y = 0;
+
+				std::getline(file, line);
+				if (line.rfind("y = ", 0) == 0) {
+					levelY = std::stoi(line.substr(4, line.size() - 4));
+					y = 0;
+				}
 			}
 			else {
 				int x = 0;
 				for (char c : line) {
 					if (c != ' ') {
-						levels.back().map_interior.emplace_back(std::make_pair(sf::Vector2i{ x, y }, CharToMapInteriorType(c)));
+						levels.back().map_interior.emplace_back(std::make_pair(sf::Vector2i{ x, levelY - y }, CharToMapInteriorType(c)));
 					}
 					++x;
 				}
 
 			}
-			++y;
+			y++;
 		}
 		file.close();
 	}
