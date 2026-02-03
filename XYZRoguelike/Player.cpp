@@ -25,6 +25,11 @@ namespace Roguelike
 
 		auto movement = gameObject->AddComponent<HopEngine::MovementComponent>();
 		movement->SetSpeed(400.f);
+		movement->SetWeight(50.f);
+
+		auto collider = gameObject->GetComponent < HopEngine::SpriteColliderComponent>();
+		collider->AddToMapCollision();
+		collider->SetMapCollision({ -20,-150, 40, 210 });
 
 		//auto spriteDirection = gameObject->AddComponent<XYZEngine::SpriteDirectionComponent>();
 

@@ -18,6 +18,7 @@ HopEngine::MovementComponent::MovementComponent(GameObject* gameObject)
 void HopEngine::MovementComponent::Update(float deltaTime)
 {
 	horizontalAxis = 0.f;
+
 	switch (input->GetPlayerMoveState())
 	{
 		case CharacterMoveState::Stand: {
@@ -39,10 +40,24 @@ void HopEngine::MovementComponent::Update(float deltaTime)
 		auto collision = gameObject->GetComponent<ColliderComponent>();
 
 		if (collision->GetCollision()[0] == -1 * horizontalAxis)  horizontalAxis = 0;
-		if (collision->GetCollision()[1] == -1 * verticalAxis) verticalAxis = 0;
+
+		if (collision->GetCollision()[1] == -1)  status = ObjectStatus::stable;
 	}
 	
-	transform->MoveBy(speed * deltaTime * Vector2Df{ horizontalAxis, verticalAxis });
+
+	switch (status)
+	{
+	case HopEngine::ObjectStatus::stable:
+		verticalAxis = 0.f;
+		break;
+	case HopEngine::ObjectStatus::shattered:
+		verticalAxis = -9.8f;
+		break;
+	default:
+		break;
+	}
+
+	transform->MoveBy(deltaTime * Vector2Df{ speed * horizontalAxis, weight * verticalAxis });
 
 	acceleration = transform->GetWorldPosition() - previousPosition;
 	previousPosition = transform->GetWorldPosition();
@@ -69,4 +84,14 @@ float HopEngine::MovementComponent::GetSpeed() const
 float HopEngine::MovementComponent::GetAccelerationSquared() const
 {
 	return acceleration.x * acceleration.x + acceleration.y * acceleration.y;
+}
+
+void HopEngine::MovementComponent::SetWeight(float newWeight)
+{
+	weight = newWeight;
+}
+
+void HopEngine::MovementComponent::SetStableAngle(Vector2Df newStableAngle)
+{
+	stableAngle = newStableAngle;
 }

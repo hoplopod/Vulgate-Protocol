@@ -4,7 +4,8 @@
 #include <vector>
 #include <functional>
 #include "Component.h"
-#include "Collision.h"
+#include "HitBoxes.h"
+#include "MapCollision.h"
 #include "Trigger.h"
 #include "TriggersSystem.h"
 
@@ -25,8 +26,8 @@ namespace HopEngine
 		void AddIgnoreCollision(ColliderComponent* addCollisionIgnore);
 		std::vector<ColliderComponent*> GetCollisionIgnore();
 
-		void SubscribeCollision(std::function<void(Collision)> onCollisionAction);
-		void UnsubscribeCollision(std::function<void(Collision)> onCollisionAction);
+		void SubscribeHitBoxes(std::function<void(HitBox)> onHitBoxesAction);
+		void UnsubscribeHitBoxes(std::function<void(HitBox)> onHitBoxesAction);
 
 		void SubscribeTriggerEnter(std::function<void(Trigger)> onTriggerEnterAction);
 		void UnsubscribeTriggerEnter(std::function<void(Trigger)> onTriggerEnterAction);
@@ -38,16 +39,17 @@ namespace HopEngine
 
 	protected:
 		sf::FloatRect bounds;
+		sf::FloatRect map_bounds;
 		bool isTrigger = false;
 		std::vector<int> collision_vertical = {0,0};
 
-		void OnCollision(Collision collision);
+		void OnCollision(HitBox collision);
 		void OnTriggerEnter(Trigger trigger);
 		void OnTriggerExit(Trigger trigger);
 
 		std::vector<ColliderComponent*> CollisionIgnore;
 
-		std::vector<std::function<void(Collision)>> onCollisionActions;
+		std::vector<std::function<void(HitBox)>> onHitBoxActions;
 		std::vector<std::function<void(Trigger)>> onTriggerEnterActions;
 		std::vector<std::function<void(Trigger)>> onTriggerExitActions;
 	};

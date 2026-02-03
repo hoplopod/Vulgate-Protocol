@@ -101,7 +101,7 @@ namespace Roguelike
 		//MazeGenerator mazeGenerator(width, height, this);
 		//mazeGenerator.Generate(); 
 
-		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ 250, 200}));
+		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ 300, 400}));
 		//music = std::make_unique<Music>("music");
 	}
 	void DeveloperLevel::Restart()

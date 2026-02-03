@@ -33,21 +33,21 @@ namespace HopEngine
 		return CollisionIgnore;
 	}
 
-	void ColliderComponent::SubscribeCollision(std::function<void(Collision)> onCollisionAction)
+	void ColliderComponent::SubscribeHitBoxes(std::function<void(HitBox)> onHitBoxAction)
 	{
-		onCollisionActions.push_back(onCollisionAction);
+		onHitBoxActions.push_back(onHitBoxAction);
 	}
-	void ColliderComponent::UnsubscribeCollision(std::function<void(Collision)> onCollisionAction)
+	void ColliderComponent::UnsubscribeHitBoxes(std::function<void(HitBox)> onHitBoxAction)
 	{
-		onCollisionActions.erase(std::remove_if
+		onHitBoxActions.erase(std::remove_if
 		(
-			onCollisionActions.begin(),
-			onCollisionActions.end(),
-			[&onCollisionAction](const std::function<void(Collision)>& action)
+			onHitBoxActions.begin(),
+			onHitBoxActions.end(),
+			[&onHitBoxAction](const std::function<void(HitBox)>& action)
 			{
-				return action.target<void(Collision)>() == onCollisionAction.target<void(Collision)>();
+				return action.target<void(HitBox)>() == onHitBoxAction.target<void(HitBox)>();
 			}
-		), onCollisionActions.end());
+		), onHitBoxActions.end());
 	}
 
 	void ColliderComponent::SubscribeTriggerEnter(std::function<void(Trigger)> onTriggerEnterAction)
@@ -84,11 +84,11 @@ namespace HopEngine
 		), onTriggerExitActions.end());
 	}
 
-	void ColliderComponent::OnCollision(Collision collision)
+	void ColliderComponent::OnCollision(HitBox hitbox)
 	{
-		for (int i = 0; i < onCollisionActions.size(); i++)
+		for (int i = 0; i < onHitBoxActions.size(); i++)
 		{
-			onCollisionActions[i](collision);
+			onHitBoxActions[i](hitbox);
 		}
 	}
 	void ColliderComponent::OnTriggerEnter(Trigger trigger)
