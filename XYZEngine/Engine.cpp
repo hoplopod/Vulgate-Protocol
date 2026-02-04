@@ -4,7 +4,7 @@
 #include "GameWorld.h"
 #include "RenderSystem.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	Engine* Engine::Instance()
 	{

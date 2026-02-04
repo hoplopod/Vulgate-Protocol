@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ColliderComponent.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	ColliderComponent::ColliderComponent(GameObject* gameObject) : Component(gameObject) 
 	{ 
@@ -13,21 +13,41 @@ namespace XYZEngine
 		isTrigger = newIsTrigger;
 	}
 
-	void ColliderComponent::SubscribeCollision(std::function<void(Collision)> onCollisionAction)
+	void ColliderComponent::SetCollision(std::vector<int> vertical)
 	{
-		onCollisionActions.push_back(onCollisionAction);
+		collision_vertical = vertical;
 	}
-	void ColliderComponent::UnsubscribeCollision(std::function<void(Collision)> onCollisionAction)
+
+	std::vector<int> ColliderComponent::GetCollision()
 	{
-		onCollisionActions.erase(std::remove_if
+		return collision_vertical;
+	}
+
+	void ColliderComponent::AddIgnoreCollision(ColliderComponent* addCollisionIgnore)
+	{
+		CollisionIgnore.push_back(addCollisionIgnore);
+	}
+
+	std::vector<ColliderComponent*> ColliderComponent::GetCollisionIgnore()
+	{
+		return CollisionIgnore;
+	}
+
+	void ColliderComponent::SubscribeHitBoxes(std::function<void(HitBox)> onHitBoxAction)
+	{
+		onHitBoxActions.push_back(onHitBoxAction);
+	}
+	void ColliderComponent::UnsubscribeHitBoxes(std::function<void(HitBox)> onHitBoxAction)
+	{
+		onHitBoxActions.erase(std::remove_if
 		(
-			onCollisionActions.begin(),
-			onCollisionActions.end(),
-			[&onCollisionAction](const std::function<void(Collision)>& action)
+			onHitBoxActions.begin(),
+			onHitBoxActions.end(),
+			[&onHitBoxAction](const std::function<void(HitBox)>& action)
 			{
-				return action.target<void(Collision)>() == onCollisionAction.target<void(Collision)>();
+				return action.target<void(HitBox)>() == onHitBoxAction.target<void(HitBox)>();
 			}
-		), onCollisionActions.end());
+		), onHitBoxActions.end());
 	}
 
 	void ColliderComponent::SubscribeTriggerEnter(std::function<void(Trigger)> onTriggerEnterAction)
@@ -64,11 +84,11 @@ namespace XYZEngine
 		), onTriggerExitActions.end());
 	}
 
-	void ColliderComponent::OnCollision(Collision collision)
+	void ColliderComponent::OnCollision(HitBox hitbox)
 	{
-		for (int i = 0; i < onCollisionActions.size(); i++)
+		for (int i = 0; i < onHitBoxActions.size(); i++)
 		{
-			onCollisionActions[i](collision);
+			onHitBoxActions[i](hitbox);
 		}
 	}
 	void ColliderComponent::OnTriggerEnter(Trigger trigger)

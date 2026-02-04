@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Sprite.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	void InitSprite(sf::Sprite& sprite, float desiredWidth, float desiredHeight, const sf::Texture& texture)
 	{

@@ -2,7 +2,7 @@
 #include <vector>
 #include <stack>
 
-namespace XYZRoguelike
+namespace Roguelike
 {
     class MazeGenerator
     {

@@ -2,13 +2,13 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class ColliderComponent;
-	struct Collision
+	struct MapCollision
 	{
 	public:
-		Collision(ColliderComponent* newFirst, ColliderComponent* newSecond, sf::FloatRect newCollisionRect) :
+		MapCollision(ColliderComponent* newFirst, ColliderComponent* newSecond, sf::FloatRect newCollisionRect) :
 			first(newFirst), second(newSecond), collisionRect(newCollisionRect) {
 		};
 	private:

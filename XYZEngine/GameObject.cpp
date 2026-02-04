@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GameObject.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	GameObject::GameObject()
 	{
@@ -61,6 +61,14 @@ namespace XYZEngine
 	void GameObject::AddChild(GameObject* child)
 	{
 		children.push_back(child);
+	}
+	GameObject* GameObject::GetChild(std::string child_name)
+	{
+		for (int i = 0; i < children.size(); ++i) {
+			if (children[i]->GetName() == child_name) {
+				return children[i];
+			}
+		}
 	}
 	void GameObject::RemoveChild(GameObject* child)
 	{

@@ -4,14 +4,14 @@
 #include <ResourceSystem.h>
 #include "GameObject.h"
 
-namespace XYZRoguelike
+namespace Roguelike
 {
 	class Wall
 	{
 	public:
-		Wall(const XYZEngine::Vector2Df position, int textureMapIndex);
+		Wall(const HopEngine::Vector2Df position, int textureMapIndex);
 	private:
-		XYZEngine::GameObject* gameObject;
+		HopEngine::GameObject* gameObject;
 	};
 }
 

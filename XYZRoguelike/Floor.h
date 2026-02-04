@@ -5,14 +5,14 @@
 #include <ResourceSystem.h>
 #include "GameObject.h"
 
-namespace XYZRoguelike
+namespace Roguelike
 {
 	class Floor
 	{
 	public:
-		Floor(const XYZEngine::Vector2Df& position, int textureMapIndex);
+		Floor(const HopEngine::Vector2Df& position, int textureMapIndex);
 	private:
-		XYZEngine::GameObject* gameObject;
+		HopEngine::GameObject* gameObject;
 	};
 }
 

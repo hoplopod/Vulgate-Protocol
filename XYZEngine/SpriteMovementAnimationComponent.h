@@ -4,7 +4,7 @@
 #include "SpriteRendererComponent.h"
 #include "ResourceSystem.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class SpriteMovementAnimationComponent : public Component
 	{

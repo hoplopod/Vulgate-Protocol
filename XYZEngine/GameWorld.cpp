@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GameWorld.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	GameWorld* GameWorld::Instance()
 	{
@@ -19,10 +19,10 @@ namespace XYZEngine
 	void GameWorld::FixedUpdate(float deltaTime)
 	{
 		fixedCounter += deltaTime;
-		if (fixedCounter > PhysicsSystem::Instance()->GetFixedDeltaTime())
+		if (fixedCounter > TriggerSystem::Instance()->GetFixedDeltaTime())
 		{
-			fixedCounter -= PhysicsSystem::Instance()->GetFixedDeltaTime();
-			PhysicsSystem::Instance()->Update();
+			fixedCounter -= TriggerSystem::Instance()->GetFixedDeltaTime();
+			TriggerSystem::Instance()->Update();
 		}
 	}
 	void GameWorld::Render()
@@ -51,6 +51,15 @@ namespace XYZEngine
 		GameObject* newGameObject = new GameObject(name);
 		gameObjects.push_back(newGameObject);
 		return newGameObject;
+	}
+	GameObject* GameWorld::FindGameObject(std::string name)
+	{
+		for (int i = 0; i < gameObjects.size(); ++i) {
+			if (gameObjects[i]->GetName() == name) {
+				return gameObjects[i];
+			}
+		}
+		return nullptr;
 	}
 	void GameWorld::DestroyGameObject(GameObject* gameObject)
 	{

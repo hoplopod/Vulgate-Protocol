@@ -3,7 +3,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "TransformComponent.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class CameraComponent : public Component
 	{
@@ -17,10 +17,12 @@ namespace XYZEngine
 		void SetWindow(sf::RenderWindow* newWindow);
 		void ZoomBy(float newZoom);
 
+		void SetShift(Vector2Df new_shift);
 		void SetBaseResolution(int width, int height);
 	private:
 		TransformComponent* transform;
 		sf::RenderWindow* window;
 		sf::View* view;
+		Vector2Df shift = { 0,0 };
 	};
 }

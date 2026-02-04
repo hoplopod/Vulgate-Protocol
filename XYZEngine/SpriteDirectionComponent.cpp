@@ -1,25 +1,25 @@
 #include "pch.h"
 #include "SpriteDirectionComponent.h"
 
-XYZEngine::SpriteDirectionComponent::SpriteDirectionComponent(GameObject* gameObject)
+HopEngine::SpriteDirectionComponent::SpriteDirectionComponent(GameObject* gameObject)
 	: Component(gameObject)
 {
-	input = gameObject->GetComponent<InputComponent>();
+	move = gameObject->GetComponent<MovementComponent>();
 	spriteRenderer = gameObject->GetComponent<SpriteRendererComponent>();
 }
 
-void XYZEngine::SpriteDirectionComponent::Update(float deltaTime)
+void HopEngine::SpriteDirectionComponent::Update(float deltaTime)
 {
-	if (input->GetHorizontalAxis() < 0)
+	if (move->GetHorizontalAxis() < 0)
 	{
 		spriteRenderer->FlipX(true);
 	}
-	if (input->GetHorizontalAxis() > 0)
+	if (move->GetHorizontalAxis() > 0)
 	{
 		spriteRenderer->FlipX(false);
 	}
 }
 
-void XYZEngine::SpriteDirectionComponent::Render()
+void HopEngine::SpriteDirectionComponent::Render()
 {
 }

@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class SpriteRendererComponent : public Component
 	{
@@ -19,6 +19,10 @@ namespace XYZEngine
 		const sf::Sprite* GetSprite() const;
 		void SetTexture(const sf::Texture& newTexture);
 		void SetPixelSize(int newWidth, int newHeight);
+		void SetOrigin(float x, float y);
+		void SetRenderLayer(int new_render_layer);
+
+		Vector2Df GetScaleSizes();
 
 		void FlipX(bool flip);
 		void FlipY(bool flip);

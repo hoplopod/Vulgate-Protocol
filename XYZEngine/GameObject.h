@@ -3,7 +3,7 @@
 #include "TransformComponent.h"
 #include <iostream>
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class TransformComponent;
 
@@ -130,6 +130,7 @@ namespace XYZEngine
 		std::vector<Component*> components = {};
 
 		void AddChild(GameObject* child);
+		GameObject* GetChild(std::string child_name);
 		void RemoveChild(GameObject* child);
 	};
 }

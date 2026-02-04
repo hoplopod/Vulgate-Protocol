@@ -3,7 +3,7 @@
 #include "TransformComponent.h"
 #include "Vector.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class RigidbodyComponent : public Component
 	{

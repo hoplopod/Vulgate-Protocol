@@ -1,6 +1,6 @@
 #pragma once
 
-namespace XYZEngine
+namespace HopEngine
 {
 	template<typename T>
 	struct Vector2D

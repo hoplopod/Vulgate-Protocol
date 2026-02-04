@@ -3,8 +3,14 @@
 #include "Component.h"
 #include <SFML/Window.hpp> 
 
-namespace XYZEngine
+namespace HopEngine
 {
+	enum class CharacterMoveState {
+		Stand = -1,
+		Walk_Right,
+		Walk_Left
+	};
+
 	class InputComponent : public Component
 	{
 	public:
@@ -13,10 +19,13 @@ namespace XYZEngine
 		void Update(float deltaTime) override;
 		void Render() override;
 
-		float GetHorizontalAxis() const;
-		float GetVerticalAxis() const;
+		CharacterMoveState GetPlayerMoveState() const {
+			return playerMoveState;
+		}
+
 	private:
-		float horizontalAxis = 0.f;
-		float verticalAxis = 0.f;
+		CharacterMoveState playerMoveState = CharacterMoveState::Stand;
 	};
+
+	
 }

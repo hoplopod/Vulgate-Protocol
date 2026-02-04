@@ -1,9 +1,9 @@
 #pragma once
 
 #include "GameObject.h"
-#include "PhysicsSystem.h"
+#include "TriggersSystem.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class GameWorld
 	{
@@ -17,6 +17,7 @@ namespace XYZEngine
 
 		GameObject* CreateGameObject();
 		GameObject* CreateGameObject(std::string name);
+		GameObject* FindGameObject(std::string name);
 		void DestroyGameObject(GameObject* gameObject);
 		void Clear();
 

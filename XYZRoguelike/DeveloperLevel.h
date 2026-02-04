@@ -7,10 +7,12 @@
 #include "Music.h"
 #include "Floor.h"
 #include "Wall.h"
+#include "GameLayers.h"
+#include "GameLevel.h"
 
-using namespace XYZEngine;
+using namespace HopEngine;
 
-namespace XYZRoguelike
+namespace Roguelike
 {
 	class DeveloperLevel : public Scene
 	{
@@ -24,7 +26,9 @@ namespace XYZRoguelike
 
 	private:
 		std::shared_ptr<Player> player;
+		std::shared_ptr<Layers> layer_system;
 		std::unique_ptr<Music> music;
+		std::shared_ptr<LevelLoader> loader;
 
 	};
 }

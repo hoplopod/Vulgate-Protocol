@@ -3,7 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class Engine
 	{

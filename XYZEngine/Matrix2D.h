@@ -6,7 +6,7 @@
 #include <array>
 #include "Vector.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	class Matrix2D
 	{

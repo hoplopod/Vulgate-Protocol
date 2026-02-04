@@ -2,7 +2,7 @@
 #include "CameraComponent.h"
 #include "TransformComponent.h"
 
-namespace XYZEngine
+namespace HopEngine
 {
 	CameraComponent::CameraComponent(GameObject* gameObject) : Component(gameObject)
 	{
@@ -18,6 +18,9 @@ namespace XYZEngine
 	{
 		auto position = transform->GetWorldPosition();
 		auto rotation = transform->GetWorldRotation();
+		
+		position.x += shift.x;
+		position.y += shift.y;
 
 		view->setCenter(Convert<sf::Vector2f, Vector2Df>(position));
 		view->setRotation(rotation);
@@ -30,6 +33,11 @@ namespace XYZEngine
 		{
 			std::cout << "NULL window render." << std::endl;
 		}
+	}
+
+	void CameraComponent::SetShift(Vector2Df new_shift)
+	{
+		shift = new_shift;
 	}
 
 	void CameraComponent::SetBaseResolution(int width, int height)
