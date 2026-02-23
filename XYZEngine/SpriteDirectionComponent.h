@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#include "MovementComponent.h"
+#include "InputComponent.h"
 #include "SpriteRendererComponent.h"
 
 namespace HopEngine
@@ -13,7 +13,7 @@ namespace HopEngine
 		void Update(float deltaTime) override;
 		void Render() override;
 	private:
-		MovementComponent* move;
+		InputComponent* input;
 		SpriteRendererComponent* spriteRenderer;
 	};
 }

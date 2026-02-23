@@ -8,20 +8,30 @@ namespace HopEngine
 
 	void InputComponent::Update(float deltaTime)
 	{
-		//Move
-		playerMoveState = CharacterMoveState::Stand;
+		verticalAxis = 0.f;
+		horizontalAxis = 0.f;
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
-			playerMoveState = CharacterMoveState::Walk_Right;
+			horizontalAxis += 1.0f;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		{
-			playerMoveState = CharacterMoveState::Walk_Left;
+			horizontalAxis -= 1.0f;
 		}
 	}
 	void InputComponent::Render()
 	{
 
+	}
+
+	float InputComponent::GetHorizontalAxis() const
+	{
+		return horizontalAxis;
+	}
+	float InputComponent::GetVerticalAxis() const
+	{
+		return verticalAxis;
 	}
 
 }
