@@ -4,6 +4,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include "spine-sfml.h"
 
 namespace HopEngine
 {
@@ -27,12 +28,17 @@ namespace HopEngine
 		const sf::SoundBuffer* GetSound(const std::string& name) const;
 		void DeleteSound(const std::string& name);
 
+		void LoadSpineFiles(const std::string& name, spine::String path_atlas, spine::String path_json);
+		const spine::SkeletonData* GetSkeletonData(std::string& name);
+		void DeleteSkeletonData(const std::string& name);
+
 		void Clear();
 
 	private:
 		std::map<std::string, sf::Texture*> textures;
 		std::map<std::string, std::vector<sf::Texture*>> textureMaps;
 		std::map<std::string, sf::SoundBuffer*> sounds;
+		std::map<std::string, spine::SkeletonData*> skeleton_datas;
 
 		ResourceSystem() {}
 		~ResourceSystem() {}

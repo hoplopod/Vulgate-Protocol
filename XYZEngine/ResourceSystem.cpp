@@ -139,6 +139,45 @@ namespace HopEngine
 		delete deletingSound;
 	}
 
+	void ResourceSystem::LoadSpineFiles(const std::string& name, spine::String path_atlas, spine::String path_json)
+	{
+		float scale = 0.6f;
+		spine::SFMLTextureLoader textureLoader;
+		spine::NullAttachmentLoader nullLoader;
+		spine::Atlas* atlas = path_atlas.length() == 0 ? nullptr : new spine::Atlas(path_atlas, &textureLoader);
+		spine::SkeletonData* skeletonData = nullptr;
+		spine::SkeletonJson* json = nullptr;
+
+		if (atlas) {
+			json = new spine::SkeletonJson(atlas);
+		}
+		else {
+			json = new spine::SkeletonJson(&nullLoader);
+		}
+		json->setScale(scale);
+		skeletonData = json->readSkeletonDataFile(path_json);
+		delete json;
+
+		if (skeletonData != nullptr)
+		{
+			skeleton_datas.emplace(name, skeletonData);
+		}
+	}
+
+	void ResourceSystem::DeleteSkeletonData(const std::string& name)
+	{
+		auto dataPair = skeleton_datas.find(name);
+
+		spine::SkeletonData* deletingData = dataPair->second;
+		skeleton_datas.erase(dataPair);
+		delete deletingData;
+	}
+
+	const spine::SkeletonData* ResourceSystem::GetSkeletonData(std::string& name)
+	{
+		return skeleton_datas.find(name)->second;
+	}
+
 	void ResourceSystem::Clear()
 	{
 		DeleteAllTextures();
