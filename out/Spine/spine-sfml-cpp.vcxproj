@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{79DB9671-5ACD-370C-802E-DCDDA71E4462}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>spine-sfml-cpp</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)out\Spine\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">spine-sfml-cpp.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">spine-sfml-cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\source\repos\Vulgate Protocol\out\Spine\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">spine-sfml-cpp.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">spine-sfml-cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\source\repos\Vulgate Protocol\out\Spine\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">spine-sfml-cpp.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">spine-sfml-cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\source\repos\Vulgate Protocol\out\Spine\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">spine-sfml-cpp.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">spine-sfml-cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Spine\src;$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;SFML_STATIC;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;SFML_STATIC;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NDEBUG;SFML_STATIC;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NDEBUG;SFML_STATIC;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NDEBUG;SFML_STATIC;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NDEBUG;SFML_STATIC;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <CallingConvention>
+      </CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>
+      </FloatingPointModel>
+      <ForceConformanceInForLoopScope>
+      </ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData>
+      </RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType>
+      </TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NDEBUG;SFML_STATIC;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NDEBUG;SFML_STATIC;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\source\repos\Vulgate Protocol\Spine\src;D:\source\repos\Vulgate Protocol\out\_deps\sfml-src\include;D:\source\repos\Vulgate Protocol\Spine\spine_cpp\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\source\repos\Vulgate Protocol\Spine\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/source/repos/Vulgate Protocol/Spine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\CMake\bin\cmake.exe "-SD:/source/repos/Vulgate Protocol" "-BD:/source/repos/Vulgate Protocol/out" --check-stamp-file "D:/source/repos/Vulgate Protocol/out/Spine/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\CMake\share\cmake-4.2\Modules\ExternalProject\shared_internal_commands.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent\CMakeLists.cmake.in;D:\CMake\share\cmake-4.2\Modules\FindGit.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;D:\source\repos\Vulgate Protocol\flags.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\source\repos\Vulgate Protocol\out\Spine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/source/repos/Vulgate Protocol/Spine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\CMake\bin\cmake.exe "-SD:/source/repos/Vulgate Protocol" "-BD:/source/repos/Vulgate Protocol/out" --check-stamp-file "D:/source/repos/Vulgate Protocol/out/Spine/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\CMake\share\cmake-4.2\Modules\ExternalProject\shared_internal_commands.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent\CMakeLists.cmake.in;D:\CMake\share\cmake-4.2\Modules\FindGit.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;D:\source\repos\Vulgate Protocol\flags.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\source\repos\Vulgate Protocol\out\Spine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/source/repos/Vulgate Protocol/Spine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\CMake\bin\cmake.exe "-SD:/source/repos/Vulgate Protocol" "-BD:/source/repos/Vulgate Protocol/out" --check-stamp-file "D:/source/repos/Vulgate Protocol/out/Spine/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\CMake\share\cmake-4.2\Modules\ExternalProject\shared_internal_commands.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent\CMakeLists.cmake.in;D:\CMake\share\cmake-4.2\Modules\FindGit.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;D:\source\repos\Vulgate Protocol\flags.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\source\repos\Vulgate Protocol\out\Spine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/source/repos/Vulgate Protocol/Spine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\CMake\bin\cmake.exe "-SD:/source/repos/Vulgate Protocol" "-BD:/source/repos/Vulgate Protocol/out" --check-stamp-file "D:/source/repos/Vulgate Protocol/out/Spine/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\CMake\share\cmake-4.2\Modules\ExternalProject\shared_internal_commands.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent.cmake;D:\CMake\share\cmake-4.2\Modules\FetchContent\CMakeLists.cmake.in;D:\CMake\share\cmake-4.2\Modules\FindGit.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;D:\source\repos\Vulgate Protocol\flags.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\source\repos\Vulgate Protocol\out\Spine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Animation.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\AnimationState.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\AnimationStateData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Atlas.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\AtlasAttachmentLoader.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Attachment.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\AttachmentLoader.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\AttachmentTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Bone.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\BoneData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\BoundingBoxAttachment.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\ClippingAttachment.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\ColorTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\ConstraintData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\CurveTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\DeformTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\DrawOrderTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Event.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\EventData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\EventTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Extension.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\IkConstraint.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\IkConstraintData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\IkConstraintTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\InheritTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Json.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\LinkedMesh.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Log.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\MathUtil.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\MeshAttachment.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PathAttachment.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PathConstraint.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PathConstraintData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PathConstraintMixTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PathConstraintPositionTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PathConstraintSpacingTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PhysicsConstraint.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PhysicsConstraintData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PhysicsConstraintTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\PointAttachment.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\RegionAttachment.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\RotateTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\RTTI.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\ScaleTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Sequence.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SequenceTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\ShearTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Skeleton.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SkeletonBinary.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SkeletonBounds.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SkeletonClipping.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SkeletonData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SkeletonJson.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SkeletonRenderer.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Skin.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Slot.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SlotData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\SpineObject.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\TextureLoader.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Timeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\TransformConstraint.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\TransformConstraintData.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\TransformConstraintTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\TranslateTimeline.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Triangulator.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\Updatable.cpp" />
+    <ClCompile Include="..\..\Spine\spine_cpp\spine-cpp\src\spine\VertexAttachment.cpp" />
+    <ClCompile Include="D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Animation.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\AnimationState.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\AnimationStateData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Atlas.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\AtlasAttachmentLoader.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Attachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\AttachmentLoader.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\AttachmentTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\AttachmentType.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\BlendMode.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\BlockAllocator.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Bone.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\BoneData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\BoundingBoxAttachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\ClippingAttachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Color.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\ColorTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\ConstraintData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\ContainerUtil.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\CurveTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Debug.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\DeformTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\dll.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\DrawOrderTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Event.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\EventData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\EventTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Extension.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\HashMap.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\HasRendererObject.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\IkConstraint.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\IkConstraintData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\IkConstraintTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Inherit.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\InheritTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Json.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\LinkedMesh.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Log.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\MathUtil.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\MeshAttachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\MixBlend.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\MixDirection.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PathAttachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PathConstraint.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PathConstraintData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PathConstraintMixTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PathConstraintPositionTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PathConstraintSpacingTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Physics.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PhysicsConstraint.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PhysicsConstraintData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PhysicsConstraintTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PointAttachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Pool.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\PositionMode.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Property.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\RegionAttachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\RotateMode.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\RotateTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\RTTI.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\ScaleTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Sequence.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SequenceTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\ShearTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Skeleton.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SkeletonBinary.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SkeletonBounds.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SkeletonClipping.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SkeletonData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SkeletonJson.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SkeletonRenderer.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Skin.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Slot.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SlotData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SpacingMode.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\spine.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SpineObject.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\SpineString.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\TextureLoader.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\TextureRegion.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Timeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\TransformConstraint.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\TransformConstraintData.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\TransformConstraintTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\TranslateTimeline.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Triangulator.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Updatable.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Vector.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Version.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\VertexAttachment.h" />
+    <ClInclude Include="..\..\Spine\spine_cpp\spine-cpp\include\spine\Vertices.h" />
+    <ClInclude Include="D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.h" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

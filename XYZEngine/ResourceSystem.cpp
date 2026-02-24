@@ -143,16 +143,12 @@ namespace HopEngine
 	{
 		float scale = 0.6f;
 		spine::SFMLTextureLoader textureLoader;
-		spine::NullAttachmentLoader nullLoader;
 		spine::Atlas* atlas = path_atlas.length() == 0 ? nullptr : new spine::Atlas(path_atlas, &textureLoader);
 		spine::SkeletonData* skeletonData = nullptr;
 		spine::SkeletonJson* json = nullptr;
 
 		if (atlas) {
 			json = new spine::SkeletonJson(atlas);
-		}
-		else {
-			json = new spine::SkeletonJson(&nullLoader);
 		}
 		json->setScale(scale);
 		skeletonData = json->readSkeletonDataFile(path_json);

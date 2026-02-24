@@ -4,7 +4,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "spine-sfml.h"
+#include <spine/spine-sfml.h>
 
 namespace HopEngine
 {

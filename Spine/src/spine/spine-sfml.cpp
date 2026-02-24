@@ -1,6 +1,32 @@
-#include "pch.h"
-
-#include "spine-sfml.h"
+/******************************************************************************
+ * Spine Runtimes License Agreement
+ * Last updated April 5, 2025. Replaces all prior versions.
+ *
+ * Copyright (c) 2013-2025, Esoteric Software LLC
+ *
+ * Integration of the Spine Runtimes into software or otherwise creating
+ * derivative works of the Spine Runtimes is permitted under the terms and
+ * conditions of Section 2 of the Spine Editor License Agreement:
+ * http://esotericsoftware.com/spine-editor-license
+ *
+ * Otherwise, it is permitted to integrate the Spine Runtimes into software
+ * or otherwise create derivative works of the Spine Runtimes (collectively,
+ * "Products"), provided that each user of the Products must obtain their own
+ * Spine Editor license and redistribution of the Products in any form must
+ * include this license and copyright notice.
+ *
+ * THE SPINE RUNTIMES ARE PROVIDED BY ESOTERIC SOFTWARE LLC "AS IS" AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL ESOTERIC SOFTWARE LLC BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES,
+ * BUSINESS INTERRUPTION, OR LOSS OF USE, DATA, OR PROFITS) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *****************************************************************************/
+#include "spine/spine-sfml.h"
 
 #ifndef SPINE_MESH_VERTEX_COUNT_MAX
 #define SPINE_MESH_VERTEX_COUNT_MAX 1000
@@ -88,42 +114,6 @@ void SkeletonDrawable::draw(RenderTarget &target, RenderStates states) const {
 		command = command->next;
 	}
 }
-
-class NullTextureLoader : public TextureLoader {
-public:
-	virtual void load(AtlasPage &, const String &) {}
-
-	virtual void unload(void *) {}
-};
-
-class NullAttachmentLoader : public AttachmentLoader {
-	virtual RegionAttachment *newRegionAttachment(Skin &, const String &name, const String &, Sequence *) {
-		return new (__FILE__, __LINE__) RegionAttachment(name);
-	}
-
-	virtual MeshAttachment *newMeshAttachment(Skin &, const String &name, const String &, Sequence *) {
-		return new (__FILE__, __LINE__) MeshAttachment(name);
-	}
-
-	virtual BoundingBoxAttachment *newBoundingBoxAttachment(Skin &, const String &name) {
-		return new (__FILE__, __LINE__) BoundingBoxAttachment(name);
-	}
-
-	virtual PathAttachment *newPathAttachment(Skin &, const String &name) {
-		return new (__FILE__, __LINE__) PathAttachment(name);
-	}
-
-	virtual PointAttachment *newPointAttachment(Skin &, const String &name) {
-		return new (__FILE__, __LINE__) PointAttachment(name);
-	}
-
-	virtual ClippingAttachment *newClippingAttachment(Skin &, const String &name) {
-		return new (__FILE__, __LINE__) ClippingAttachment(name);
-	}
-
-	virtual void configureAttachment(Attachment *) {
-	}
-};
 
 void SFMLTextureLoader::load(AtlasPage &page, const String &path) {
 	Texture *texture = new Texture();

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Component.h"
-#include "spine-sfml.h"
+#include "spine/spine-sfml.h"
 
 namespace HopEngine {
 
