@@ -287,7 +287,7 @@ void SFMLTextureLoader::load(AtlasPage &page, const String &path) {
 	Texture *texture = new Texture();
 	if (!texture->loadFromFile(path.buffer())) return;
 
-	if (page.magFilter == TextureFilter_Linear) texture->setSmooth(true);
+	if (page.magFilter == TextureFilter_Linear) texture->setSmooth(false);
 	if (page.uWrap == TextureWrap_Repeat && page.vWrap == TextureWrap_Repeat) texture->setRepeated(true);
 
 	page.setRendererObject(texture);

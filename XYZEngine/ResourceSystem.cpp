@@ -141,7 +141,7 @@ namespace HopEngine
 
 	void ResourceSystem::LoadSpineFiles(const std::string& name, spine::String path_atlas, spine::String path_json)
 	{
-		float scale = 0.6f;
+		float scale = 3.f;
 		spine::SFMLTextureLoader textureLoader;
 		spine::Atlas* atlas = path_atlas.length() == 0 ? nullptr : new spine::Atlas(path_atlas, &textureLoader);
 		spine::SkeletonData* skeletonData = nullptr;
@@ -159,6 +159,7 @@ namespace HopEngine
 		{
 			skeleton_datas.emplace(name, skeletonData);
 		}
+		else LOG_ERROR("Error to load skeleton data: " + name);
 	}
 
 	void ResourceSystem::DeleteSkeletonData(const std::string name)
