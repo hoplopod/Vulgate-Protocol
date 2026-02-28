@@ -150,6 +150,7 @@ namespace HopEngine
 		if (atlas) {
 			json = new spine::SkeletonJson(atlas);
 		}
+
 		json->setScale(scale);
 		skeletonData = json->readSkeletonDataFile(path_json);
 		delete json;
@@ -160,7 +161,7 @@ namespace HopEngine
 		}
 	}
 
-	void ResourceSystem::DeleteSkeletonData(const std::string& name)
+	void ResourceSystem::DeleteSkeletonData(const std::string name)
 	{
 		auto dataPair = skeleton_datas.find(name);
 
@@ -169,7 +170,7 @@ namespace HopEngine
 		delete deletingData;
 	}
 
-	const spine::SkeletonData* ResourceSystem::GetSkeletonData(std::string& name)
+	spine::SkeletonData* ResourceSystem::GetSkeletonData(std::string name)
 	{
 		return skeleton_datas.find(name)->second;
 	}

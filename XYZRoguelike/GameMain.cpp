@@ -13,11 +13,15 @@ using namespace Roguelike;
 int main()
 {
 	HopEngine::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1280, 720), "Roguelike"));
-
+	
 	ResourceSystem::Instance()->LoadTextureMap("player", "Resources/TextureMaps/Player.png", { 48, 63 }, 4, false);
 	ResourceSystem::Instance()->LoadTextureMap("level_floors", "Resources/TextureMaps/Floor.png", { 16, 16 }, 49, false);
 	ResourceSystem::Instance()->LoadTextureMap("level_walls", "Resources/TextureMaps/Wall.png", { 16, 16 }, 48, false);
 	
+	//Spine
+	ResourceSystem::Instance()->LoadSpineFiles("player", "Resources/SpineData/Player/Player.atlas", "Resources/SpineData/Player/Player.json");
+	//ResourceSystem::Instance()->LoadSpineFiles("player", "C:/Users/hoplo/Desktop/SpineTry/SpineTry/data/sack-pma.atlas", "C:/Users/hoplo/Desktop/SpineTry/SpineTry/data/sack-pro.json");
+
 	//Player skeleton
 	//head
 	ResourceSystem::Instance()->LoadTexture("player_head", "Resources/Textures/Player/Player_head.png", false);

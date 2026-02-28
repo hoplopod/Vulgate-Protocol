@@ -29,8 +29,8 @@ namespace HopEngine
 		void DeleteSound(const std::string& name);
 
 		void LoadSpineFiles(const std::string& name, spine::String path_atlas, spine::String path_json);
-		const spine::SkeletonData* GetSkeletonData(std::string& name);
-		void DeleteSkeletonData(const std::string& name);
+		spine::SkeletonData* GetSkeletonData(std::string name);
+		void DeleteSkeletonData(const std::string name);
 
 		void Clear();
 

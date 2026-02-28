@@ -5,6 +5,7 @@
 #include <SpriteDirectionComponent.h>
 #include <SpriteMovementAnimationComponent.h>
 #include <LayerRenderingComponent.h>
+#include <SpineComponent.h>
 
 namespace Roguelike
 {
@@ -29,6 +30,9 @@ namespace Roguelike
 		auto collider = gameObject->GetComponent < HopEngine::SpriteColliderComponent>();
 		collider->AddToMapCollision();
 		collider->SetMapCollision({ -20,-150, 40, 210 });
+
+		auto spine = gameObject->AddComponent<HopEngine::SpineComponent>();
+		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
 
 		//auto spriteDirection = gameObject->AddComponent<XYZEngine::SpriteDirectionComponent>();
 

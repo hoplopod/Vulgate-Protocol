@@ -1,8 +1,8 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated April 5, 2025. Replaces all prior versions.
+ * Last updated January 1, 2020. Replaces all prior versions.
  *
- * Copyright (c) 2013-2025, Esoteric Software LLC
+ * Copyright (c) 2013-2020, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
@@ -30,49 +30,53 @@
 #ifndef SPINE_SFML_H_
 #define SPINE_SFML_H_
 
-#include <SFML/Graphics/RenderStates.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/Graphics/Texture.hpp>
+#include <spine/spine.h>
 #include <SFML/Graphics/Vertex.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
-#include <spine/spine.h>
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics/RenderStates.hpp>
 
 
 namespace spine {
 
-	class SkeletonDrawable : public sf::Drawable {
-	public:
-		Skeleton *skeleton;
-		AnimationState *state;
-		float timeScale;
+class SkeletonDrawable : public sf::Drawable {
+public:
+	Skeleton *skeleton;
+	AnimationState *state;
+	float timeScale;
+	sf::VertexArray *vertexArray;
+	VertexEffect* vertexEffect;
 
-		SkeletonDrawable(SkeletonData *skeleton, AnimationStateData *stateData = 0);
+	SkeletonDrawable(SkeletonData *skeleton, AnimationStateData *stateData = 0);
 
+	~SkeletonDrawable();
 
-		~SkeletonDrawable();
+	void update(float deltaTime);
 
-		void update(float deltaTime, Physics physics = Physics_Update);
+	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
-		virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+	void setUsePremultipliedAlpha(bool usePMA) { usePremultipliedAlpha = usePMA; };
 
-		void setUsePremultipliedAlpha(bool usePMA) { usePremultipliedAlpha = usePMA; };
+	bool getUsePremultipliedAlpha() { return usePremultipliedAlpha; };
+private:
+	mutable bool ownsAnimationStateData;
+	mutable Vector<float> worldVertices;
+	mutable Vector<float> tempUvs;
+	mutable Vector<Color> tempColors;
+	mutable Vector<unsigned short> quadIndices;
+	mutable SkeletonClipping clipper;
+	mutable bool usePremultipliedAlpha;
+};
 
-		bool getUsePremultipliedAlpha() { return usePremultipliedAlpha; };
+class SFMLTextureLoader : public TextureLoader {
+public:
+	virtual void load(AtlasPage &page, const String &path);
 
-	private:
-		bool ownsAnimationStateData;
-		mutable bool usePremultipliedAlpha;
-		sf::VertexArray *vertexArray;
-	};
+	virtual void unload(void *texture);
 
-	class SFMLTextureLoader : public TextureLoader {
-	public:
-		virtual void load(AtlasPage &page, const String &path);
-
-		virtual void unload(void *texture);
-
-		String toString() const;
-	};
+	String toString() const;
+};
 
 } /* namespace spine */
 #endif /* SPINE_SFML_H_ */

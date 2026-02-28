@@ -14,9 +14,15 @@ namespace HopEngine {
 
 		void SetData(spine::SkeletonData* data);
 
+		const spine::Skeleton* getSkeletonTransform();
+
 	private:
-		spine::SkeletonDrawable* drawble;
+		spine::SkeletonDrawable* drawable;
 		spine::AnimationStateData* stateData;
+		spine::Skeleton* skeletonTransform;
+
+		spine::String animation = "Stable";
+		spine::String skin = "default";
 
 	};
 

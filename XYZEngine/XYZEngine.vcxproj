@@ -115,7 +115,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Spine\src;$(SolutionDir)Spine\spine_cpp\spine-cpp\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Spine\src;$(SolutionDir)Spine\spine-cpp\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -218,8 +218,8 @@
     <ClCompile Include="Trigger.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\out\Spine\spine-sfml-cpp.vcxproj">
-      <Project>{79db9671-5acd-370c-802e-dcdda71e4462}</Project>
+    <ProjectReference Include="..\Spine\build\spine-sfml-cpp.vcxproj">
+      <Project>{d0212da0-7737-354f-9bb7-2ee408193a34}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
