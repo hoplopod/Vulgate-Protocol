@@ -2,10 +2,13 @@
 #include "SpineComponent.h"
 #include "RenderSystem.h"
 
-HopEngine::SpineComponent::SpineComponent(GameObject* gameObject) : Component(gameObject) {}
+HopEngine::SpineComponent::SpineComponent(GameObject* gameObject) : Component(gameObject) {
+	transform = gameObject->GetComponent<TransformComponent>();
+}
 
 void HopEngine::SpineComponent::Update(float deltaTime)
 {
+	skeletonTransform->setPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y);
 	drawable->update(deltaTime);
 }
 
@@ -19,7 +22,6 @@ void HopEngine::SpineComponent::SetData(spine::SkeletonData* data)
 	stateData = new spine::AnimationStateData(data);
 	drawable = new spine::SkeletonDrawable(data, stateData);
 	skeletonTransform = drawable->skeleton;
-	skeletonTransform->setPosition(0, 0);
 	skeletonTransform->setScaleY(-1);
 	if (animation.length() > 0) drawable->state->setAnimation(0, animation, true);
 	if (skin.length() > 0) drawable->skeleton->setSkin(skin);

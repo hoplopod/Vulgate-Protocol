@@ -11,35 +11,32 @@ namespace Roguelike
 {
 	Player::Player(const HopEngine::Vector2Df& position)
 	{
-		createSkeleton();
+		//createSkeleton();
 
-		gameObject = HopEngine::GameWorld::Instance()->FindGameObject("Player_body");
+		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("player");
 		auto transform = gameObject->GetComponent<HopEngine::TransformComponent>();
 		transform->SetWorldPosition(position);
+
+		auto renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 
 		auto camera = gameObject->AddComponent<HopEngine::CameraComponent>();
 		camera->SetWindow(&HopEngine::RenderSystem::Instance()->GetMainWindow());
 		camera->SetBaseResolution(1280, 720);
-		camera->SetShift({ 100, -60.f });
+		camera->SetShift({ 100, 260.f });
 
 		auto input = gameObject->AddComponent<HopEngine::InputComponent>();
 
 		auto movement = gameObject->AddComponent<HopEngine::MovementComponent>();
 		movement->SetSpeed(400.f);
 
-		auto collider = gameObject->GetComponent < HopEngine::SpriteColliderComponent>();
+		auto rigidbody = gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+
+		auto collider = gameObject->AddComponent<HopEngine::SpriteColliderComponent>();
 		collider->AddToMapCollision();
-		collider->SetMapCollision({ -20,-150, 40, 210 });
+		collider->SetMapCollision({ -10,0, 20, 10 });
 
 		auto spine = gameObject->AddComponent<HopEngine::SpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
-
-		//auto spriteDirection = gameObject->AddComponent<XYZEngine::SpriteDirectionComponent>();
-
-		/*auto rigidbody = gameObject->AddComponent<XYZEngine::RigidbodyComponent>();
-		rigidbody->SetKinematic(false);
-
-		auto collider = gameObject->AddComponent<XYZEngine::SpriteColliderComponent>();*/
 		
 	}
 

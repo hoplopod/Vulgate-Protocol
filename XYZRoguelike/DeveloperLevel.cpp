@@ -32,7 +32,7 @@ namespace Roguelike
 			}
 		}
 
-		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ 100, 100}));
+		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ 100, 64}));
 		//music = std::make_unique<Music>("music");
 	}
 	void DeveloperLevel::Restart()

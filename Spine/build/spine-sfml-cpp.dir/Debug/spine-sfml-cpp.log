@@ -1,7 +1,1 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2189,5): warning MSB9008: указанный проект D:\source\repos\Vulgate Protocol\Spine\build\ZERO_CHECK.vcxproj не существует.
-  spine-sfml.cpp
-D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(152,51): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(155,44): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(227,56): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(230,53): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-  spine-sfml-cpp.vcxproj -> D:\source\repos\Vulgate Protocol\Spine\build\Debug\spine-sfml-cpp.lib
+﻿  spine-sfml-cpp.vcxproj -> D:\source\repos\Vulgate Protocol\Spine\build\Debug\spine-sfml-cpp.lib

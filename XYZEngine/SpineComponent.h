@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Component.h"
+#include "TransformComponent.h"
 #include "spine/spine-sfml.h"
 
 namespace HopEngine {
@@ -17,6 +17,8 @@ namespace HopEngine {
 		const spine::Skeleton* getSkeletonTransform();
 
 	private:
+		TransformComponent* transform;
+
 		spine::SkeletonDrawable* drawable;
 		spine::AnimationStateData* stateData;
 		spine::Skeleton* skeletonTransform;

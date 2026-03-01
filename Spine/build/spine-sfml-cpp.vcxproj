@@ -482,14 +482,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.h" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="D:\source\repos\Vulgate Protocol\Spine\build\ZERO_CHECK.vcxproj">
-      <Project>{D956E3CF-8579-35A2-B09F-6F4660724141}</Project>
-      <Name>ZERO_CHECK</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
