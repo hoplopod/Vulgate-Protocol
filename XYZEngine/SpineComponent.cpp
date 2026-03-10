@@ -6,15 +6,14 @@ HopEngine::SpineComponent::SpineComponent(GameObject* gameObject) : Component(ga
 	transform = gameObject->GetComponent<TransformComponent>();
 }
 
-void HopEngine::SpineComponent::Update(float deltaTime)
-{
-	skeletonTransform->setPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y);
-	drawable->update(deltaTime);
-}
-
 void HopEngine::SpineComponent::Render()
 {
 	RenderSystem::Instance()->Render(*drawable);
+}
+
+void HopEngine::SpineComponent::TryToSetAnimation(std::string name, int trackIndex)
+{
+	currentEntry = drawable->state->getCurrent(trackIndex);
 }
 
 const spine::Skeleton* HopEngine::SpineComponent::getSkeletonTransform()
@@ -50,17 +49,12 @@ void HopEngine::SpineComponent::callback(spine::AnimationState* state, spine::Ev
 	fflush(stdout);
 }
 
-
 void HopEngine::SpineComponent::SetData(spine::SkeletonData* data)
 {
 	stateData = new spine::AnimationStateData(data);
 	drawable = new spine::SkeletonDrawable(data, stateData);
+
+	drawable->state->setListener(callback);
 	skeletonTransform = drawable->skeleton;
 	skeletonTransform->setScaleY(-1);
-	if (skin.length() > 0) drawable->skeleton->setSkin(skin);
-	
-	stateData->setMix(animation1, animation2, 0.2f);
-	skeletonTransform->setToSetupPose();
-	drawable->state->addAnimation(0, animation1, true, 0);
-	drawable->state->addAnimation(0, animation2, true, 3);
 }
