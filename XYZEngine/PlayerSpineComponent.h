@@ -15,4 +15,5 @@ namespace HopEngine {
 	private:
 		spine::String skin = "";
 	};
+
 }

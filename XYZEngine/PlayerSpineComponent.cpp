@@ -13,4 +13,5 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 
 void HopEngine::PlayerSpineComponent::callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event)
 {
+	
 }

@@ -7,6 +7,7 @@
 #include "InputComponent.h"
 #include "GameObject.h"
 #include "Vector.h"
+#include <PlayerSpineComponent.h>
 
 namespace Roguelike
 {
@@ -18,6 +19,6 @@ namespace Roguelike
 
 	private:
 		HopEngine::GameObject* gameObject;
-
+		std::map<int, std::pair < spine::String, std::pair<int, bool >> > createAnimations();
 	};
 }

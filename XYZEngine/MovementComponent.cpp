@@ -7,6 +7,7 @@ HopEngine::MovementComponent::MovementComponent(GameObject* gameObject)
 {
 	input = gameObject->GetComponent<InputComponent>();
 	transform = gameObject->GetComponent<TransformComponent>();
+	animation = gameObject->GetComponent<PlayerSpineComponent>();
 
 	if (input == nullptr)
 	{
@@ -19,6 +20,10 @@ void HopEngine::MovementComponent::Update(float deltaTime)
 {
 	float xAxis = input->GetHorizontalAxis();
 	float yAxis = input->GetVerticalAxis();
+
+	if (xAxis != 0) {
+		animation->TryToSetAnimation_num(2);
+	} else animation->TryToSetAnimation_num(1);
 
 	if (gameObject->GetComponent<ColliderComponent>() != nullptr) {
 		auto collision = gameObject->GetComponent<ColliderComponent>();

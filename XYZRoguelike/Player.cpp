@@ -5,7 +5,7 @@
 #include <SpriteDirectionComponent.h>
 #include <SpriteMovementAnimationComponent.h>
 #include <LayerRenderingComponent.h>
-#include <PlayerSpineComponent.h>
+
 
 namespace Roguelike
 {
@@ -15,6 +15,12 @@ namespace Roguelike
 		gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("player");
 		auto transform = gameObject->GetComponent<HopEngine::TransformComponent>();
 		transform->SetWorldPosition(position);
+
+		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
+		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
+
+		auto anim = new std::map<int, std::pair<spine::String, std::pair<int, bool>>>(std::move(createAnimations()));
+		spine->AddAnimations(anim);
 
 		auto renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
 
@@ -34,13 +40,21 @@ namespace Roguelike
 		collider->AddToMapCollision();
 		collider->SetMapCollision({ -10,0, 20, 10 });
 
-		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
-		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
-		
 	}
 
 	HopEngine::GameObject* Player::GetGameObject()
 	{
 		return gameObject;
+	}
+
+	std::map<int, std::pair<spine::String, std::pair<int, bool>>> Player::createAnimations()
+	{
+		std::map<int, std::pair<spine::String, std::pair<int, bool>>> animatioms;
+		int num = 1;
+
+		animatioms.emplace(num, std::make_pair(spine::String("Stable"), std::make_pair(0, true))); num++;
+		animatioms.emplace(num, std::make_pair(spine::String("walk (test)"), std::make_pair(0, true))); num++;
+
+		return animatioms;
 	}
 }

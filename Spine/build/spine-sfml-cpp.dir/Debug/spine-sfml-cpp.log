@@ -1,32 +1,12 @@
-﻿  SkeletonJson.cpp
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(660,8): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(820,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(833,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(849,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(883,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(908,26): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(933,36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(938,23): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(955,43): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1008,38): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1010,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1020,38): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1022,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1056,29): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1092,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1132,50): warning C4267: =: преобразование из "size_t" в "T"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1132,50): warning C4267:         with
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1132,50): warning C4267:         [
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1132,50): warning C4267:             T=int
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1132,50): warning C4267:         ]
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1134,73): warning C4267: =: преобразование из "size_t" в "T"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1134,73): warning C4267:         with
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1134,73): warning C4267:         [
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1134,73): warning C4267:             T=int
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1134,73): warning C4267:         ]
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1139,49): warning C4267: =: преобразование из "size_t" в "T"; возможна потеря данных
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1139,49): warning C4267:         with
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1139,49): warning C4267:         [
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1139,49): warning C4267:             T=int
-D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\SkeletonJson.cpp(1139,49): warning C4267:         ]
+﻿  Building Custom Rule D:/source/repos/Vulgate Protocol/Spine/CMakeLists.txt
+  AnimationState.cpp
+D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\AnimationState.cpp(455,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\AnimationState.cpp(662,65): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\AnimationState.cpp(937,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  spine-sfml.cpp
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(124,51): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(127,44): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(199,56): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(202,53): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
   spine-sfml-cpp.vcxproj -> D:\source\repos\Vulgate Protocol\Spine\build\Debug\spine-sfml-cpp.lib
