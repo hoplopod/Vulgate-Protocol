@@ -5,6 +5,10 @@
       {
         "Path": "XYZRoguelike\\XYZRoguelike.vcxproj",
         "Action": "Start"
+      },
+      {
+        "Path": "XYZEngine\\XYZEngine.vcxproj",
+        "Action": "Start"
       }
     ]
   }

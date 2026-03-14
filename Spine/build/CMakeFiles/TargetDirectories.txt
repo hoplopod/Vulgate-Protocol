@@ -1,0 +1,5 @@
+D:/source/repos/Vulgate Protocol/Spine/build/CMakeFiles/spine-sfml-cpp.dir
+D:/source/repos/Vulgate Protocol/Spine/build/CMakeFiles/spine-sfml-cpp-example.dir
+D:/source/repos/Vulgate Protocol/Spine/build/CMakeFiles/INSTALL.dir
+D:/source/repos/Vulgate Protocol/Spine/build/CMakeFiles/ALL_BUILD.dir
+D:/source/repos/Vulgate Protocol/Spine/build/CMakeFiles/ZERO_CHECK.dir

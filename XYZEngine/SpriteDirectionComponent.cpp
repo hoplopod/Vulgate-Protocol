@@ -4,17 +4,17 @@
 HopEngine::SpriteDirectionComponent::SpriteDirectionComponent(GameObject* gameObject)
 	: Component(gameObject)
 {
-	move = gameObject->GetComponent<MovementComponent>();
+	input = gameObject->GetComponent<InputComponent>();
 	spriteRenderer = gameObject->GetComponent<SpriteRendererComponent>();
 }
 
 void HopEngine::SpriteDirectionComponent::Update(float deltaTime)
 {
-	if (move->GetHorizontalAxis() < 0)
+	if (input->GetHorizontalAxis() < 0)
 	{
 		spriteRenderer->FlipX(true);
 	}
-	if (move->GetHorizontalAxis() > 0)
+	if (input->GetHorizontalAxis() > 0)
 	{
 		spriteRenderer->FlipX(false);
 	}

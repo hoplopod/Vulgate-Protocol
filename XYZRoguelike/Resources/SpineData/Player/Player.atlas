@@ -1,0 +1,160 @@
+
+Player.png
+size: 42,409
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Player_brush_left_back
+  rotate: true
+  xy: 4, 39
+  size: 11, 14
+  orig: 11, 14
+  offset: 0, 0
+  index: -1
+Player_brush_left_front
+  rotate: true
+  xy: 22, 39
+  size: 11, 14
+  orig: 11, 14
+  offset: 0, 0
+  index: -1
+Player_brush_right_back
+  rotate: true
+  xy: 4, 24
+  size: 11, 14
+  orig: 11, 14
+  offset: 0, 0
+  index: -1
+Player_brush_right_front
+  rotate: true
+  xy: 22, 24
+  size: 11, 14
+  orig: 11, 14
+  offset: 0, 0
+  index: -1
+Player_foot_back
+  rotate: false
+  xy: 4, 11
+  size: 16, 9
+  orig: 16, 9
+  offset: 0, 0
+  index: -1
+Player_foot_front
+  rotate: true
+  xy: 24, 4
+  size: 16, 9
+  orig: 16, 9
+  offset: 0, 0
+  index: -1
+Player_forearm_left_back
+  rotate: true
+  xy: 4, 96
+  size: 10, 28
+  orig: 10, 28
+  offset: 0, 0
+  index: -1
+Player_forearm_left_front
+  rotate: true
+  xy: 4, 82
+  size: 10, 28
+  orig: 10, 28
+  offset: 0, 0
+  index: -1
+Player_forearm_right_back
+  rotate: true
+  xy: 4, 68
+  size: 10, 28
+  orig: 10, 28
+  offset: 0, 0
+  index: -1
+Player_forearm_right_front
+  rotate: true
+  xy: 4, 54
+  size: 10, 28
+  orig: 10, 28
+  offset: 0, 0
+  index: -1
+Player_head
+  rotate: true
+  xy: 4, 218
+  size: 21, 23
+  orig: 21, 23
+  offset: 0, 0
+  index: -1
+Player_hip_back
+  rotate: true
+  xy: 4, 262
+  size: 15, 32
+  orig: 15, 32
+  offset: 0, 0
+  index: -1
+Player_hip_front
+  rotate: true
+  xy: 4, 243
+  size: 15, 32
+  orig: 15, 32
+  offset: 0, 0
+  index: -1
+Player_pelvis
+  rotate: false
+  xy: 4, 281
+  size: 29, 24
+  orig: 29, 24
+  offset: 0, 0
+  index: -1
+Player_shin_back
+  rotate: true
+  xy: 4, 200
+  size: 14, 32
+  orig: 14, 32
+  offset: 0, 0
+  index: -1
+Player_shin_front
+  rotate: true
+  xy: 4, 182
+  size: 14, 32
+  orig: 14, 32
+  offset: 0, 0
+  index: -1
+Player_shoulder_left_back
+  rotate: true
+  xy: 4, 164
+  size: 14, 31
+  orig: 14, 31
+  offset: 0, 0
+  index: -1
+Player_shoulder_left_front
+  rotate: true
+  xy: 4, 146
+  size: 14, 31
+  orig: 14, 31
+  offset: 0, 0
+  index: -1
+Player_shoulder_right_back
+  rotate: true
+  xy: 4, 128
+  size: 14, 31
+  orig: 14, 31
+  offset: 0, 0
+  index: -1
+Player_shoulder_right_front
+  rotate: true
+  xy: 4, 110
+  size: 14, 31
+  orig: 14, 31
+  offset: 0, 0
+  index: -1
+Player_torso_left
+  rotate: false
+  xy: 4, 359
+  size: 34, 46
+  orig: 34, 46
+  offset: 0, 0
+  index: -1
+Player_torso_right
+  rotate: false
+  xy: 4, 309
+  size: 34, 46
+  orig: 34, 46
+  offset: 0, 0
+  index: -1

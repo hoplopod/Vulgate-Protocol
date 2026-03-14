@@ -1,0 +1,12 @@
+﻿  Building Custom Rule D:/source/repos/Vulgate Protocol/Spine/CMakeLists.txt
+  AnimationState.cpp
+D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\AnimationState.cpp(455,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\AnimationState.cpp(662,65): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\spine-cpp\src\spine\AnimationState.cpp(937,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  spine-sfml.cpp
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(124,51): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(127,44): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(199,56): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Vulgate Protocol\Spine\src\spine\spine-sfml.cpp(202,53): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  spine-sfml-cpp.vcxproj -> D:\source\repos\Vulgate Protocol\Spine\build\Debug\spine-sfml-cpp.lib

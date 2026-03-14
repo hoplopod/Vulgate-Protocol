@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{0785589b-6e7e-4d86-9dbe-ce7aa50d6b3f}</ProjectGuid>
     <RootNamespace>XYZEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -115,7 +115,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)SFML\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Spine\src;$(SolutionDir)Spine\spine-cpp\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -123,6 +123,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -148,6 +151,7 @@
     <ClInclude Include="AudioComponent.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
+    <ClInclude Include="DebuggingSystem.h" />
     <ClInclude Include="MapCollision.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Engine.h" />
@@ -163,13 +167,14 @@
     <ClInclude Include="Matrix2D.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PlayerSpineComponent.h" />
+    <ClInclude Include="SpineComponent.h" />
     <ClInclude Include="TriggersSystem.h" />
     <ClInclude Include="randomizer.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="ResourceSystem.h" />
     <ClInclude Include="RigidbodyComponent.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="BoneComponent.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteColliderComponent.h" />
     <ClInclude Include="SpriteDirectionComponent.h" />
@@ -183,6 +188,7 @@
     <ClCompile Include="AudioComponent.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="DebuggingSystem.cpp" />
     <ClCompile Include="MapCollision.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -199,11 +205,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PlayerSpineComponent.cpp" />
+    <ClCompile Include="SpineComponent.cpp" />
     <ClCompile Include="TriggersSystem.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="ResourceSystem.cpp" />
     <ClCompile Include="RigidbodyComponent.cpp" />
-    <ClCompile Include="BoneComponent.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteColliderComponent.cpp" />
     <ClCompile Include="SpriteDirectionComponent.cpp" />
@@ -211,6 +218,11 @@
     <ClCompile Include="SpriteRendererComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="Trigger.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spine\build\spine-sfml-cpp.vcxproj">
+      <Project>{d0212da0-7737-354f-9bb7-2ee408193a34}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

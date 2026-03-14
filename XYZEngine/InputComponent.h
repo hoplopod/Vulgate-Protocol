@@ -5,12 +5,6 @@
 
 namespace HopEngine
 {
-	enum class CharacterMoveState {
-		Stand = -1,
-		Walk_Right,
-		Walk_Left
-	};
-
 	class InputComponent : public Component
 	{
 	public:
@@ -19,12 +13,11 @@ namespace HopEngine
 		void Update(float deltaTime) override;
 		void Render() override;
 
-		CharacterMoveState GetPlayerMoveState() const {
-			return playerMoveState;
-		}
-
+		float GetHorizontalAxis() const;
+		float GetVerticalAxis() const;
 	private:
-		CharacterMoveState playerMoveState = CharacterMoveState::Stand;
+		float horizontalAxis = 0.f;
+		float verticalAxis = 0.f;
 	};
 
 	

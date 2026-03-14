@@ -1,0 +1,10 @@
+^D:\SOURCE\REPOS\VULGATE PROTOCOL\SPINE\CMAKELISTS.TXT
+setlocal
+D:\CMake\bin\cmake.exe "-SD:/source/repos/Vulgate Protocol/Spine" "-BD:/source/repos/Vulgate Protocol/Spine/build" --check-stamp-file "D:/source/repos/Vulgate Protocol/Spine/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
