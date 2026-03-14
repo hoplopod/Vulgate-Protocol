@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SpineComponent.h"
+#include "InputComponent.h"
 
 namespace HopEngine {
 
@@ -13,7 +14,9 @@ namespace HopEngine {
 		void callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event);
 		
 	private:
-		spine::String skin = "";
+		spine::String skin = "standart_left_direction";
+
+		InputComponent* input;
 	};
 
 }

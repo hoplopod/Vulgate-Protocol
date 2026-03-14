@@ -10,7 +10,7 @@ namespace HopEngine {
 		SpineComponent(GameObject* gameObject);
 		~SpineComponent() = default;
 
-		void Update(float deltaTime) {};
+		void Update(float deltaTime) override;
 		void Render() override;
 		void callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event) override;
 
@@ -18,8 +18,8 @@ namespace HopEngine {
 		virtual void TryToSetAnimation_num(int num);
 
 		void SetData(spine::SkeletonData* data);
-
 		void AddAnimations(std::map<int, std::pair < spine::String, std::pair<int, bool >> >* new_animations);
+		void setStartSkin(std::string skin);
 
 		const spine::Skeleton* getSkeletonTransform();
 

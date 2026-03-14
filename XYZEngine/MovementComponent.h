@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObject.h"
 #include "InputComponent.h"
-#include "PlayerSpineComponent.h"
 
 namespace HopEngine
 {
@@ -24,7 +23,6 @@ namespace HopEngine
 	private:
 		InputComponent* input;
 		TransformComponent* transform;
-		PlayerSpineComponent* animation;
 
 		float speed = 0;
 		Vector2Df previousPosition = { 0, 0 };

@@ -16,10 +16,13 @@ namespace Roguelike
 		auto transform = gameObject->GetComponent<HopEngine::TransformComponent>();
 		transform->SetWorldPosition(position);
 
+		auto input = gameObject->AddComponent<HopEngine::InputComponent>();
+
 		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
+		spine->setStartSkin("standart_left_direction");
 
-		auto anim = new std::map<int, std::pair<spine::String, std::pair<int, bool>>>(std::move(createAnimations()));
+		auto anim = new std::map<int, std::pair<spine::String, std::pair<int, bool>>>(std::move(createAnimations())); 
 		spine->AddAnimations(anim);
 
 		auto renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
@@ -28,8 +31,6 @@ namespace Roguelike
 		camera->SetWindow(&HopEngine::RenderSystem::Instance()->GetMainWindow());
 		camera->SetBaseResolution(1280, 720);
 		camera->SetShift({ 150, 260.f });
-
-		auto input = gameObject->AddComponent<HopEngine::InputComponent>();
 
 		auto movement = gameObject->AddComponent<HopEngine::MovementComponent>();
 		movement->SetSpeed(400.f);

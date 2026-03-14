@@ -6,6 +6,12 @@ HopEngine::SpineComponent::SpineComponent(GameObject* gameObject) : Component(ga
 	transform = gameObject->GetComponent<TransformComponent>();
 }
 
+void HopEngine::SpineComponent::Update(float deltaTime)
+{
+	skeletonTransform->setPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y);
+	drawable->update(deltaTime);
+}
+
 void HopEngine::SpineComponent::Render()
 {
 	RenderSystem::Instance()->Render(*drawable);
@@ -96,4 +102,11 @@ void HopEngine::SpineComponent::SetData(spine::SkeletonData* data)
 void HopEngine::SpineComponent::AddAnimations(std::map<int, std::pair<spine::String, std::pair<int, bool>>>* new_animations)
 {
 	animations = new_animations;
+}
+
+void HopEngine::SpineComponent::setStartSkin(std::string skin)
+{
+	if (stateData->getSkeletonData()->findSkin(skin.c_str())) {
+		skeletonTransform->setSkin(skin.c_str());
+	}
 }
