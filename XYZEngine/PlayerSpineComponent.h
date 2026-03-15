@@ -5,6 +5,12 @@
 
 namespace HopEngine {
 
+	enum class PlayerDirection
+	{
+		left = 0,
+		right
+	};
+
 	class PlayerSpineComponent : public SpineComponent {
 	public:
 		PlayerSpineComponent(GameObject* gameObject);
@@ -15,6 +21,7 @@ namespace HopEngine {
 		
 	private:
 		spine::String skin = "standart_left_direction";
+		PlayerDirection dir = PlayerDirection::left;
 
 		InputComponent* input;
 	};

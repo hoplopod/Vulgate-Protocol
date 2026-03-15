@@ -1,159 +1,166 @@
 
 Player.png
-size: 42,409
+size: 108,164
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+Blade
+  rotate: false
+  xy: 42, 110
+  size: 15, 50
+  orig: 15, 50
+  offset: 0, 0
+  index: -1
 Player_brush_left_back
-  rotate: true
-  xy: 4, 39
+  rotate: false
+  xy: 80, 122
   size: 11, 14
   orig: 11, 14
   offset: 0, 0
   index: -1
 Player_brush_left_front
-  rotate: true
-  xy: 22, 39
+  rotate: false
+  xy: 92, 4
   size: 11, 14
   orig: 11, 14
   offset: 0, 0
   index: -1
 Player_brush_right_back
-  rotate: true
-  xy: 4, 24
+  rotate: false
+  xy: 92, 54
   size: 11, 14
   orig: 11, 14
   offset: 0, 0
   index: -1
 Player_brush_right_front
-  rotate: true
-  xy: 22, 24
+  rotate: false
+  xy: 93, 140
   size: 11, 14
   orig: 11, 14
   offset: 0, 0
   index: -1
 Player_foot_back
-  rotate: false
-  xy: 4, 11
+  rotate: true
+  xy: 94, 72
   size: 16, 9
   orig: 16, 9
   offset: 0, 0
   index: -1
 Player_foot_front
   rotate: true
-  xy: 24, 4
+  xy: 94, 92
   size: 16, 9
   orig: 16, 9
   offset: 0, 0
   index: -1
 Player_forearm_left_back
-  rotate: true
-  xy: 4, 96
+  rotate: false
+  xy: 78, 58
   size: 10, 28
   orig: 10, 28
   offset: 0, 0
   index: -1
 Player_forearm_left_front
   rotate: true
-  xy: 4, 82
+  xy: 61, 146
   size: 10, 28
   orig: 10, 28
   offset: 0, 0
   index: -1
 Player_forearm_right_back
-  rotate: true
-  xy: 4, 68
+  rotate: false
+  xy: 80, 90
   size: 10, 28
   orig: 10, 28
   offset: 0, 0
   index: -1
 Player_forearm_right_front
-  rotate: true
-  xy: 4, 54
+  rotate: false
+  xy: 85, 22
   size: 10, 28
   orig: 10, 28
   offset: 0, 0
   index: -1
 Player_head
   rotate: true
-  xy: 4, 218
+  xy: 4, 39
   size: 21, 23
   orig: 21, 23
   offset: 0, 0
   index: -1
 Player_hip_back
-  rotate: true
-  xy: 4, 262
+  rotate: false
+  xy: 61, 110
   size: 15, 32
   orig: 15, 32
   offset: 0, 0
   index: -1
 Player_hip_front
   rotate: true
-  xy: 4, 243
+  xy: 42, 58
   size: 15, 32
   orig: 15, 32
   offset: 0, 0
   index: -1
 Player_pelvis
-  rotate: false
-  xy: 4, 281
+  rotate: true
+  xy: 42, 77
   size: 29, 24
   orig: 29, 24
   offset: 0, 0
   index: -1
 Player_shin_back
   rotate: true
-  xy: 4, 200
+  xy: 31, 40
   size: 14, 32
   orig: 14, 32
   offset: 0, 0
   index: -1
 Player_shin_front
   rotate: true
-  xy: 4, 182
+  xy: 31, 22
   size: 14, 32
   orig: 14, 32
   offset: 0, 0
   index: -1
 Player_shoulder_left_back
-  rotate: true
-  xy: 4, 164
+  rotate: false
+  xy: 67, 23
   size: 14, 31
   orig: 14, 31
   offset: 0, 0
   index: -1
 Player_shoulder_left_front
-  rotate: true
-  xy: 4, 146
+  rotate: false
+  xy: 4, 4
   size: 14, 31
   orig: 14, 31
   offset: 0, 0
   index: -1
 Player_shoulder_right_back
   rotate: true
-  xy: 4, 128
+  xy: 22, 4
   size: 14, 31
   orig: 14, 31
   offset: 0, 0
   index: -1
 Player_shoulder_right_front
   rotate: true
-  xy: 4, 110
+  xy: 57, 4
   size: 14, 31
   orig: 14, 31
   offset: 0, 0
   index: -1
 Player_torso_left
   rotate: false
-  xy: 4, 359
+  xy: 4, 114
   size: 34, 46
   orig: 34, 46
   offset: 0, 0
   index: -1
 Player_torso_right
   rotate: false
-  xy: 4, 309
+  xy: 4, 64
   size: 34, 46
   orig: 34, 46
   offset: 0, 0

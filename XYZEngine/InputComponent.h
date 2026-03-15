@@ -15,9 +15,13 @@ namespace HopEngine
 
 		float GetHorizontalAxis() const;
 		float GetVerticalAxis() const;
+
+		bool GetSwitchedBlade() const;
 	private:
 		float horizontalAxis = 0.f;
 		float verticalAxis = 0.f;
+
+		bool switchBlade = false;
 	};
 
 	

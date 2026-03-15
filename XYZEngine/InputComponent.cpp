@@ -8,6 +8,7 @@ namespace HopEngine
 
 	void InputComponent::Update(float deltaTime)
 	{
+		//move
 		verticalAxis = 0.f;
 		horizontalAxis = 0.f;
 
@@ -18,6 +19,12 @@ namespace HopEngine
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		{
 			horizontalAxis -= 1.0f;
+		}
+
+		//switch blade
+		switchBlade = false;
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+			switchBlade = true;
 		}
 	}
 	void InputComponent::Render()
@@ -32,6 +39,11 @@ namespace HopEngine
 	float InputComponent::GetVerticalAxis() const
 	{
 		return verticalAxis;
+	}
+
+	bool InputComponent::GetSwitchedBlade() const
+	{
+		return switchBlade;
 	}
 
 }

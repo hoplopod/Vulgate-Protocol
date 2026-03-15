@@ -51,10 +51,12 @@ namespace Roguelike
 	std::map<int, std::pair<spine::String, std::pair<int, bool>>> Player::createAnimations()
 	{
 		std::map<int, std::pair<spine::String, std::pair<int, bool>>> animatioms;
-		int num = 1;
 
-		animatioms.emplace(num, std::make_pair(spine::String("Stable"), std::make_pair(0, true))); num++;
-		animatioms.emplace(num, std::make_pair(spine::String("walk (test)"), std::make_pair(0, true))); num++;
+		animatioms.emplace(1, std::make_pair(spine::String("Stable"), std::make_pair(0, true))); 
+		animatioms.emplace(2, std::make_pair(spine::String("walk (test)"), std::make_pair(0, true))); 
+		animatioms.emplace(3, std::make_pair(spine::String("blade switch"), std::make_pair(1, false))); 
+		animatioms.emplace(4, std::make_pair(spine::String("blade switch left"), std::make_pair(1, false))); 
+		animatioms.emplace(5, std::make_pair(spine::String("blade switch right"), std::make_pair(1, false))); 
 
 		return animatioms;
 	}
