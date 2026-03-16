@@ -5,11 +5,9 @@
 
 namespace HopEngine {
 
-	enum class PlayerDirection
-	{
-		left = 0,
-		right
-	};
+	enum class PlayerDirection {left, right};
+
+	enum class BladeState {Close, Open};
 
 	class PlayerSpineComponent : public SpineComponent {
 	public:
@@ -21,7 +19,9 @@ namespace HopEngine {
 		
 	private:
 		spine::String skin = "standart_left_direction";
+
 		PlayerDirection dir = PlayerDirection::left;
+		BladeState bladeState = BladeState::Open;
 
 		InputComponent* input;
 	};

@@ -23,9 +23,10 @@ namespace HopEngine
 
 		//switch blade
 		switchBlade = false;
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && !wasMousePressed) {
 			switchBlade = true;
 		}
+		wasMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 	}
 	void InputComponent::Render()
 	{

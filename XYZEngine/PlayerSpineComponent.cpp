@@ -31,24 +31,35 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 		this->TryToSetAnimation_num(2);
 	} else this->TryToSetAnimation_num(1);
 
+	//switch blade
 	bool switched = input->GetSwitchedBlade();
 	if (switched) {
-		this->TryToSetAnimation_num(3);
+		int num = 3;
+		switch (dir)
+		{
+		case HopEngine::PlayerDirection::left: num = 4; break;
+		case HopEngine::PlayerDirection::right: num = 5; break;
+		}
+		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 	}
 }
 
 void HopEngine::PlayerSpineComponent::callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event)
 {
-	//switch blade
-	if (entry->getAnimation()->getName() == animations->at(3).first && type == spine::EventType_Start) {
-		switch (dir)
-		{
-		case HopEngine::PlayerDirection::left:
-			this->TryToSetAnimation_num(4);
-			break;
-		case HopEngine::PlayerDirection::right:
-			this->TryToSetAnimation_num(5);
-			break;
+	if (entry->getAnimation()->getName() == animations->at(4).first || entry->getAnimation()->getName() == animations->at(5).first) {
+
+		if (type == spine::EventType_Start) {
+			if (bladeState == BladeState::Open) {
+				entry->setTrackTime(0);
+				entry->setTimeScale(0.7);
+				bladeState = BladeState::Close;
+			}
+			else if (bladeState == BladeState::Close) {
+				entry->setTrackTime(entry->getAnimation()->getDuration());
+				entry->setTimeScale(-0.7);
+				bladeState = BladeState::Open;
+			}
 		}
+
 	}
 }

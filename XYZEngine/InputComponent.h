@@ -22,6 +22,7 @@ namespace HopEngine
 		float verticalAxis = 0.f;
 
 		bool switchBlade = false;
+		bool wasMousePressed = false;
 	};
 
 	
