@@ -33,7 +33,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 
 	//switch blade
 	bool switched = input->GetSwitchedBlade();
-	if (switched) {
+	if (TimerSystem::Instance()->checkTimer("blade_switch") != TimerState::In_Process && switched) {
 		int num = 3;
 		switch (dir)
 		{
@@ -41,6 +41,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 		case HopEngine::PlayerDirection::right: num = 5; break;
 		}
 		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+		TimerSystem::Instance()->addTimer("blade_switch", 0.6f);
 	}
 }
 

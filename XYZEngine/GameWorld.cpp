@@ -24,6 +24,7 @@ namespace HopEngine
 			fixedCounter -= TriggerSystem::Instance()->GetFixedDeltaTime();
 			TriggerSystem::Instance()->Update();
 		}
+		TimerSystem::Instance()->Update(deltaTime);
 	}
 	void GameWorld::Render()
 	{
