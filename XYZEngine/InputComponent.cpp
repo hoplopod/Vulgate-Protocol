@@ -23,10 +23,17 @@ namespace HopEngine
 
 		//switch blade
 		switchBlade = false;
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && !wasMousePressed) {
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && !wasMousePressedRight) {
 			switchBlade = true;
 		}
-		wasMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
+		wasMousePressedRight = sf::Mouse::isButtonPressed(sf::Mouse::Right);
+
+		//Kick
+		playerKick = false;
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !wasMousePressedLeft) {
+			playerKick = true;
+		}
+		wasMousePressedLeft = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 	}
 	void InputComponent::Render()
 	{
@@ -45,6 +52,11 @@ namespace HopEngine
 	bool InputComponent::GetSwitchedBlade() const
 	{
 		return switchBlade;
+	}
+
+	bool InputComponent::GetPlayerKick() const
+	{
+		return playerKick;
 	}
 
 }
