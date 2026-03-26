@@ -21,19 +21,27 @@ namespace HopEngine
 			horizontalAxis -= 1.0f;
 		}
 
-		//switch blade
-		switchBlade = false;
+		//player block
+		playerBlock = false;
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && !wasMousePressedRight) {
-			switchBlade = true;
+			playerBlock = true;
 		}
 		wasMousePressedRight = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 
-		//Kick
+		//player kick
 		playerKick = false;
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !wasMousePressedLeft) {
 			playerKick = true;
 		}
 		wasMousePressedLeft = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+
+		//blade switch
+		switchBlade = false;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !wasSpacePressed) {
+			switchBlade = true;
+		}
+		wasSpacePressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+
 	}
 	void InputComponent::Render()
 	{
@@ -57,6 +65,11 @@ namespace HopEngine
 	bool InputComponent::GetPlayerKick() const
 	{
 		return playerKick;
+	}
+
+	bool InputComponent::GetPlayerBlock() const
+	{
+		return playerBlock;
 	}
 
 }

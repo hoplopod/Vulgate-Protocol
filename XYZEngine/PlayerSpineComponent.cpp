@@ -11,21 +11,35 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 	skeletonTransform->setPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y);
 	drawable->update(deltaTime);
 
-	this->TryToSetAnimation_num(1);
+	if (bladeState == BladeState::Open) int num_plug = -1;
+	else int num_plug = -2;
 
-	if (TimerSystem::Instance()->checkTimer("player_kick") != TimerState::In_Process) {
+	if (TimerSystem::Instance()->checkTimer("player_action") != TimerState::In_Process) {
+		int num = 0;
+
 		//player kick
 		bool kick = input->GetPlayerKick();
 		if (kick) {
-			int num = 0;
 			switch (dir)
 			{
 			case HopEngine::PlayerDirection::left: if (bladeState == BladeState::Close) num = 6; else num = 8; break;
 			case HopEngine::PlayerDirection::right: if (bladeState == BladeState::Close) num = 7; else num = 9; break;
 			}
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			TimerSystem::Instance()->addTimer("player_kick", 0.6f);
-			TimerSystem::Instance()->addTimer("player_freezing", 0.6f);
+			TimerSystem::Instance()->addTimer("player_action", 0.6f);
+			return;
+		}
+
+		//player stab
+		bool block = input->GetPlayerBlock();
+		if (block) {
+			switch (dir)
+			{
+			case HopEngine::PlayerDirection::left: num = 14; break;
+			case HopEngine::PlayerDirection::right: num = 15;  break;
+			}
+			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+			TimerSystem::Instance()->addTimer("player_action", 0.6f);
 			return;
 		}
 
@@ -33,7 +47,6 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			//switch blade
 			bool switched = input->GetSwitchedBlade();
 			if (switched) {
-				int num = 3;
 				switch (dir)
 				{
 				case HopEngine::PlayerDirection::left: num = 4; break;
@@ -45,27 +58,25 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 		}
 
 		//move
-		if (TimerSystem::Instance()->checkTimer("player_freezing") != TimerState::In_Process) {
-			float xAxis = input->GetHorizontalAxis();
-			if (xAxis != 0) {
-				if (xAxis > 0) {
-					dir = PlayerDirection::left;
-					if (skeletonTransform->getSkin()->getName() == "standart_right_direction") skeletonTransform->setSkin("standart_left_direction");
-					skeletonTransform->setScaleX(1);
-					skeletonTransform->setAttachment("Blade2", nullptr);
-					skeletonTransform->setAttachment("Blade", "skin");
-				}
-				else {
-					dir = PlayerDirection::right;
-					if (skeletonTransform->getSkin()->getName() == "standart_left_direction") skeletonTransform->setSkin("standart_right_direction");
-					skeletonTransform->setScaleX(-1);
-					skeletonTransform->setAttachment("Blade", nullptr);
-					skeletonTransform->setAttachment("Blade2", "skin");
-				}
-				this->TryToSetAnimation_num(2);
+		float xAxis = input->GetHorizontalAxis();
+		if (xAxis != 0) {
+			if (xAxis > 0) {
+				dir = PlayerDirection::left;
+				if (skeletonTransform->getSkin()->getName() == "standart_right_direction") skeletonTransform->setSkin("standart_left_direction");
+				skeletonTransform->setScaleX(1);
+				skeletonTransform->setAttachment("Blade2", nullptr);
+				skeletonTransform->setAttachment("Blade", "skin");
 			}
-			else this->TryToSetAnimation_num(-2);
+			else {
+				dir = PlayerDirection::right;
+				if (skeletonTransform->getSkin()->getName() == "standart_left_direction") skeletonTransform->setSkin("standart_right_direction");
+				skeletonTransform->setScaleX(-1);
+				skeletonTransform->setAttachment("Blade", nullptr);
+				skeletonTransform->setAttachment("Blade2", "skin");
+			}
+			this->TryToSetAnimation_num(2);
 		}
+		else this->TryToSetAnimation_num(1);
 	}
 
 }
@@ -87,7 +98,20 @@ void HopEngine::PlayerSpineComponent::callback(spine::AnimationState* state, spi
 				bladeState = BladeState::Open;
 			}
 		}
-
 	}
+
+	//fix blade after block
+	if (entry->getAnimation()->getName() == animations->at(14).first || entry->getAnimation()->getName() == animations->at(15).first) {
+		if (type == spine::EventType_Complete) {
+			if (bladeState == BladeState::Open) {
+				drawable->state->setAnimation(animations->at(-2).second.first, animations->at(-2).first, animations->at(-2).second.second);
+			}
+			else if (bladeState == BladeState::Close) {
+				drawable->state->setAnimation(animations->at(-1).second.first, animations->at(-1).first, animations->at(-1).second.second);
+			}
+			entry->setMixDuration(0);
+		}
+	}
+
 
 }

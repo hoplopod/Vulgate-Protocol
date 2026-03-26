@@ -17,7 +17,7 @@ HopEngine::MovementComponent::MovementComponent(GameObject* gameObject)
 
 void HopEngine::MovementComponent::Update(float deltaTime)
 {
-	if(TimerSystem::Instance()->checkTimer("player_freezing") == TimerState::In_Process) return;
+	if(TimerSystem::Instance()->checkTimer("player_action") == TimerState::In_Process) return;
 
 	float xAxis = input->GetHorizontalAxis();
 	float yAxis = input->GetVerticalAxis();

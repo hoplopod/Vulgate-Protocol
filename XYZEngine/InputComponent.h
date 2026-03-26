@@ -18,15 +18,19 @@ namespace HopEngine
 
 		bool GetSwitchedBlade() const;
 		bool GetPlayerKick() const;
+		bool GetPlayerBlock() const;
+
 	private:
 		float horizontalAxis = 0.f;
 		float verticalAxis = 0.f;
 
+		bool playerBlock = false;
 		bool switchBlade = false;
 		bool playerKick = false;
 
 		bool wasMousePressedLeft = false;
 		bool wasMousePressedRight = false;
+		bool wasSpacePressed = false;
 	};
 
 	

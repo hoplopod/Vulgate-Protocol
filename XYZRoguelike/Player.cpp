@@ -52,13 +52,12 @@ namespace Roguelike
 	{
 		std::map<int, std::pair<spine::String, std::pair<int, bool>>> animatioms;
 
-		animatioms.emplace(-1, std::make_pair(spine::String("plug"), std::make_pair(0, true)));
-		animatioms.emplace(-2, std::make_pair(spine::String("plug"), std::make_pair(2, true)));
+		animatioms.emplace(-2, std::make_pair(spine::String("plug (blade down)"), std::make_pair(2, false)));
+		animatioms.emplace(-1, std::make_pair(spine::String("plug (blade up)"), std::make_pair(2, false)));
 
-		animatioms.emplace(1, std::make_pair(spine::String("Stable"), std::make_pair(3, true))); 
-		animatioms.emplace(2, std::make_pair(spine::String("walk (test)"), std::make_pair(2, true))); 
+		animatioms.emplace(1, std::make_pair(spine::String("Stable"), std::make_pair(2, true))); 
+		animatioms.emplace(2, std::make_pair(spine::String("Walk forward"), std::make_pair(2, true))); 
 
-		animatioms.emplace(3, std::make_pair(spine::String("blade switch"), std::make_pair(1, false))); 
 		animatioms.emplace(4, std::make_pair(spine::String("blade switch left"), std::make_pair(1, false))); 
 		animatioms.emplace(5, std::make_pair(spine::String("blade switch right"), std::make_pair(1, false))); 
 
@@ -66,6 +65,14 @@ namespace Roguelike
 		animatioms.emplace(7, std::make_pair(spine::String("Kick down right"), std::make_pair(2, false))); 
 		animatioms.emplace(8, std::make_pair(spine::String("Kick top left"), std::make_pair(2, false))); 
 		animatioms.emplace(9, std::make_pair(spine::String("Kick top right"), std::make_pair(2, false))); 
+		animatioms.emplace(10, std::make_pair(spine::String("Kick in the center left"), std::make_pair(2, false)));
+		animatioms.emplace(11, std::make_pair(spine::String("Kick in the center right"), std::make_pair(2, false)));
+
+		animatioms.emplace(12, std::make_pair(spine::String("Stunned"), std::make_pair(2, false)));
+		animatioms.emplace(13, std::make_pair(spine::String("Take damage"), std::make_pair(2, false)));
+
+		animatioms.emplace(14, std::make_pair(spine::String("Block left"), std::make_pair(2, false)));
+		animatioms.emplace(15, std::make_pair(spine::String("Block right"), std::make_pair(2, false)));
 
 		return animatioms;
 	}
