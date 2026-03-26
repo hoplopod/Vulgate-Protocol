@@ -19,6 +19,7 @@ namespace HopEngine
 		bool GetSwitchedBlade() const;
 		bool GetPlayerKick() const;
 		bool GetPlayerBlock() const;
+		bool GetPlayerStab() const;
 
 	private:
 		float horizontalAxis = 0.f;
@@ -27,10 +28,12 @@ namespace HopEngine
 		bool playerBlock = false;
 		bool switchBlade = false;
 		bool playerKick = false;
+		bool playerStab = false;
 
 		bool wasMousePressedLeft = false;
 		bool wasMousePressedRight = false;
 		bool wasSpacePressed = false;
+		bool wasMousePressedMiddle = false;
 	};
 
 	

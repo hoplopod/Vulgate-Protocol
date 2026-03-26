@@ -26,11 +26,11 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			case HopEngine::PlayerDirection::right: if (bladeState == BladeState::Close) num = 7; else num = 9; break;
 			}
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			TimerSystem::Instance()->addTimer("player_action", 0.6f);
+			TimerSystem::Instance()->addTimer("player_action", 0.5f);
 			return;
 		}
 
-		//player stab
+		//player block
 		bool block = input->GetPlayerBlock();
 		if (block) {
 			switch (dir)
@@ -40,6 +40,19 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			}
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 			TimerSystem::Instance()->addTimer("player_action", 0.6f);
+			return;
+		}
+
+		//player stab
+		bool stab = input->GetPlayerStab();
+		if (stab) {
+			switch (dir)
+			{
+			case HopEngine::PlayerDirection::left: num = 10; break;
+			case HopEngine::PlayerDirection::right: num = 11;  break;
+			}
+			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+			TimerSystem::Instance()->addTimer("player_action", 0.5f);
 			return;
 		}
 
@@ -83,6 +96,8 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 
 void HopEngine::PlayerSpineComponent::callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event)
 {
+	entry->setTimeScale(1.0f);
+
 	//switch blade
 	if (entry->getAnimation()->getName() == animations->at(4).first || entry->getAnimation()->getName() == animations->at(5).first) {
 
@@ -99,19 +114,5 @@ void HopEngine::PlayerSpineComponent::callback(spine::AnimationState* state, spi
 			}
 		}
 	}
-
-	//fix blade after block
-	if (entry->getAnimation()->getName() == animations->at(14).first || entry->getAnimation()->getName() == animations->at(15).first) {
-		if (type == spine::EventType_Complete) {
-			if (bladeState == BladeState::Open) {
-				drawable->state->setAnimation(animations->at(-2).second.first, animations->at(-2).first, animations->at(-2).second.second);
-			}
-			else if (bladeState == BladeState::Close) {
-				drawable->state->setAnimation(animations->at(-1).second.first, animations->at(-1).first, animations->at(-1).second.second);
-			}
-			entry->setMixDuration(0);
-		}
-	}
-
 
 }

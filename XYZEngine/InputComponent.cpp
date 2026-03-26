@@ -42,6 +42,13 @@ namespace HopEngine
 		}
 		wasSpacePressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 
+		//player stab
+		playerStab = false;
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Middle) && !wasMousePressedMiddle) {
+			playerStab = true;
+		}
+		wasMousePressedMiddle = sf::Mouse::isButtonPressed(sf::Mouse::Middle);
+
 	}
 	void InputComponent::Render()
 	{
@@ -70,6 +77,11 @@ namespace HopEngine
 	bool InputComponent::GetPlayerBlock() const
 	{
 		return playerBlock;
+	}
+
+	bool InputComponent::GetPlayerStab() const
+	{
+		return playerStab;
 	}
 
 }
