@@ -7,6 +7,7 @@
 #include "Music.h"
 #include "Floor.h"
 #include "Wall.h"
+#include "CameraBox.h"
 #include "GameLayers.h"
 #include "GameLevel.h"
 
@@ -26,6 +27,7 @@ namespace Roguelike
 
 	private:
 		std::shared_ptr<Player> player;
+		std::shared_ptr<CameraBox> cameraBox;
 		std::shared_ptr<Layers> layer_system;
 		std::unique_ptr<Music> music;
 		std::shared_ptr<LevelLoader> loader;

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "TriggersSystem.h"
+#include "CameraComponent.h"
 
 const float ERROR_RATE = 7.f;
 
@@ -16,8 +17,12 @@ namespace HopEngine
 		return fixedDeltaTime;
 	}
 
+	
+
 	void TriggerSystem::Update()
 	{
+		
+
 		//Collision with a map
 		for (int i = 0; i < colliders_for_a_map.size(); i++) {
 
@@ -47,14 +52,14 @@ namespace HopEngine
 						if (intersectionPosition.y > aPosition.y)
 						{
 							if (abs(intersectionPosition.y - aPosition.y) > ERROR_RATE) collisionY = 1;
-							aTransform->MoveBy({ 0, -intersectionHeight });
+							//aTransform->MoveBy({ 0, -intersectionHeight });
 
 							//std::cout << "Top collision" << std::endl;
 						}
 						else
 						{
 							if (abs(intersectionPosition.y - aPosition.y) <= ERROR_RATE) collisionY = -1;
-							aTransform->MoveBy({ 0, intersectionHeight });
+							//aTransform->MoveBy({ 0, intersectionHeight });
 
 							//std::cout << "Down collision" << std::endl;
 						}
@@ -81,6 +86,72 @@ namespace HopEngine
 			}
 			colliders_for_a_map[i]->SetCollision({ collisionX, collisionY });
 		}
+
+		//Collision with the camera
+
+		float deltaTime = fixedDeltaTime; // врем€ между кадрами в секундах
+
+		auto for_camera_transform = hitbox_for_camera->GetGameObject()->GetComponent<TransformComponent>();
+		auto of_camera_transform = hitbox_of_camera->GetGameObject()->GetComponent<TransformComponent>();
+
+		float playerX = for_camera_transform->GetWorldPosition().x;
+		float cameraX = of_camera_transform->GetWorldPosition().x;
+		float cameraWidth = hitbox_of_camera->map_bounds.width;
+
+		float cameraLeft = cameraX - cameraWidth / 2.f;
+		float cameraRight = cameraX + cameraWidth / 2.f;
+
+		float deadZoneLeftOffset = 50.f;
+		float deadZoneRightOffset = 50.f;
+
+		float deadZoneMin = cameraLeft + deadZoneLeftOffset;
+		float deadZoneMax = cameraRight - deadZoneRightOffset;
+
+		// √истерезис (увеличил до 5, можно подстроить)
+		const float hysteresis = 5.f;
+
+		float shiftX = 0.f;
+		float targetCameraX = cameraX; // целева€ позици€ центра камеры
+
+		if (playerX < deadZoneMin - hysteresis) {
+			targetCameraX += playerX - (deadZoneMin - hysteresis);
+		}
+		else if (playerX > deadZoneMax + hysteresis) {
+			targetCameraX += playerX - (deadZoneMax + hysteresis);
+		}
+		else {
+			// ≈сли игрок внутри dead zone с учЄтом гистерезиса, камера не должна стремитьс€ к цели,
+			// чтобы не было "подт€гивани€". Ќо если нужно, чтобы камера плавно возвращалась,
+			// можно оставить targetCameraX = cameraX.
+			targetCameraX = cameraX;
+		}
+
+		// ¬ычисл€ем разницу
+		float diff = targetCameraX - cameraX;
+
+		// ѕараметры плавности и скорости
+		const float maxSpeed = 1500.f; // пикселей в секунду
+		const float smoothTime = 0.05f; // секунд, за которое камера преодолевает отставание (только дл€ lerp)
+
+		// ќграничиваем максимальное смещение за кадр по скорости
+		float maxDelta = maxSpeed * deltaTime;
+		if (std::abs(diff) > maxDelta) {
+			diff = (diff > 0 ? maxDelta : -maxDelta);
+		}
+
+		// ѕримен€ем lerp с адаптивным коэффициентом (чтобы камера не "залипала")
+		// ≈сли diff маленький, можно двигать мгновенно, чтобы не было длительного доведени€.
+		if (std::abs(diff) > 0.1f) {
+			//  оэффициент lerp, завис€щий от времени (чтобы камера всегда догон€ла за smoothTime)
+			float smooth = 1.f - exp(-deltaTime / smoothTime);
+			cameraX += diff * smooth;
+		}
+		else {
+			// ≈сли разница мала, сразу ставим целевую позицию, чтобы избежать микродвижений
+			cameraX = targetCameraX;
+		}
+
+		of_camera_transform->SetWorldPosition(cameraX, of_camera_transform->GetWorldPosition().y);
 
 		//Triggers
 		for (int i = 0; i < hitboxes.size(); i++)
@@ -162,6 +233,7 @@ namespace HopEngine
 		hitboxes.erase(std::remove_if(hitboxes.begin(), hitboxes.end(), [collider](ColliderComponent* obj) 
 			{ return obj == collider; }), hitboxes.end());
 	}
+
 	void TriggerSystem::Subscribe_Map_Collision(ColliderComponent* collider_for_a_map)
 	{
 		std::cout << "Subscribe " << collider_for_a_map << std::endl;
@@ -173,5 +245,20 @@ namespace HopEngine
 
 		colliders_for_a_map.erase(std::remove_if(colliders_for_a_map.begin(), colliders_for_a_map.end(), [collider_for_a_map](ColliderComponent* obj) 
 			{ return obj == collider_for_a_map; }), colliders_for_a_map.end());
+	}
+	
+	void TriggerSystem::Subscribe_Camera_HitBox(ColliderComponent* collider)
+	{
+		std::cout << "Subscribe " << collider << std::endl;
+		hitbox_for_camera = collider;
+	}
+	void TriggerSystem::Unsubscribe_Camera_HitBox(ColliderComponent* collider)
+	{
+		std::cout << "Unsubscribe " << collider << std::endl;
+		hitbox_for_camera = nullptr;
+	}
+	void TriggerSystem::Set_Camera_Box(ColliderComponent* collider)
+	{
+		hitbox_of_camera = collider;
 	}
 }

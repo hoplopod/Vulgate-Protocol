@@ -16,6 +16,15 @@ namespace Roguelike
 		auto transform = gameObject->GetComponent<HopEngine::TransformComponent>();
 		transform->SetWorldPosition(position);
 
+		auto renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
+
+		auto rigidbody = gameObject->AddComponent<HopEngine::RigidbodyComponent>();
+
+		auto collider = gameObject->AddComponent<HopEngine::SpriteColliderComponent>();
+		collider->AddToMapCollision();
+		collider->SetMapCollision({ -80, 0, 160, 10 });
+		HopEngine::TriggerSystem::Instance()->Subscribe_Camera_HitBox(collider);
+		
 		auto input = gameObject->AddComponent<HopEngine::InputComponent>();
 
 		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
@@ -25,21 +34,8 @@ namespace Roguelike
 		auto anim = new std::map<int, std::pair<spine::String, std::pair<int, bool>>>(std::move(createAnimations())); 
 		spine->AddAnimations(anim);
 
-		auto renderer = gameObject->AddComponent<HopEngine::SpriteRendererComponent>();
-
-		auto camera = gameObject->AddComponent<HopEngine::CameraComponent>();
-		camera->SetWindow(&HopEngine::RenderSystem::Instance()->GetMainWindow());
-		camera->SetBaseResolution(1280, 720);
-		camera->SetShift({ 150, 260.f });
-
 		auto movement = gameObject->AddComponent<HopEngine::MovementComponent>();
 		movement->SetSpeed(400.f);
-
-		auto rigidbody = gameObject->AddComponent<HopEngine::RigidbodyComponent>();
-
-		auto collider = gameObject->AddComponent<HopEngine::SpriteColliderComponent>();
-		collider->AddToMapCollision();
-		collider->SetMapCollision({ -10,0, 20, 10 });
 
 	}
 

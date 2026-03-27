@@ -11,9 +11,6 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 	skeletonTransform->setPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y);
 	drawable->update(deltaTime);
 
-	if (bladeState == BladeState::Open) int num_plug = -1;
-	else int num_plug = -2;
-
 	if (TimerSystem::Instance()->checkTimer("player_action") != TimerState::In_Process) {
 		int num = 0;
 
