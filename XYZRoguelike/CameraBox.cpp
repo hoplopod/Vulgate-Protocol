@@ -14,7 +14,7 @@ Roguelike::CameraBox::CameraBox(const HopEngine::Vector2Df& position)
 
 	auto collider = gameObject->AddComponent<HopEngine::SpriteColliderComponent>();
 	//collider->AddToMapCollision();
-	collider->SetMapCollision({ -350, 0, 700, 10 });
+	collider->SetMapCollision({ -250, 0, 500, 10 });
 	HopEngine::TriggerSystem::Instance()->Set_Camera_Box(collider);
 	
 	auto camera = gameObject->AddComponent<HopEngine::CameraComponent>();
