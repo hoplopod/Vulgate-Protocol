@@ -89,7 +89,7 @@ namespace HopEngine
 
 		//Collision with the camera
 
-		float deltaTime = fixedDeltaTime; // врем€ между кадрами в секундах
+		float deltaTime = fixedDeltaTime; 
 
 		auto for_camera_transform = hitbox_for_camera->GetGameObject()->GetComponent<TransformComponent>();
 		auto of_camera_transform = hitbox_of_camera->GetGameObject()->GetComponent<TransformComponent>();
@@ -107,11 +107,10 @@ namespace HopEngine
 		float deadZoneMin = cameraLeft + deadZoneLeftOffset;
 		float deadZoneMax = cameraRight - deadZoneRightOffset;
 
-		// √истерезис (увеличил до 5, можно подстроить)
 		const float hysteresis = 5.f;
 
 		float shiftX = 0.f;
-		float targetCameraX = cameraX; // целева€ позици€ центра камеры
+		float targetCameraX = cameraX; 
 
 		if (playerX < deadZoneMin - hysteresis) {
 			targetCameraX += playerX - (deadZoneMin - hysteresis);
@@ -120,34 +119,24 @@ namespace HopEngine
 			targetCameraX += playerX - (deadZoneMax + hysteresis);
 		}
 		else {
-			// ≈сли игрок внутри dead zone с учЄтом гистерезиса, камера не должна стремитьс€ к цели,
-			// чтобы не было "подт€гивани€". Ќо если нужно, чтобы камера плавно возвращалась,
-			// можно оставить targetCameraX = cameraX.
 			targetCameraX = cameraX;
 		}
 
-		// ¬ычисл€ем разницу
 		float diff = targetCameraX - cameraX;
 
-		// ѕараметры плавности и скорости
-		const float maxSpeed = 1500.f; // пикселей в секунду
-		const float smoothTime = 0.05f; // секунд, за которое камера преодолевает отставание (только дл€ lerp)
+		const float maxSpeed = 1500.f; 
+		const float smoothTime = 0.05f; 
 
-		// ќграничиваем максимальное смещение за кадр по скорости
 		float maxDelta = maxSpeed * deltaTime;
 		if (std::abs(diff) > maxDelta) {
 			diff = (diff > 0 ? maxDelta : -maxDelta);
 		}
 
-		// ѕримен€ем lerp с адаптивным коэффициентом (чтобы камера не "залипала")
-		// ≈сли diff маленький, можно двигать мгновенно, чтобы не было длительного доведени€.
 		if (std::abs(diff) > 0.1f) {
-			//  оэффициент lerp, завис€щий от времени (чтобы камера всегда догон€ла за smoothTime)
 			float smooth = 1.f - exp(-deltaTime / smoothTime);
 			cameraX += diff * smooth;
 		}
 		else {
-			// ≈сли разница мала, сразу ставим целевую позицию, чтобы избежать микродвижений
 			cameraX = targetCameraX;
 		}
 
