@@ -4,6 +4,7 @@
 #include <array>
 #include "Scene.h"
 #include "Player.h"
+#include "Baptist.h"
 #include "Music.h"
 #include "Floor.h"
 #include "Wall.h"
@@ -27,6 +28,7 @@ namespace Roguelike
 
 	private:
 		std::shared_ptr<Player> player;
+		std::shared_ptr<Baptist> baptist;
 		std::shared_ptr<CameraBox> cameraBox;
 		std::shared_ptr<Layers> layer_system;
 		std::unique_ptr<Music> music;

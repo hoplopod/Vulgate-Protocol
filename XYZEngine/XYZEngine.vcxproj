@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioComponent.h" />
+    <ClInclude Include="BaptistSpineComponent.h" />
     <ClInclude Include="BattlesComponent.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
@@ -189,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioComponent.cpp" />
+    <ClCompile Include="BaptistSpineComponent.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="DebuggingSystem.cpp" />

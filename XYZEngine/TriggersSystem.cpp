@@ -101,8 +101,8 @@ namespace HopEngine
 		float cameraLeft = cameraX - cameraWidth / 2.f;
 		float cameraRight = cameraX + cameraWidth / 2.f;
 
-		float deadZoneLeftOffset = 50.f;
-		float deadZoneRightOffset = 50.f;
+		float deadZoneLeftOffset = 100.f;
+		float deadZoneRightOffset = 100.f;
 
 		float deadZoneMin = cameraLeft + deadZoneLeftOffset;
 		float deadZoneMax = cameraRight - deadZoneRightOffset;
