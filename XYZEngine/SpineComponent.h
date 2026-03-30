@@ -21,7 +21,7 @@ namespace HopEngine {
 		void AddAnimations(std::map<int, std::pair < spine::String, std::pair<int, bool >> >* new_animations);
 		void setStartSkin(std::string skin);
 
-		const spine::Skeleton* getSkeletonTransform();
+		spine::Skeleton* getSkeletonTransform();
 
 	protected:
 		TransformComponent* transform;

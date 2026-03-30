@@ -158,14 +158,14 @@ namespace HopEngine
 					continue;
 				}
 
-				/*bool ignore = false;
+				bool ignore = false;
 				for (int l = 0; l < hitboxes[i]->GetCollisionIgnore().size(); ++l) {
 					if (hitboxes[i]->GetCollisionIgnore()[l] == hitboxes[j]) {
 						ignore = true;
 						break;
 					}
 				}
-				if (ignore) continue;*/
+				if (ignore) continue;
 
 				sf::FloatRect intersection;
 				if (hitboxes[i]->bounds.intersects(hitboxes[j]->bounds, intersection))
@@ -182,16 +182,7 @@ namespace HopEngine
 						}
 					}
 				}
-				/*else {
-					CollisionActions.push_back(colliders_for_a_map[i]);
-
-					auto collision = new Collision(colliders_for_a_map[i], hitboxes[j], intersection);
-					hitboxes[i]->OnCollision(*collision);
-					hitboxes[j]->OnCollision(*collision);
-					for (int k = 0; k < CollisionActions.size(); ++k) {
-						if (CollisionActions[k] == hitboxes[j]) CollisionActions.erase(std::remove(CollisionActions.begin(), CollisionActions.end(), hitboxes[j]), CollisionActions.end());
-					}
-				}*/
+				
 			}
 
 
