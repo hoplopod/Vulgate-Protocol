@@ -15,27 +15,25 @@ void HopEngine::SpineTriggerSystem::Update() {
             auto hitbox_2 = getHitboxWorldVertices(hitboxes[j].first->getSkeletonTransform(), hitboxes[j].second.first, hitboxes[j].second.second);
 
             if (checkHitboxIntersectionSAT(hitbox_1, hitbox_2)) {
-                if (triggersEnteredPair.empty())
+                if (triggersEnteredPair.find(collider[i]) == triggersEnteredPair.end() && triggersEnteredPair.find(collider[j]) == triggersEnteredPair.end())
                 {
                     auto trigger = new Trigger(collider[i], collider[j]);
                     collider[i]->OnTriggerEnter(*trigger);
                     collider[j]->OnTriggerEnter(*trigger);
 
-                    triggersEnteredPair.push_back(std::make_pair(collider[i], collider[j]));
-                    return;
+                    triggersEnteredPair.emplace(collider[i], collider[j]);
                 }
+            }
+            else if (triggersEnteredPair.find(collider[i]) != triggersEnteredPair.end() && triggersEnteredPair.find(collider[j]) != triggersEnteredPair.end()) {
+                auto trigger = new Trigger(collider[i], collider[j]);
+                collider[i]->OnTriggerExit(*trigger);
+                collider[j]->OnTriggerExit(*trigger);
+
+                triggersEnteredPair.erase(triggersEnteredPair.find(collider[i]));
             }
         }
         
 	}
-    
-    if (!checkHitboxIntersectionSAT(triggersEnteredPair[0].first->spine_hitbox, triggersEnteredPair[0].second->spine_hitbox)) {
-        auto trigger = new Trigger(triggersEnteredPair[0].first, triggersEnteredPair[0].second);
-        triggersEnteredPair[0].first->OnTriggerExit(*trigger);
-        triggersEnteredPair[0].second->OnTriggerExit(*trigger);
-
-        triggersEnteredPair.clear();
-    }
 }
 
 void HopEngine::SpineTriggerSystem::Subscribe_HitBoxes(ColliderComponent* new_collider, SpineComponent* data, spine::String bone_name, spine::String hitbox_name)

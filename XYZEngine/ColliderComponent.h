@@ -39,7 +39,6 @@ namespace HopEngine
 		sf::FloatRect map_bounds;
 		bool isTrigger = false;
 		std::vector<int> collision_vertical = {0,0};
-		std::vector<sf::Vector2f> spine_hitbox;
 
 		void OnTriggerEnter(Trigger trigger);
 		void OnTriggerExit(Trigger trigger);

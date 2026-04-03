@@ -42,7 +42,7 @@ namespace HopEngine
 
 		std::vector<std::pair<SpineComponent*, std::pair<spine::String, spine::String>>> hitboxes;
 		std::vector<ColliderComponent*> collider;
-		std::vector<std::pair<ColliderComponent*, ColliderComponent*>> triggersEnteredPair;
+		std::map<ColliderComponent*, ColliderComponent*> triggersEnteredPair;
 
 	};
 }
