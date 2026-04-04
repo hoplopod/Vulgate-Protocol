@@ -10,8 +10,6 @@ namespace HopEngine {
 
 	enum class BaptistDirection { left, right };
 
-	enum class AttackType {};
-
 	class BaptistSpineComponent : public SpineComponent {
 	public:
 		BaptistSpineComponent(GameObject* gameObject);

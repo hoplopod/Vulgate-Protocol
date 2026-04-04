@@ -20,6 +20,7 @@ namespace Roguelike{
 
 		auto ai = gameObject->AddComponent<HopEngine::EnemyAiComponent>();
 		ai->SetPurpose(HopEngine::GameWorld::Instance()->FindGameObject("player"));
+		ai->SetSpeed(250.f);
 
 		auto spine = gameObject->AddComponent<HopEngine::BaptistSpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("baptist"));

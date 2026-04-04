@@ -5,10 +5,6 @@
 
 namespace HopEngine
 {
-	enum class ObjectStatus {
-		stable = 0,
-		shattered
-	};
 
 	class MovementComponent : public Component
 	{
