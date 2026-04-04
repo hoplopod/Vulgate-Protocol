@@ -12,25 +12,26 @@ void HopEngine::EnemyAiComponent::Update(float deltaTime)
 {
     float dist = abs(purpose_transform->GetWorldPosition().x - enemy_transform->GetWorldPosition().x);
 
+    horizontalAxis = 0.f;
     at_type = AttackType::None;
-    if (dist < attackRange + 0.5f) at_type = ChooseAttack();
 
-	//move
-	horizontalAxis = 0.f;
+    if (dist < attackRange + 0.5f && dist > minSafeDistance) at_type = ChooseAttack();
+    else {
 
-	if (dist > optimalDistance + 0.5f) {
-		horizontalAxis = (purpose_transform->GetWorldPosition().x > enemy_transform->GetWorldPosition().x) ? 1 : -1;
-	}
-	else if (dist < minSafeDistance) {
-		horizontalAxis = (purpose_transform->GetWorldPosition().x > enemy_transform->GetWorldPosition().x) ? -1 : 1;
-	}
+        if (dist > optimalDistance + 0.5f) {
+            horizontalAxis = (purpose_transform->GetWorldPosition().x > enemy_transform->GetWorldPosition().x) ? 1 : -1;
+        }
+        else if (dist < minSafeDistance) {
+            horizontalAxis = (purpose_transform->GetWorldPosition().x > enemy_transform->GetWorldPosition().x) ? -1 : 1;
+        }
+
+        if (gameObject->GetComponent<ColliderComponent>() != nullptr) {
+            auto collision = gameObject->GetComponent<ColliderComponent>();
+            if (collision->GetCollision()[0] == -1 * horizontalAxis)  horizontalAxis = 0;
+        }
+        enemy_transform->MoveBy(speed * deltaTime * Vector2Df{ horizontalAxis, 0.f });
+    }
 	
-	if (gameObject->GetComponent<ColliderComponent>() != nullptr) {
-		auto collision = gameObject->GetComponent<ColliderComponent>();
-		if (collision->GetCollision()[0] == -1 * horizontalAxis)  horizontalAxis = 0;
-	}
-
-	enemy_transform->MoveBy(speed * deltaTime * Vector2Df{ horizontalAxis, 0.f });
 }
 
 void HopEngine::EnemyAiComponent::Render()

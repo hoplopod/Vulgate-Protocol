@@ -40,8 +40,11 @@ namespace Roguelike{
 	{
 		std::map<int, std::pair<spine::String, std::pair<int, bool>>> animatioms;
 
-		animatioms.emplace(1, std::make_pair(spine::String("Stable left"), std::make_pair(1, true)));
-		animatioms.emplace(2, std::make_pair(spine::String("Stable right"), std::make_pair(1, true)));
+		animatioms.emplace(-1, std::make_pair(spine::String("Stable left"), std::make_pair(1, true)));
+		animatioms.emplace(-2, std::make_pair(spine::String("Stable right"), std::make_pair(1, true)));
+
+		animatioms.emplace(1, std::make_pair(spine::String("Stable left"), std::make_pair(2, true)));
+		animatioms.emplace(2, std::make_pair(spine::String("Stable right"), std::make_pair(2, true)));
 
 		animatioms.emplace(3, std::make_pair(spine::String("Walk back"), std::make_pair(2, true)));
 		animatioms.emplace(4, std::make_pair(spine::String("Walk forward"), std::make_pair(2, true)));

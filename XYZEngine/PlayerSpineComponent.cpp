@@ -63,7 +63,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 				case HopEngine::PlayerDirection::right: num = 5; break;
 				}
 				drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-				TimerSystem::Instance()->addTimer("blade_switch", 0.6f);
+				TimerSystem::Instance()->addTimer("blade_switch", 0.3f);
 			}
 		}
 
@@ -93,20 +93,18 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 
 void HopEngine::PlayerSpineComponent::callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event)
 {
-	entry->setTimeScale(1.0f);
-
 	//switch blade
 	if (entry->getAnimation()->getName() == animations->at(4).first || entry->getAnimation()->getName() == animations->at(5).first) {
 
 		if (type == spine::EventType_Start) {
 			if (bladeState == BladeState::Open) {
 				entry->setTrackTime(0);
-				entry->setTimeScale(0.7);
+				entry->setTimeScale(1.2f);
 				bladeState = BladeState::Close;
 			}
 			else if (bladeState == BladeState::Close) {
 				entry->setTrackTime(entry->getAnimation()->getDuration());
-				entry->setTimeScale(-0.7);
+				entry->setTimeScale(-1.2f);
 				bladeState = BladeState::Open;
 			}
 		}
