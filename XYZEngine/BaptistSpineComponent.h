@@ -2,10 +2,15 @@
 
 #include "SpineComponent.h"
 #include "TimerSystem.h"
+#include "EnemyAiComponent.h"
 
 namespace HopEngine {
 
+	enum class BaptistState {other, attack, block};
+
 	enum class BaptistDirection { left, right };
+
+	enum class AttackType {};
 
 	class BaptistSpineComponent : public SpineComponent {
 	public:
@@ -16,9 +21,11 @@ namespace HopEngine {
 		void callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event);
 
 	private:
-		spine::String skin = "standart_right_direction";
+		spine::String skin = "standart_left_direction";
 
-		BaptistDirection dir = BaptistDirection::right;
+		BaptistDirection dir = BaptistDirection::left;
+
+		EnemyAiComponent* ai;
 	};
 
 }

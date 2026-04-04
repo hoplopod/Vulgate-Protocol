@@ -70,17 +70,17 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 		//move
 		float xAxis = input->GetHorizontalAxis();
 		if (xAxis != 0) {
-			if (xAxis > 0) {
+			if (xAxis < 0) {
 				dir = PlayerDirection::left;
 				if (skeletonTransform->getSkin()->getName() == "standart_right_direction") skeletonTransform->setSkin("standart_left_direction");
-				skeletonTransform->setScaleX(1);
+				skeletonTransform->setScaleX(-1);
 				skeletonTransform->setAttachment("Blade2", nullptr);
 				skeletonTransform->setAttachment("Blade", "skin");
 			}
 			else {
 				dir = PlayerDirection::right;
 				if (skeletonTransform->getSkin()->getName() == "standart_left_direction") skeletonTransform->setSkin("standart_right_direction");
-				skeletonTransform->setScaleX(-1);
+				skeletonTransform->setScaleX(1);
 				skeletonTransform->setAttachment("Blade", nullptr);
 				skeletonTransform->setAttachment("Blade2", "skin");
 			}
@@ -112,4 +112,19 @@ void HopEngine::PlayerSpineComponent::callback(spine::AnimationState* state, spi
 		}
 	}
 
+}
+
+HopEngine::PlayerState HopEngine::PlayerSpineComponent::checkPlayerState() const
+{
+	return state;
+}
+
+HopEngine::PlayerDirection HopEngine::PlayerSpineComponent::checkPlayerDir() const
+{
+	return dir;
+}
+
+HopEngine::BladeState HopEngine::PlayerSpineComponent::checkBladeState() const
+{
+	return bladeState;
 }

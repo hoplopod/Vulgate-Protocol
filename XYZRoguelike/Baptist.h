@@ -6,7 +6,8 @@
 #include "InputComponent.h"
 #include "GameObject.h"
 #include "Vector.h"
-#include <BaptistSpineComponent.h>
+#include "BaptistSpineComponent.h"
+#include "EnemyAiComponent.h"
 
 namespace Roguelike
 {

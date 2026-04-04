@@ -150,7 +150,7 @@
   <ItemGroup>
     <ClInclude Include="AudioComponent.h" />
     <ClInclude Include="BaptistSpineComponent.h" />
-    <ClInclude Include="BattlesComponent.h" />
+    <ClInclude Include="EventBattleSystem.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="DebuggingSystem.h" />
@@ -168,8 +168,8 @@
     <ClInclude Include="Matrix2D.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PlayerBattleComponent.h" />
     <ClInclude Include="PlayerSpineComponent.h" />
+    <ClInclude Include="PVEComponent.h" />
     <ClInclude Include="SpineComponent.h" />
     <ClInclude Include="SpineTriggersSystem.h" />
     <ClInclude Include="TimerSystem.h" />
@@ -191,7 +191,7 @@
   <ItemGroup>
     <ClCompile Include="AudioComponent.cpp" />
     <ClCompile Include="BaptistSpineComponent.cpp" />
-    <ClCompile Include="BattlesComponent.cpp" />
+    <ClCompile Include="EventBattleSystem.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="DebuggingSystem.cpp" />
@@ -210,7 +210,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="PlayerBattleComponent.cpp" />
     <ClCompile Include="PlayerSpineComponent.cpp" />
     <ClCompile Include="SpineComponent.cpp" />
     <ClCompile Include="SpineTriggersSystem.cpp" />

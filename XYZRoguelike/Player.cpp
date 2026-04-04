@@ -29,7 +29,7 @@ namespace Roguelike
 
 		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
-		spine->setStartSkin("standart_left_direction");
+		spine->setStartSkin("standart_right_direction");
 
 		auto anim = new std::map<int, std::pair<spine::String, std::pair<int, bool>>>(std::move(createAnimations())); 
 		spine->AddAnimations(anim);

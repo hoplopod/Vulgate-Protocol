@@ -87,4 +87,12 @@ namespace HopEngine
 	{
 		return isKinematic;
 	}
+	void RigidbodyComponent::SetActive(bool newIsActive)
+	{
+		isActive = newIsActive;
+	}
+	bool RigidbodyComponent::GetActive() const
+	{
+		return isActive;
+	}
 }

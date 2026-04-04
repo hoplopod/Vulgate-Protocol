@@ -29,6 +29,9 @@ namespace HopEngine
 
 		void SetKinematic(bool newIsKinematic);
 		bool GetKinematic() const;
+
+		void SetActive(bool newIsActive);
+		bool GetActive() const;
 	private:
 		TransformComponent* transform;
 
@@ -39,5 +42,6 @@ namespace HopEngine
 		float angleDamping = 0.f;
 
 		bool isKinematic = false;
+		bool isActive = false;
 	};
 }

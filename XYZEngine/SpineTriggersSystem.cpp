@@ -1,9 +1,21 @@
 #include "pch.h"
 #include "SpineTriggersSystem.h"
 
+HopEngine::SpineTriggerSystem* HopEngine::SpineTriggerSystem::SpineTriggerSystem::Instance()
+{
+    static SpineTriggerSystem SpineTriggersSystem;
+    return &SpineTriggersSystem;
+}
+
 void HopEngine::SpineTriggerSystem::Update() {
 
-	for (int i = 0; i < hitboxes.size(); ++i) {
+	for (int i = 0; i < collider.size(); ++i) {
+
+        auto body = collider[i]->GetGameObject()->GetComponent<RigidbodyComponent>();
+        if (!body->GetActive())
+        {
+            continue;
+        }
 
         auto hitbox_1 = getHitboxWorldVertices(hitboxes[i].first->getSkeletonTransform(), hitboxes[i].second.first, hitboxes[i].second.second);
 

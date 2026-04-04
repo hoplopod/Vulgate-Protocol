@@ -25,6 +25,7 @@ namespace HopEngine
 			TriggerSystem::Instance()->Update();
 		}
 		TimerSystem::Instance()->Update(deltaTime);
+		SpineTriggerSystem::Instance()->Update();
 	}
 	void GameWorld::Render()
 	{

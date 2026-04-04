@@ -17,12 +17,8 @@ namespace HopEngine
 		return fixedDeltaTime;
 	}
 
-	
-
 	void TriggerSystem::Update()
 	{
-		
-
 		//Collision with a map
 		for (int i = 0; i < colliders_for_a_map.size(); i++) {
 

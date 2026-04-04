@@ -1,6 +1,7 @@
 #pragma once
 
 #include "TransformComponent.h"
+#include "PVEComponent.h"
 
 namespace HopEngine {
 
@@ -11,6 +12,15 @@ namespace HopEngine {
 		void Update(float deltaTime) override;
 		void Render() override;
 
+		void SetPurpose(GameObject* gameObject);
+
+		float GetHorizontalAxis() const;
+
+	private:
+		TransformComponent* enemy_transform;
+		TransformComponent* purpose_transform;
+
+		float horizontalAxis = 0.f;
 	};
 
 }
