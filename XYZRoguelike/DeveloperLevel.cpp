@@ -35,7 +35,7 @@ namespace Roguelike
 		
 		cameraBox = std::make_unique<CameraBox>(std::forward<HopEngine::Vector2Df>({ 800, 64 }));
 		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ 700, 64}));
-		baptist = std::make_unique<Baptist>(std::forward<HopEngine::Vector2Df>({ 1000, 64 }));
+		baptist = std::make_unique<Baptist>(std::forward<HopEngine::Vector2Df>({ 1200, 64 }));
 		//music = std::make_unique<Music>("music");
 	}
 	void DeveloperLevel::Restart()

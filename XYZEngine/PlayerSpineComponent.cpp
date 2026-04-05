@@ -24,6 +24,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			}
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 			TimerSystem::Instance()->addTimer("player_action", 0.5f);
+			state = PlayerState::attack;
 			return;
 		}
 
@@ -37,6 +38,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			}
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 			TimerSystem::Instance()->addTimer("player_action", 0.6f);
+			state = PlayerState::block;
 			return;
 		}
 
@@ -50,6 +52,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			}
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 			TimerSystem::Instance()->addTimer("player_action", 0.5f);
+			state = PlayerState::attack;
 			return;
 		}
 
@@ -68,6 +71,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 		}
 
 		//move
+		state = PlayerState::other;
 		float xAxis = input->GetHorizontalAxis();
 		if (xAxis != 0) {
 			if (xAxis < 0) {

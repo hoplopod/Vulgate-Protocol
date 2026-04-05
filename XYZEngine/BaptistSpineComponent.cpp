@@ -13,6 +13,21 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 	int num = 0;
 	float time = 0.f;
 
+	bool block = ai->getBlock();
+	if (block) {
+		switch (dir)
+		{
+		case HopEngine::BaptistDirection::left: num = 7; break;
+		case HopEngine::BaptistDirection::right: num = 8; break;
+		}
+		spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+		newEntry->setMixDuration(0.1f);
+		TimerSystem::Instance()->addTimer("enemy_action", 1.6f);
+		state = BaptistState::block;
+		ai->setBlock(false);
+		return;
+	}
+
 	if (TimerSystem::Instance()->checkTimer("enemy_action") != TimerState::In_Process) {
 		if (ai->getAttackType() != AttackType::None) {
 			switch (dir)
@@ -20,32 +35,34 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 			case BaptistDirection::left:
 				switch (ai->getAttackType())
 				{
-				case AttackType::Thrust_Center: num = 17; break;
-				case AttackType::Thrust_Down: num = 15; break;
-				case AttackType::Thrust_Up: num = 13; break;
-				case AttackType::Swing_Up: num = 9; break;
-				case AttackType::Swing_Down: num = 11; break;
+				case AttackType::Thrust_Center: num = 17; time = 0.7f; break;
+				case AttackType::Thrust_Down: num = 15; time = 0.7f; break;
+				case AttackType::Thrust_Up: num = 13; time = 0.7f; break;
+				case AttackType::Swing_Up: num = 9; time = 0.9f; break;
+				case AttackType::Swing_Down: num = 11; time = 0.9f; break;
 				}
 				break;
 			case BaptistDirection::right:
 				switch (ai->getAttackType())
 				{
-				case AttackType::Thrust_Center: num = 18; break;
-				case AttackType::Thrust_Down: num = 16; break;
-				case AttackType::Thrust_Up: num = 14; break;
-				case AttackType::Swing_Up: num = 10; break;
-				case AttackType::Swing_Down: num = 12; break;
+				case AttackType::Thrust_Center: num = 18; time = 0.7f; break;
+				case AttackType::Thrust_Down: num = 16; time = 0.7f; break;
+				case AttackType::Thrust_Up: num = 14; time = 0.7f; break;
+				case AttackType::Swing_Up: num = 10; time = 0.9f; break;
+				case AttackType::Swing_Down: num = 12; time = 0.9f; break;
 				}
 				break;
 			}
 			spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			newEntry->setMixDuration(0.01f);
+			newEntry->setMixDuration(0.05f);
 			newEntry->setTimeScale(0.6f);
-			TimerSystem::Instance()->addTimer("enemy_action", 1.f);
+			TimerSystem::Instance()->addTimer("enemy_action", time);
+			state = BaptistState::attack;
 			return;
 		}
 
 		//move
+		state = BaptistState::other;
 		float xAxis = ai->GetHorizontalAxis();
 		auto rot = ai->getDir();
 		if (rot == -1) {
@@ -87,6 +104,16 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 		this->TryToSetAnimation_num(num);
 	}
 	
+}
+
+HopEngine::BaptistDirection HopEngine::BaptistSpineComponent::checkBaptistDir() const
+{
+	return dir;
+}
+
+HopEngine::BaptistState HopEngine::BaptistSpineComponent::checkBaptistState() const
+{
+	return state;
 }
 
 void HopEngine::BaptistSpineComponent::callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event) {

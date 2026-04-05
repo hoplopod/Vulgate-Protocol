@@ -5,6 +5,7 @@
 #include <SpriteDirectionComponent.h>
 #include <SpriteMovementAnimationComponent.h>
 #include <LayerRenderingComponent.h>
+#include <SpineTriggersSystem.h>
 
 
 namespace Roguelike
@@ -33,6 +34,8 @@ namespace Roguelike
 
 		auto anim = new std::map<int, std::pair<spine::String, std::pair<int, bool>>>(std::move(createAnimations())); 
 		spine->AddAnimations(anim);
+
+		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "blade_hitbox_2", "blade_hitbox_2");
 
 		auto movement = gameObject->AddComponent<HopEngine::MovementComponent>();
 		movement->SetSpeed(400.f);

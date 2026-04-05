@@ -6,7 +6,7 @@
 
 namespace HopEngine {
 
-	enum class PlayerState {other, attack, block};
+	enum class PlayerState {other, attack, block, stan};
 
 	enum class PlayerDirection {left, right};
 

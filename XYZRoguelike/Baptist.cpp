@@ -1,6 +1,7 @@
 #include "Baptist.h"
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
+#include <SpineTriggersSystem.h>
 
 namespace Roguelike{
 
@@ -24,10 +25,12 @@ namespace Roguelike{
 
 		auto spine = gameObject->AddComponent<HopEngine::BaptistSpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("baptist"));
-		spine->setStartSkin("standart_left_direction");
+		spine->setStartSkin("standart_right_direction");
 
 		auto anim = new std::map<int, std::pair<spine::String, std::pair<int, bool>>>(std::move(createAnimations()));
 		spine->AddAnimations(anim);
+
+		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "body hitbox", "body hitbox");
 
 	}
 

@@ -1,77 +1,78 @@
 #include "pch.h"
 #include "SpineTriggersSystem.h"
+#include "EventBattleSystem.h"
 
-HopEngine::SpineTriggerSystem* HopEngine::SpineTriggerSystem::SpineTriggerSystem::Instance()
+HopEngine::SpineTriggerSystem* HopEngine::SpineTriggerSystem::Instance()
 {
-    static SpineTriggerSystem SpineTriggersSystem;
-    return &SpineTriggersSystem;
+    static SpineTriggerSystem SpineTriggerSystem;
+    return &SpineTriggerSystem;
 }
 
-void HopEngine::SpineTriggerSystem::Update() {
+void HopEngine::SpineTriggerSystem::Update()
+{
+    for (size_t i = 0; i < hitboxes.size(); ++i)
+    {
+        auto& rec_i = hitboxes[i];
+        auto verts_i = getHitboxWorldVertices(rec_i.spine->getSkeletonTransform(),
+            rec_i.boneName, rec_i.hitboxName);
 
-	for (int i = 0; i < collider.size(); ++i) {
-
-        auto body = collider[i]->GetGameObject()->GetComponent<RigidbodyComponent>();
-        if (!body->GetActive())
+        for (size_t j = i + 1; j < hitboxes.size(); ++j)
         {
-            continue;
-        }
+            auto& rec_j = hitboxes[j];
+            if (rec_i.spine == rec_j.spine) continue;
 
-        auto hitbox_1 = getHitboxWorldVertices(hitboxes[i].first->getSkeletonTransform(), hitboxes[i].second.first, hitboxes[i].second.second);
+            auto verts_j = getHitboxWorldVertices(rec_j.spine->getSkeletonTransform(),
+                rec_j.boneName, rec_j.hitboxName);
 
-        for (int j = 0; j < hitboxes.size(); ++j) {
-            
-            if (i == j) continue;
-            if (hitboxes[i].first == hitboxes[j].first) continue;
+            bool intersect = checkHitboxIntersectionSAT(verts_i, verts_j);
 
-            auto hitbox_2 = getHitboxWorldVertices(hitboxes[j].first->getSkeletonTransform(), hitboxes[j].second.first, hitboxes[j].second.second);
+            auto it = triggersEnteredPair.find(rec_i.owner);
+            bool alreadyActive = (it != triggersEnteredPair.end() && it->second == rec_j.owner);
 
-            if (checkHitboxIntersectionSAT(hitbox_1, hitbox_2)) {
-                if (triggersEnteredPair.find(collider[i]) == triggersEnteredPair.end() && triggersEnteredPair.find(collider[j]) == triggersEnteredPair.end())
-                {
-                    auto trigger = new Trigger(collider[i], collider[j]);
-                    collider[i]->OnTriggerEnter(*trigger);
-                    collider[j]->OnTriggerEnter(*trigger);
-
-                    triggersEnteredPair.emplace(collider[i], collider[j]);
-                }
+            if (intersect && !alreadyActive)
+            {
+                EventBattleSystem::Instance()->TriggerEvent(rec_i.owner, rec_i.hitboxName,
+                    rec_j.owner, rec_j.hitboxName);
+                triggersEnteredPair.emplace(rec_i.owner, rec_j.owner);
             }
-            else if (triggersEnteredPair.find(collider[i]) != triggersEnteredPair.end() && triggersEnteredPair.find(collider[j]) != triggersEnteredPair.end()) {
-                auto trigger = new Trigger(collider[i], collider[j]);
-                collider[i]->OnTriggerExit(*trigger);
-                collider[j]->OnTriggerExit(*trigger);
-
-                triggersEnteredPair.erase(triggersEnteredPair.find(collider[i]));
+            else if (!intersect && alreadyActive)
+            {
+                triggersEnteredPair.erase(it);
             }
         }
-        
-	}
+    }
 }
 
-void HopEngine::SpineTriggerSystem::Subscribe_HitBoxes(ColliderComponent* new_collider, SpineComponent* data, spine::String bone_name, spine::String hitbox_name)
+void HopEngine::SpineTriggerSystem::Subscribe_HitBoxes(GameObject* owner, SpineComponent* data,
+    spine::String bone_name, spine::String hitbox_name)
 {
-	std::cout << "Subscribe " << data << std::endl;
-	hitboxes.push_back(std::make_pair(data, std::make_pair(bone_name, hitbox_name)));
-    collider.push_back(new_collider);
+    hitboxes.push_back({ owner, data, bone_name, hitbox_name });
 }
 
-void HopEngine::SpineTriggerSystem::Unsubscribe_HitBoxes(ColliderComponent* new_collider, SpineComponent* data, spine::String bone_name, spine::String hitbox_name)
+void HopEngine::SpineTriggerSystem::Unsubscribe_HitBoxes(GameObject* owner, SpineComponent* data,
+    spine::String bone_name, spine::String hitbox_name)
 {
-    std::cout << "Unsubscribe " << data << std::endl;
-
-    auto target = std::make_pair(data, std::make_pair(bone_name, hitbox_name));
-
-    hitboxes.erase(std::remove_if(hitboxes.begin(), hitboxes.end(), [&target](const auto& obj) { return obj == target; }), hitboxes.end());
-    collider.erase(std::remove_if(collider.begin(), collider.end(), [new_collider](ColliderComponent* obj) {return obj == new_collider; }), collider.end());
-
+    auto it = std::remove_if(hitboxes.begin(), hitboxes.end(),
+        [=](const HitboxRecord& rec) {
+            return rec.owner == owner && rec.spine == data &&
+                rec.boneName == bone_name && rec.hitboxName == hitbox_name;
+        });
+    hitboxes.erase(it, hitboxes.end());
 }
 
-std::vector<sf::Vector2f> HopEngine::SpineTriggerSystem::getHitboxWorldVertices(spine::Skeleton* skeleton, spine::String boneName, spine::String attachmentName)
+std::vector<sf::Vector2f> HopEngine::SpineTriggerSystem::getHitboxWorldVertices(spine::Skeleton* skeleton, spine::String slotName, spine::String attachmentName)
 {
     std::vector<sf::Vector2f> result;
 
-    spine::Slot* slot = skeleton->findSlot(boneName);
+    if (!skeleton) return result;
+
+    skeleton->updateWorldTransform();
+
+    spine::Slot* slot = skeleton->findSlot(slotName);
     if (!slot) return result;
+
+    spine::Skin* skin = skeleton->getSkin();
+    if (!skin) return result;
 
     spine::Attachment* attachment = skeleton->getAttachment(slot->getData().getIndex(), attachmentName);
     if (!attachment) return result;
@@ -85,13 +86,19 @@ std::vector<sf::Vector2f> HopEngine::SpineTriggerSystem::getHitboxWorldVertices(
 
     std::vector<float> worldVerts(vertexCount * 2);
 
-    bbox->computeWorldVertices(*slot, 0, vertexCount * 2, worldVerts.data(), 0, sizeof(float));
+    bbox->computeWorldVertices(
+        *slot,
+        0,
+        vertexCount * 2,
+        worldVerts.data(),
+        0,
+        2
+    );
 
     result.reserve(vertexCount);
     for (int i = 0; i < vertexCount; ++i) {
         result.emplace_back(worldVerts[i * 2], worldVerts[i * 2 + 1]);
     }
-
     return result;
 }
 

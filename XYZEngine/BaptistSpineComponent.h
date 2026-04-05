@@ -6,7 +6,7 @@
 
 namespace HopEngine {
 
-	enum class BaptistState {other, attack, block};
+	enum class BaptistState {other, attack, block, stan};
 
 	enum class BaptistDirection { left, right };
 
@@ -16,12 +16,16 @@ namespace HopEngine {
 
 		void Update(float deltaTime) override;
 
+		BaptistDirection checkBaptistDir() const;
+		BaptistState checkBaptistState() const;
+
 		void callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event);
 
 	private:
 		spine::String skin = "standart_left_direction";
 
 		BaptistDirection dir = BaptistDirection::left;
+		BaptistState state = BaptistState::other;
 
 		EnemyAiComponent* ai;
 	};

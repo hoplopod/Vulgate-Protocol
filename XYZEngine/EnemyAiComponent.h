@@ -29,6 +29,8 @@ namespace HopEngine {
 		void SetSpeed(float newSpeed);
 		float GetSpeed() const;
 		AttackType getAttackType() const;
+		void setBlock(bool newBlock);
+		bool getBlock() const;
 		
 		float getDir();
 	private:
@@ -41,9 +43,11 @@ namespace HopEngine {
 		float speed = 0;
 
 		float optimalDistance = 580.0f;
-		float minSafeDistance = 350.0f;
+		float minSafeDistance = 275.0f;
 		float attackRange = 450.0f;
 		float closeRange = 350.0f;
+		
+		bool block = false;
 
 		AttackType at_type = AttackType::None;
 	};

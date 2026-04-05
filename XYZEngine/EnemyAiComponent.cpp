@@ -109,6 +109,16 @@ HopEngine::AttackType HopEngine::EnemyAiComponent::getAttackType() const
 	return at_type;
 }
 
+void HopEngine::EnemyAiComponent::setBlock(bool newBlock)
+{
+    block = newBlock;
+}
+
+bool HopEngine::EnemyAiComponent::getBlock() const
+{
+    return block;
+}
+
 float HopEngine::EnemyAiComponent::getDir()
 {
     if (purpose_transform->GetWorldPosition().x < enemy_transform->GetWorldPosition().x) return -1.0f;
