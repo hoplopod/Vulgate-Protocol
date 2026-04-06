@@ -28,6 +28,8 @@ namespace Roguelike
 		
 		auto input = gameObject->AddComponent<HopEngine::InputComponent>();
 
+		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
+
 		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
 		spine->setStartSkin("standart_right_direction");
@@ -36,6 +38,8 @@ namespace Roguelike
 		spine->AddAnimations(anim);
 
 		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "blade_hitbox_2", "blade_hitbox_2");
+		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "blade_hitbox_1", "blade_hitbox_1");
+		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "body hitbox", "body hitbox");
 
 		auto movement = gameObject->AddComponent<HopEngine::MovementComponent>();
 		movement->SetSpeed(400.f);

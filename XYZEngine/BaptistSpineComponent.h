@@ -3,6 +3,7 @@
 #include "SpineComponent.h"
 #include "TimerSystem.h"
 #include "EnemyAiComponent.h"
+#include "PVEComponent.h"
 
 namespace HopEngine {
 
@@ -28,6 +29,7 @@ namespace HopEngine {
 		BaptistState state = BaptistState::other;
 
 		EnemyAiComponent* ai;
+		PVEComponent* pve;
 	};
 
 }

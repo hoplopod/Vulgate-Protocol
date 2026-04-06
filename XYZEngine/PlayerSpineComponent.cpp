@@ -4,15 +4,16 @@
 HopEngine::PlayerSpineComponent::PlayerSpineComponent(GameObject* gameObject) : SpineComponent(gameObject)
 {
 	input = gameObject->GetComponent<InputComponent>();
+	pve = gameObject->GetComponent<PVEComponent>();
 }
 
 void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 {
 	skeletonTransform->setPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y);
 	drawable->update(deltaTime);
+	int num = 0;
 
 	if (TimerSystem::Instance()->checkTimer("player_action") != TimerState::In_Process) {
-		int num = 0;
 
 		//player kick
 		bool kick = input->GetPlayerKick();
@@ -39,6 +40,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 			TimerSystem::Instance()->addTimer("player_action", 0.6f);
 			state = PlayerState::block;
+			pve->setBlocked(false);
 			return;
 		}
 
@@ -91,6 +93,20 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			this->TryToSetAnimation_num(2);
 		}
 		else this->TryToSetAnimation_num(1);
+	}
+	if (TimerSystem::Instance()->checkTimer("player_stanned") != TimerState::In_Process) {
+
+		//player stan
+		bool takeDamage = pve->getTakedDamage();
+		if (takeDamage) {
+			num = 13;
+			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+			TimerSystem::Instance()->addTimer("player_stanned", 1.4f);
+			TimerSystem::Instance()->addTimer("player_action", 1.0f);
+			state = PlayerState::stan;
+			pve->setTakedDamage(false);
+			return;
+		}
 	}
 
 }

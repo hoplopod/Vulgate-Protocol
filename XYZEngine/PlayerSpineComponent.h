@@ -3,6 +3,7 @@
 #include "SpineComponent.h"
 #include "InputComponent.h"
 #include "TimerSystem.h"
+#include "PVEComponent.h"
 
 namespace HopEngine {
 
@@ -32,6 +33,7 @@ namespace HopEngine {
 		BladeState bladeState = BladeState::Open;
 
 		InputComponent* input;
+		PVEComponent* pve;
 	};
 
 }

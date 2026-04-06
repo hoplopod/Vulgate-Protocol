@@ -19,6 +19,8 @@ namespace Roguelike{
 		collider->AddToMapCollision();
 		collider->SetMapCollision({ -80, 0, 160, 10 });
 
+		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
+
 		auto ai = gameObject->AddComponent<HopEngine::EnemyAiComponent>();
 		ai->SetPurpose(HopEngine::GameWorld::Instance()->FindGameObject("player"));
 		ai->SetSpeed(250.f);
@@ -31,6 +33,8 @@ namespace Roguelike{
 		spine->AddAnimations(anim);
 
 		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "body hitbox", "body hitbox");
+		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "Sword right hitbox", "Sword right hitbox");
+		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "Sword left hitbox", "Sword left hitbox");
 
 	}
 
@@ -72,6 +76,8 @@ namespace Roguelike{
 
 		animatioms.emplace(17, std::make_pair(spine::String("Stabbing attack in the center left"), std::make_pair(2, false)));
 		animatioms.emplace(18, std::make_pair(spine::String("Stabbing attack in the center right"), std::make_pair(2, false)));
+
+		animatioms.emplace(19, std::make_pair(spine::String("Take damage"), std::make_pair(2, false)));
 
 		return animatioms;
 	}

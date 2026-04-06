@@ -34,6 +34,7 @@ namespace HopEngine
 		bool wasMousePressedRight = false;
 		bool wasSpacePressed = false;
 		bool wasMousePressedMiddle = false;
+
 	};
 
 	

@@ -211,6 +211,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PlayerSpineComponent.cpp" />
+    <ClCompile Include="PVEComponent.cpp" />
     <ClCompile Include="SpineComponent.cpp" />
     <ClCompile Include="SpineTriggersSystem.cpp" />
     <ClCompile Include="TimerSystem.cpp" />
