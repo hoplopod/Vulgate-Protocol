@@ -10,6 +10,16 @@ HopEngine::SpineTriggerSystem* HopEngine::SpineTriggerSystem::Instance()
 
 void HopEngine::SpineTriggerSystem::Update()
 {
+    auto makePair = [](GameObject* a, GameObject* b,
+        const std::string& hitboxA,
+        const std::string& hitboxB)
+        {
+            if (a < b)
+                return HitPair{ a, b, hitboxA, hitboxB };
+            else
+                return HitPair{ b, a, hitboxB, hitboxA };
+        };
+
     for (size_t i = 0; i < hitboxes.size(); ++i)
     {
         auto& rec_i = hitboxes[i];
@@ -26,19 +36,44 @@ void HopEngine::SpineTriggerSystem::Update()
 
             bool intersect = checkHitboxIntersectionSAT(verts_i, verts_j);
 
-            auto it = triggersEnteredPair.find(rec_i.owner);
-            bool alreadyActive = (it != triggersEnteredPair.end() && it->second == rec_j.owner);
+            std::string hitboxA = rec_i.hitboxName.buffer();
+            std::string hitboxB = rec_j.hitboxName.buffer();
 
-            if (intersect && !alreadyActive)
+            auto pair = makePair(
+                rec_i.owner, rec_j.owner,
+                hitboxA, hitboxB);
+
+            bool alreadyActive = activePairs.count(pair);
+
+            if (intersect)
             {
-                EventBattleSystem::Instance()->TriggerEvent(rec_i.owner, rec_i.hitboxName,
-                    rec_j.owner, rec_j.hitboxName);
-                triggersEnteredPair.emplace(rec_i.owner, rec_j.owner);
+                currentFramePairs.insert(pair);
+
+                if (!alreadyActive)
+                {
+                    EventBattleSystem::Instance()->TriggerEvent(
+                        rec_i.owner, hitboxA,
+                        rec_j.owner, hitboxB);
+                }
             }
-            else if (!intersect && alreadyActive)
-            {
-                triggersEnteredPair.erase(it);
-            }
+        }
+    }
+
+    for (auto it = activePairs.begin(); it != activePairs.end(); )
+    {
+        if (currentFramePairs.count(*it) == 0)
+        {
+            std::string hitboxA = it->hitboxA;
+            std::string hitboxB = it->hitboxB;
+            EventBattleSystem::Instance()->TriggerExitEvent(
+                it->a, hitboxA,
+                it->b, hitboxB);
+
+            it = activePairs.erase(it);
+        }
+        else
+        {
+            ++it;
         }
     }
 }

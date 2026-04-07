@@ -14,29 +14,16 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 	int num = 0;
 	float time = 0.f;
 
-	bool block = pve->getBlocked();
-	if (block) {
-		switch (dir)
-		{
-		case HopEngine::BaptistDirection::left: num = 7; break;
-		case HopEngine::BaptistDirection::right: num = 8; break;
-		}
-		spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-		newEntry->setMixDuration(0.1f);
-		TimerSystem::Instance()->addTimer("enemy_action", 1.6f);
-		state = BaptistState::block;
-		pve->setBlocked(false);
-		return;
-	}
+
 
 	if (TimerSystem::Instance()->checkTimer("enemy_action") != TimerState::In_Process) {
-		if (ai->getAttackType() != AttackType::None) {
+		if (ai->getAttackType() != AttackType::None && state != BaptistState::attack) {
 			switch (dir)
 			{
 			case BaptistDirection::left:
 				switch (ai->getAttackType())
 				{
-				case AttackType::Thrust_Center: num = 17; time = 1.0f; break;
+				case AttackType::Thrust_Center: num = 17; time = 0.8f; break;
 				case AttackType::Thrust_Down: num = 15; time = 1.0f; break;
 				case AttackType::Thrust_Up: num = 13; time = 1.0f; break;
 				case AttackType::Swing_Up: num = 9; time = 1.4f; break;
@@ -46,7 +33,7 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 			case BaptistDirection::right:
 				switch (ai->getAttackType())
 				{
-				case AttackType::Thrust_Center: num = 18; time = 1.0f; break;
+				case AttackType::Thrust_Center: num = 18; time = 0.8f; break;
 				case AttackType::Thrust_Down: num = 16; time = 1.0f; break;
 				case AttackType::Thrust_Up: num = 14; time = 1.0f; break;
 				case AttackType::Swing_Up: num = 10; time = 1.4f; break;
@@ -55,10 +42,24 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 				break;
 			}
 			spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			newEntry->setMixDuration(0.05f);
-			newEntry->setTimeScale(0.25f);
+			newEntry->setTimeScale(0.5f);
 			TimerSystem::Instance()->addTimer("enemy_action", time);
 			state = BaptistState::attack;
+			return;
+		}
+
+		bool block = pve->getBlocked();
+		if (block) {
+			switch (dir)
+			{
+			case HopEngine::BaptistDirection::left: num = 7; break;
+			case HopEngine::BaptistDirection::right: num = 8; break;
+			}
+			spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+			newEntry->setMixDuration(0.1f);
+			TimerSystem::Instance()->addTimer("enemy_action", 1.6f);
+			state = BaptistState::block;
+			pve->setBlocked(false);
 			return;
 		}
 

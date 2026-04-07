@@ -8,7 +8,8 @@ namespace HopEngine {
 	public:
 		static EventBattleSystem* Instance();
 
-		void TriggerEvent(GameObject* gameObject_1, spine::String hitbox_name_1, GameObject* gameObject_2, spine::String hitbox_name_2 );
+		void TriggerEvent(GameObject* gameObject_1, std::string& hitbox_name_1, GameObject* gameObject_2, std::string& hitbox_name_2 );
+		void TriggerExitEvent(GameObject* gameObject_1, std::string& hitbox_name_1, GameObject* gameObject_2, std::string& hitbox_name_2 );
 
 	private:
 		EventBattleSystem() {}

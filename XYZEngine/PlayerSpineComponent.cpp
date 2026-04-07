@@ -28,7 +28,9 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			state = PlayerState::attack;
 			return;
 		}
-
+		
+		if (state != PlayerState::block) pve->setBlocked(false);
+		else TimerSystem::Instance()->addTimer("player_stanned", 1.0f);
 		//player block
 		bool block = input->GetPlayerBlock();
 		if (block) {
@@ -37,10 +39,10 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			case HopEngine::PlayerDirection::left: num = 14; break;
 			case HopEngine::PlayerDirection::right: num = 15;  break;
 			}
-			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+			spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 			TimerSystem::Instance()->addTimer("player_action", 0.6f);
+			newEntry->setTimeScale(1.2f);
 			state = PlayerState::block;
-			pve->setBlocked(false);
 			return;
 		}
 
@@ -101,13 +103,13 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 		if (takeDamage) {
 			num = 13;
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			TimerSystem::Instance()->addTimer("player_stanned", 1.4f);
-			TimerSystem::Instance()->addTimer("player_action", 1.0f);
+			TimerSystem::Instance()->addTimer("player_stanned", 1.8f);
+			TimerSystem::Instance()->addTimer("player_action", 1.2f);
 			state = PlayerState::stan;
 			pve->setTakedDamage(false);
 			return;
 		}
-	}
+	} else pve->setTakedDamage(false);
 
 }
 

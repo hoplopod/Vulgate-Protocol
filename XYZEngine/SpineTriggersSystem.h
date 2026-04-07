@@ -1,6 +1,8 @@
 #pragma once
 
 #include <map>
+#include <set>
+#include <algorithm>
 #include <vector>
 #include "Vector.h"
 #include "SpineComponent.h"
@@ -41,7 +43,24 @@ namespace HopEngine
             spine::String boneName;
             spine::String hitboxName;
         };
+
+        struct HitPair
+        {
+            GameObject* a;
+            GameObject* b;
+            std::string hitboxA;
+            std::string hitboxB;
+
+            bool operator<(const HitPair& other) const
+            {
+                return std::tie(a, b, hitboxA, hitboxB) <
+                    std::tie(other.a, other.b, other.hitboxA, other.hitboxB);
+            }
+        };
+
         std::vector<HitboxRecord> hitboxes;
-        std::map<GameObject*, GameObject*> triggersEnteredPair;
+        std::set<HitPair> activePairs;
+        std::set<HitPair> currentFramePairs;
+
     };
 }
