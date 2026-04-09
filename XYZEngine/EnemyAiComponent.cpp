@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "EnemyAiComponent.h"
 #include "ColliderComponent.h"
+#include "TimerSystem.h"
 #include <random>
 
 HopEngine::EnemyAiComponent::EnemyAiComponent(GameObject* gameObject) : Component(gameObject)
@@ -29,6 +30,8 @@ void HopEngine::EnemyAiComponent::Update(float deltaTime)
             auto collision = gameObject->GetComponent<ColliderComponent>();
             if (collision->GetCollision()[0] == -1 * horizontalAxis)  horizontalAxis = 0;
         }
+        if (TimerSystem::Instance()->checkTimer("enemy_action") == TimerState::In_Process) horizontalAxis = 0;
+
         enemy_transform->MoveBy(speed * deltaTime * Vector2Df{ horizontalAxis, 0.f });
     }
 	

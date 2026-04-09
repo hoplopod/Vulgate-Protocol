@@ -77,7 +77,11 @@ namespace Roguelike{
 		animatioms.emplace(17, std::make_pair(spine::String("Stabbing attack in the center left"), std::make_pair(2, false)));
 		animatioms.emplace(18, std::make_pair(spine::String("Stabbing attack in the center right"), std::make_pair(2, false)));
 
-		animatioms.emplace(19, std::make_pair(spine::String("Take damage"), std::make_pair(2, false)));
+		animatioms.emplace(19, std::make_pair(spine::String("Take damage left"), std::make_pair(2, false)));
+		animatioms.emplace(20, std::make_pair(spine::String("Take damage right"), std::make_pair(2, false)));
+
+		animatioms.emplace(21, std::make_pair(spine::String("Stan left"), std::make_pair(2, false)));
+		animatioms.emplace(22, std::make_pair(spine::String("Stan right"), std::make_pair(2, false)));
 
 		return animatioms;
 	}

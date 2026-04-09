@@ -7,7 +7,7 @@
 
 namespace HopEngine {
 
-	enum class BaptistState {other, attack, block, stan};
+	enum class BaptistState {other, attack, block, stan, damages};
 
 	enum class BaptistDirection { left, right };
 
@@ -30,6 +30,10 @@ namespace HopEngine {
 
 		EnemyAiComponent* ai;
 		PVEComponent* pve;
+
+		bool blockConsumed = false;
+		bool damageConsumed = false;
+		bool stanConsumed = false;
 	};
 
 }

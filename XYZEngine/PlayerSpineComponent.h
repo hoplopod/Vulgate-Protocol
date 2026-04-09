@@ -7,7 +7,7 @@
 
 namespace HopEngine {
 
-	enum class PlayerState {other, attack, block, stan};
+	enum class PlayerState {other, attack, block, stan, other_attack};
 
 	enum class PlayerDirection {left, right};
 
@@ -34,6 +34,8 @@ namespace HopEngine {
 
 		InputComponent* input;
 		PVEComponent* pve;
+
+		bool stanConsumed = false;
 	};
 
 }

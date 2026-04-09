@@ -2,6 +2,8 @@
 #include "Component.h"
 #include "GameObject.h"
 
+#include "TimerSystem.h"
+
 namespace HopEngine {
 
 	class PVEComponent : public Component {
@@ -19,13 +21,16 @@ namespace HopEngine {
 		void Stamina_minus(int minus) { stamina -= minus; }
 		void Stamina_plus(int plus) { stamina += plus; }
 
-		void setBlocked(bool newBlocked) { wasBlocked = newBlocked; };
+		void setBlocked(bool newBlocked, float time) { wasBlocked = newBlocked; TimerSystem::Instance()->addTimer("block_" + gameObject->GetName(), time); 
+		};
 		bool getBlocked() const { return wasBlocked; };
 
-		void setTakedDamage(bool newTakedDamage) { wasTakedDamage = newTakedDamage; };
+		void setTakedDamage(bool newTakedDamage, float time) { wasTakedDamage = newTakedDamage; TimerSystem::Instance()->addTimer("takedamage_" + gameObject->GetName(), time);
+		};
 		bool getTakedDamage() const { return wasTakedDamage; };
 
-		void setStanned(bool newStanned) { wasStanned = newStanned; };
+		void setStanned(bool newStanned, float time) { wasStanned = newStanned; TimerSystem::Instance()->addTimer("stan_" + gameObject->GetName(), time);
+		};
 		bool getStanned() const { return wasStanned; };
 
 	private:

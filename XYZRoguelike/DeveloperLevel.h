@@ -27,8 +27,8 @@ namespace Roguelike
 		std::vector<std::unique_ptr<Floor>> floors;
 
 	private:
-		std::shared_ptr<Player> player;
-		std::shared_ptr<Baptist> baptist;
+		std::unique_ptr<Player> player;
+		std::unique_ptr<Baptist> baptist;
 		std::shared_ptr<CameraBox> cameraBox;
 		std::shared_ptr<Layers> layer_system;
 		std::unique_ptr<Music> music;

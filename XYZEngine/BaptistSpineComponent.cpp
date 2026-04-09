@@ -14,9 +14,53 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 	int num = 0;
 	float time = 0.f;
 
+	bool stan = pve->getStanned();
+	if (stan && !stanConsumed) {
+		stanConsumed = true;
+		switch (dir)
+		{
+		case BaptistDirection::left: num = 21; break;
+		case BaptistDirection::right: num = 22; break;
+		}
+		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+		TimerSystem::Instance()->addTimer("enemy_action", 1.8f);
+		state = BaptistState::stan;
+		return;
+	}
+	else if (!stan) stanConsumed = false;
 
+	bool block = pve->getBlocked();
+	if (block && !blockConsumed && state != BaptistState::stan) {
+		blockConsumed = true;
+		switch (dir)
+		{
+		case HopEngine::BaptistDirection::left: num = 7; break;
+		case HopEngine::BaptistDirection::right: num = 8; break;
+		}
+		spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+		TimerSystem::Instance()->addTimer("enemy_action", 1.4f);
+		state = BaptistState::block;
+		return;
+	}
+	else if (!block) blockConsumed = false;
 
-	if (TimerSystem::Instance()->checkTimer("enemy_action") != TimerState::In_Process) {
+	bool damage = pve->getTakedDamage();
+	if (damage && !damageConsumed && state == BaptistState::stan) {
+		damageConsumed = true;
+		switch (dir)
+		{
+		case BaptistDirection::left: num = 19; break;
+		case BaptistDirection::right: num = 20; break;
+		}
+		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+		TimerSystem::Instance()->addTimer("enemy_action", 2.3f);
+		state = BaptistState::damages;
+		return;
+	}
+	else if (!damage) damageConsumed = false;
+
+	if (TimerSystem::Instance()->checkTimer("enemy_action") != TimerState::In_Process && state != BaptistState::stan) {
+
 		if (ai->getAttackType() != AttackType::None && state != BaptistState::attack) {
 			switch (dir)
 			{
@@ -45,21 +89,6 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 			newEntry->setTimeScale(0.5f);
 			TimerSystem::Instance()->addTimer("enemy_action", time);
 			state = BaptistState::attack;
-			return;
-		}
-
-		bool block = pve->getBlocked();
-		if (block) {
-			switch (dir)
-			{
-			case HopEngine::BaptistDirection::left: num = 7; break;
-			case HopEngine::BaptistDirection::right: num = 8; break;
-			}
-			spine::TrackEntry* newEntry = drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			newEntry->setMixDuration(0.1f);
-			TimerSystem::Instance()->addTimer("enemy_action", 1.6f);
-			state = BaptistState::block;
-			pve->setBlocked(false);
 			return;
 		}
 
@@ -104,19 +133,9 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 			}
 		}
 		this->TryToSetAnimation_num(num);
-	}
-	if (TimerSystem::Instance()->checkTimer("enemy_stanned") != TimerState::In_Process) {
 
-		bool takeDamage = pve->getTakedDamage();
-		if (takeDamage) {
-			num = 19;
-			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			TimerSystem::Instance()->addTimer("enemy_stanned", 0.7f);
-			state = BaptistState::stan;
-			pve->setTakedDamage(false);
-			return;
-		}
 	}
+
 }
 
 HopEngine::BaptistDirection HopEngine::BaptistSpineComponent::checkBaptistDir() const

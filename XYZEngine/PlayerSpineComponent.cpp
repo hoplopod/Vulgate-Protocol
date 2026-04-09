@@ -13,6 +13,18 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 	drawable->update(deltaTime);
 	int num = 0;
 
+	//player stan
+	bool takeDamage = pve->getTakedDamage();
+	if (takeDamage && !stanConsumed) {
+		num = 13;
+		stanConsumed = true;
+		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+		TimerSystem::Instance()->addTimer("player_action", 1.0f);
+		state = PlayerState::stan;
+		return;
+	}
+	else if (!takeDamage) stanConsumed = false;
+
 	if (TimerSystem::Instance()->checkTimer("player_action") != TimerState::In_Process) {
 
 		//player kick
@@ -28,12 +40,10 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			state = PlayerState::attack;
 			return;
 		}
-		
-		if (state != PlayerState::block) pve->setBlocked(false);
-		else TimerSystem::Instance()->addTimer("player_stanned", 1.0f);
+
 		//player block
 		bool block = input->GetPlayerBlock();
-		if (block) {
+		if (block && state != PlayerState::block) {
 			switch (dir)
 			{
 			case HopEngine::PlayerDirection::left: num = 14; break;
@@ -55,8 +65,8 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			case HopEngine::PlayerDirection::right: num = 11;  break;
 			}
 			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			TimerSystem::Instance()->addTimer("player_action", 0.5f);
-			state = PlayerState::attack;
+			TimerSystem::Instance()->addTimer("player_action", 0.7f);
+			state = PlayerState::other_attack;
 			return;
 		}
 
@@ -96,20 +106,6 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 		}
 		else this->TryToSetAnimation_num(1);
 	}
-	if (TimerSystem::Instance()->checkTimer("player_stanned") != TimerState::In_Process) {
-
-		//player stan
-		bool takeDamage = pve->getTakedDamage();
-		if (takeDamage) {
-			num = 13;
-			drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-			TimerSystem::Instance()->addTimer("player_stanned", 1.8f);
-			TimerSystem::Instance()->addTimer("player_action", 1.2f);
-			state = PlayerState::stan;
-			pve->setTakedDamage(false);
-			return;
-		}
-	} else pve->setTakedDamage(false);
 
 }
 
