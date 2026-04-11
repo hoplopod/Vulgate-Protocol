@@ -1,13 +1,10 @@
 #pragma once
 #include "GameObject.h"
 #include "InputComponent.h"
+#include "TimerSystem.h"
 
 namespace HopEngine
 {
-	enum class ObjectStatus {
-		stable = 0,
-		shattered
-	};
 
 	class MovementComponent : public Component
 	{

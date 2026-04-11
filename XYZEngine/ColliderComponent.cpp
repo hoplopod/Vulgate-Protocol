@@ -33,23 +33,6 @@ namespace HopEngine
 		return CollisionIgnore;
 	}
 
-	void ColliderComponent::SubscribeHitBoxes(std::function<void(HitBox)> onHitBoxAction)
-	{
-		onHitBoxActions.push_back(onHitBoxAction);
-	}
-	void ColliderComponent::UnsubscribeHitBoxes(std::function<void(HitBox)> onHitBoxAction)
-	{
-		onHitBoxActions.erase(std::remove_if
-		(
-			onHitBoxActions.begin(),
-			onHitBoxActions.end(),
-			[&onHitBoxAction](const std::function<void(HitBox)>& action)
-			{
-				return action.target<void(HitBox)>() == onHitBoxAction.target<void(HitBox)>();
-			}
-		), onHitBoxActions.end());
-	}
-
 	void ColliderComponent::SubscribeTriggerEnter(std::function<void(Trigger)> onTriggerEnterAction)
 	{
 		onTriggerEnterActions.push_back(onTriggerEnterAction);
@@ -84,13 +67,6 @@ namespace HopEngine
 		), onTriggerExitActions.end());
 	}
 
-	void ColliderComponent::OnCollision(HitBox hitbox)
-	{
-		for (int i = 0; i < onHitBoxActions.size(); i++)
-		{
-			onHitBoxActions[i](hitbox);
-		}
-	}
 	void ColliderComponent::OnTriggerEnter(Trigger trigger)
 	{
 		for (int i = 0; i < onTriggerEnterActions.size(); i++)

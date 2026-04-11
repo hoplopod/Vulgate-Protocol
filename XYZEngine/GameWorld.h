@@ -2,6 +2,8 @@
 
 #include "GameObject.h"
 #include "TriggersSystem.h"
+#include "SpineTriggersSystem.h"
+#include "TimerSystem.h"
 
 namespace HopEngine
 {

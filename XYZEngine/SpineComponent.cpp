@@ -55,7 +55,7 @@ void HopEngine::SpineComponent::TryToSetAnimation_num(int num)
 	}
 }
 
-const spine::Skeleton* HopEngine::SpineComponent::getSkeletonTransform()
+spine::Skeleton* HopEngine::SpineComponent::getSkeletonTransform()
 {
 	return skeletonTransform;
 }

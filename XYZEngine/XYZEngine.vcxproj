@@ -149,16 +149,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioComponent.h" />
+    <ClInclude Include="BaptistSpineComponent.h" />
+    <ClInclude Include="EventBattleSystem.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="DebuggingSystem.h" />
-    <ClInclude Include="MapCollision.h" />
+    <ClInclude Include="EnemyAiComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameWorld.h" />
-    <ClInclude Include="HitBoxes.h" />
     <ClInclude Include="IDelayedAction.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="IObserver.h" />
@@ -168,7 +169,10 @@
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerSpineComponent.h" />
+    <ClInclude Include="PVEComponent.h" />
     <ClInclude Include="SpineComponent.h" />
+    <ClInclude Include="SpineTriggersSystem.h" />
+    <ClInclude Include="TimerSystem.h" />
     <ClInclude Include="TriggersSystem.h" />
     <ClInclude Include="randomizer.h" />
     <ClInclude Include="RenderSystem.h" />
@@ -186,15 +190,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioComponent.cpp" />
+    <ClCompile Include="BaptistSpineComponent.cpp" />
+    <ClCompile Include="EventBattleSystem.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="DebuggingSystem.cpp" />
-    <ClCompile Include="MapCollision.cpp" />
+    <ClCompile Include="EnemyAiComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameWorld.cpp" />
-    <ClCompile Include="HitBoxes.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="LayerRenderingComponent.cpp" />
     <ClCompile Include="Matrix2D.cpp" />
@@ -206,7 +211,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PlayerSpineComponent.cpp" />
+    <ClCompile Include="PVEComponent.cpp" />
     <ClCompile Include="SpineComponent.cpp" />
+    <ClCompile Include="SpineTriggersSystem.cpp" />
+    <ClCompile Include="TimerSystem.cpp" />
     <ClCompile Include="TriggersSystem.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="ResourceSystem.cpp" />

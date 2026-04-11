@@ -160,6 +160,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Baptist.cpp" />
+    <ClCompile Include="CameraBox.cpp" />
     <ClCompile Include="DeveloperLevel.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="GameLevel.cpp" />
@@ -171,6 +173,8 @@
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Baptist.h" />
+    <ClInclude Include="CameraBox.h" />
     <ClInclude Include="DeveloperLevel.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="GameLayers.h" />

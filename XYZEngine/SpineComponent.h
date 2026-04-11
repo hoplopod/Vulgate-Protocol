@@ -14,14 +14,14 @@ namespace HopEngine {
 		void Render() override;
 		void callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event) override;
 
-		virtual void TryToSetAnimation_name(spine::String);
-		virtual void TryToSetAnimation_num(int num);
+		void TryToSetAnimation_name(spine::String);
+		void TryToSetAnimation_num(int num);
 
 		void SetData(spine::SkeletonData* data);
 		void AddAnimations(std::map<int, std::pair < spine::String, std::pair<int, bool >> >* new_animations);
 		void setStartSkin(std::string skin);
 
-		const spine::Skeleton* getSkeletonTransform();
+		spine::Skeleton* getSkeletonTransform();
 
 	protected:
 		TransformComponent* transform;

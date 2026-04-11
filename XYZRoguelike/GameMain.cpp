@@ -20,6 +20,7 @@ int main()
 	
 	//Spine
 	ResourceSystem::Instance()->LoadSpineFiles("player", "Resources/SpineData/Player/Player.atlas", "Resources/SpineData/Player/Player.json");
+	ResourceSystem::Instance()->LoadSpineFiles("baptist", "Resources/SpineData/Baptist/Baptist.atlas", "Resources/SpineData/Baptist/Baptist.json");
 
 	//Debugging resources
 	//ResourceSystem::Instance()->LoadSound("music", "Resources/Sounds/AppleEat.wav");
