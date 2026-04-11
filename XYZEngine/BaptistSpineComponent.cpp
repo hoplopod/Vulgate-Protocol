@@ -15,7 +15,7 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 	float time = 0.f;
 
 	bool stan = pve->getStanned();
-	if (stan && !stanConsumed) {
+	if (stan && !stanConsumed && state != BaptistState::stan) {
 		stanConsumed = true;
 		switch (dir)
 		{
