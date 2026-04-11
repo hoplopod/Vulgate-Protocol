@@ -16,6 +16,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 	//player stan
 	bool takeDamage = pve->getTakedDamage();
 	if (takeDamage && !stanConsumed) {
+		pve->HP_minus(1);
 		num = 13;
 		stanConsumed = true;
 		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
