@@ -46,6 +46,7 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 
 	bool damage = pve->getTakedDamage();
 	if (damage && !damageConsumed && state == BaptistState::stan) {
+		pve->HP_minus(1);
 		damageConsumed = true;
 		switch (dir)
 		{
@@ -60,6 +61,11 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 	else if (!damage) damageConsumed = false;
 
 	if (TimerSystem::Instance()->checkTimer("enemy_action") != TimerState::In_Process && state != BaptistState::stan) {
+		
+		if (state == BaptistState::attack)
+		{
+			ai->ResetAttack();
+		}
 
 		if (ai->getAttackType() != AttackType::None && state != BaptistState::attack) {
 			switch (dir)
@@ -68,8 +74,8 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 				switch (ai->getAttackType())
 				{
 				case AttackType::Thrust_Center: num = 17; time = 0.8f; break;
-				case AttackType::Thrust_Down: num = 15; time = 1.0f; break;
-				case AttackType::Thrust_Up: num = 13; time = 1.0f; break;
+				case AttackType::Thrust_Down: num = 15; time = 0.8f; break;
+				case AttackType::Thrust_Up: num = 13; time = 0.9f; break;
 				case AttackType::Swing_Up: num = 9; time = 1.4f; break;
 				case AttackType::Swing_Down: num = 11; time = 1.4f; break;
 				}
@@ -78,8 +84,8 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 				switch (ai->getAttackType())
 				{
 				case AttackType::Thrust_Center: num = 18; time = 0.8f; break;
-				case AttackType::Thrust_Down: num = 16; time = 1.0f; break;
-				case AttackType::Thrust_Up: num = 14; time = 1.0f; break;
+				case AttackType::Thrust_Down: num = 16; time = 0.8f; break;
+				case AttackType::Thrust_Up: num = 14; time = 0.9f; break;
 				case AttackType::Swing_Up: num = 10; time = 1.4f; break;
 				case AttackType::Swing_Down: num = 12; time = 1.4f; break;
 				}
@@ -91,6 +97,8 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 			state = BaptistState::attack;
 			return;
 		}
+
+		
 
 		//move
 		state = BaptistState::other;

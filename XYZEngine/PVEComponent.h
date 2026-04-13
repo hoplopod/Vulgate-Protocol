@@ -14,8 +14,11 @@ namespace HopEngine {
 		void Render() override;
 
 		void setHP(int newHp) { hp = newHp; }
+		void setMaxHP(int newHp) { max_hp = newHp; }
 		void HP_minus(int minus) { hp -= minus; }
 		void HP_plus(int plus) { hp += plus; }
+		int getMaxHp() const { return max_hp; }
+		int getHp() const { return hp; }
 
 		void setStamina(int newStamina) { stamina = newStamina; }
 		void Stamina_minus(int minus) { stamina -= minus; }
@@ -25,7 +28,7 @@ namespace HopEngine {
 		};
 		bool getBlocked() const { return wasBlocked; };
 
-		void setTakedDamage(bool newTakedDamage, float time) { wasTakedDamage = newTakedDamage; TimerSystem::Instance()->addTimer("takedamage_" + gameObject->GetName(), time);
+		void setTakedDamage(bool newTakedDamage, float time) {  wasTakedDamage = newTakedDamage; TimerSystem::Instance()->addTimer("takedamage_" + gameObject->GetName(), time);
 		};
 		bool getTakedDamage() const { return wasTakedDamage; };
 
@@ -36,11 +39,13 @@ namespace HopEngine {
 	private:
 		int hp = 0;
 		int stamina = 0;
+		int max_hp = 0;
 
 		//flags
 		bool wasBlocked = false;
 		bool wasTakedDamage = false;
 		bool wasStanned = false;
+		bool death = false;
 	};
 
 }

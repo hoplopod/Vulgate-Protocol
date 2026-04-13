@@ -186,6 +186,7 @@
     <ClInclude Include="SpriteRendererComponent.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="Trigger.h" />
+    <ClInclude Include="UiComponent.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +227,7 @@
     <ClCompile Include="SpriteRendererComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="Trigger.cpp" />
+    <ClCompile Include="UiComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Spine\build\spine-sfml-cpp.vcxproj">

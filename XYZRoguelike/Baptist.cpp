@@ -2,6 +2,7 @@
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
 #include <SpineTriggersSystem.h>
+#include <UiComponent.h>
 
 namespace Roguelike{
 
@@ -20,6 +21,8 @@ namespace Roguelike{
 		collider->SetMapCollision({ -80, 0, 160, 10 });
 
 		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
+		pve->setMaxHP(10);
+		pve->setHP(10);
 
 		auto ai = gameObject->AddComponent<HopEngine::EnemyAiComponent>();
 		ai->SetPurpose(HopEngine::GameWorld::Instance()->FindGameObject("player"));
@@ -36,6 +39,8 @@ namespace Roguelike{
 		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "Sword right hitbox", "Sword right hitbox");
 		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "Sword left hitbox", "Sword left hitbox");
 
+		auto ui = gameObject->AddComponent<HopEngine::HealthBarComponent>();
+		ui->getBar().setSize({ 200, 10 });
 	}
 
 	HopEngine::GameObject* Baptist::GetGameObject()

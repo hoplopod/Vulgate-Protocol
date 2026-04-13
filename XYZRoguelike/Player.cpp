@@ -29,6 +29,8 @@ namespace Roguelike
 		auto input = gameObject->AddComponent<HopEngine::InputComponent>();
 
 		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
+		pve->setMaxHP(20);
+		pve->setHP(20);
 
 		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
@@ -44,6 +46,8 @@ namespace Roguelike
 		auto movement = gameObject->AddComponent<HopEngine::MovementComponent>();
 		movement->SetSpeed(400.f);
 
+		auto ui = gameObject->AddComponent<HopEngine::HealthBarComponent>();
+		ui->getBar().setSize({ 200, 10 });
 	}
 
 	HopEngine::GameObject* Player::GetGameObject()
