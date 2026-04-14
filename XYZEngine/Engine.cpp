@@ -45,6 +45,8 @@ namespace HopEngine
 				break;
 			}
 
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) return;
+
 			RenderSystem::Instance()->GetMainWindow().clear();
 
 			GameWorld::Instance()->Update(deltaTime);

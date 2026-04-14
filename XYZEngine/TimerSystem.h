@@ -19,9 +19,12 @@ namespace HopEngine {
 		void addTimer(std::string name, float time);
 		const TimerState checkTimer(std::string name);
 
+		friend class GameWorld;
 	private:
 		TimerSystem() {}
 		~TimerSystem() {}
+
+		void Reset();
 
 		std::map<std::string, float> allTimers;
 		

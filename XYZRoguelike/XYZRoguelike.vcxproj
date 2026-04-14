@@ -169,11 +169,13 @@
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Baptist.h" />
+    <ClInclude Include="Buttons.h" />
     <ClInclude Include="CameraBox.h" />
     <ClInclude Include="DeveloperLevel.h" />
     <ClInclude Include="Floor.h" />
@@ -183,6 +185,7 @@
     <ClInclude Include="Music.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="randomizer.h" />
+    <ClInclude Include="StateManager.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>

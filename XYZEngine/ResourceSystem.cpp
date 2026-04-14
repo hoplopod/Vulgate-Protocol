@@ -171,6 +171,21 @@ namespace HopEngine
 		delete deletingData;
 	}
 
+	void ResourceSystem::DeleteAllSkeletonData()
+	{
+		std::vector<std::string> keysToDelete;
+
+		for (const auto& skeletonData : skeleton_datas)
+		{
+			keysToDelete.push_back(skeletonData.first);
+		}
+
+		for (const auto& key : keysToDelete)
+		{
+			DeleteSkeletonData(key);
+		}
+	}
+
 	spine::SkeletonData* ResourceSystem::GetSkeletonData(std::string name)
 	{
 		return skeleton_datas.find(name)->second;
@@ -181,6 +196,7 @@ namespace HopEngine
 		DeleteAllTextures();
 		DeleteAllTextureMaps();
 		DeleteAllSounds();
+		DeleteAllSkeletonData();
 	}
 
 	void ResourceSystem::DeleteAllTextures()

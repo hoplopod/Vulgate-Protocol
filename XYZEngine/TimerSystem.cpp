@@ -31,6 +31,11 @@ namespace HopEngine {
 		}
 	}
 
+	void TimerSystem::Reset()
+	{
+		allTimers.clear();
+	}
+
 	void TimerSystem::deleteTimer(std::string name)
 	{
 		allTimers.erase(name);

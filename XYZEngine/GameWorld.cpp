@@ -69,6 +69,9 @@ namespace HopEngine
 	}
 	void GameWorld::Clear()
 	{
+		TimerSystem::Instance()->Reset();
+		SpineTriggerSystem::Instance()->Reset();
+
 		for (int i = gameObjects.size() - 1; i >= 0; i--)
 		{
 			if (gameObjects[i] == nullptr)

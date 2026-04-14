@@ -2,10 +2,8 @@
 // Authored by Aleksandr Rybalka (polterageist@gmail.com)
 
 #include <SFML/Graphics.hpp>
-#include "Player.h"
-#include "Engine.h"
+#include "StateManager.h"
 #include "ResourceSystem.h"
-#include "DeveloperLevel.h"
 #include "Matrix2D.h"
 
 using namespace Roguelike;
@@ -22,15 +20,9 @@ int main()
 	ResourceSystem::Instance()->LoadSpineFiles("player", "Resources/SpineData/Player/Player.atlas", "Resources/SpineData/Player/Player.json");
 	ResourceSystem::Instance()->LoadSpineFiles("baptist", "Resources/SpineData/Baptist/Baptist.atlas", "Resources/SpineData/Baptist/Baptist.json");
 
-	//Debugging resources
-	//ResourceSystem::Instance()->LoadSound("music", "Resources/Sounds/AppleEat.wav");
-	ResourceSystem::Instance()->LoadTexture("bone", "Resources/TextureMaps/Bone.png", false);
-
 	//Start
-	auto developerLevel = std::make_shared<DeveloperLevel>();
-	developerLevel->Start();
 
-	HopEngine::Engine::Instance()->Run();
+	GameManager::Instance()->Run();
 
 	return 0;
 }

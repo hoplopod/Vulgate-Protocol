@@ -31,6 +31,7 @@ namespace HopEngine
 		void LoadSpineFiles(const std::string& name, spine::String path_atlas, spine::String path_json);
 		spine::SkeletonData* GetSkeletonData(std::string name);
 		void DeleteSkeletonData(const std::string name);
+		void DeleteAllSkeletonData();
 
 		void Clear();
 
