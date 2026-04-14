@@ -49,6 +49,7 @@ void HopEngine::HealthBarComponent::Update(float deltaTime)
 
 void HopEngine::HealthBarComponent::Render()
 {
+    if (pve->getDeath()) return;
 	auto& window = RenderSystem::Instance()->GetMainWindow();
 	float percent = (float)pve->getHp() / pve->getMaxHp();
 	shader.setUniform("health", percent);

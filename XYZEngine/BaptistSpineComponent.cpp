@@ -14,6 +14,16 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 	int num = 0;
 	float time = 0.f;
 
+	if (pve->getDeath() && state != BaptistState::dead)
+	{
+		this->TryToSetAnimation_num(-3);
+		state = BaptistState::dead;
+		return;
+	}
+
+	if (state == BaptistState::dead)
+		return;
+
 	bool stan = pve->getStanned();
 	if (stan && !stanConsumed && state != BaptistState::stan) {
 		stanConsumed = true;

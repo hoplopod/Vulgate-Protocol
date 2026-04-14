@@ -19,6 +19,7 @@ namespace HopEngine {
 		void HP_plus(int plus) { hp += plus; }
 		int getMaxHp() const { return max_hp; }
 		int getHp() const { return hp; }
+		bool getDeath() const { return isDead; }
 
 		void setStamina(int newStamina) { stamina = newStamina; }
 		void Stamina_minus(int minus) { stamina -= minus; }
@@ -45,7 +46,7 @@ namespace HopEngine {
 		bool wasBlocked = false;
 		bool wasTakedDamage = false;
 		bool wasStanned = false;
-		bool death = false;
+		bool isDead = false;
 	};
 
 }

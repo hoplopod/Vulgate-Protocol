@@ -34,6 +34,7 @@ namespace HopEngine {
 		float getDir();
 	private:
 		TransformComponent* enemy_transform;
+		PVEComponent* pve;
 
 		TransformComponent* purpose_transform;
 		PlayerSpineComponent* pl_spine;

@@ -22,7 +22,7 @@ namespace Roguelike{
 
 		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
 		pve->setMaxHP(10);
-		pve->setHP(10);
+		pve->setHP(1);
 
 		auto ai = gameObject->AddComponent<HopEngine::EnemyAiComponent>();
 		ai->SetPurpose(HopEngine::GameWorld::Instance()->FindGameObject("player"));
@@ -51,6 +51,8 @@ namespace Roguelike{
 	std::map<int, std::pair<spine::String, std::pair<int, bool>>> Baptist::createAnimations()
 	{
 		std::map<int, std::pair<spine::String, std::pair<int, bool>>> animatioms;
+
+		animatioms.emplace(-3, std::make_pair(spine::String("Death"), std::make_pair(3, false)));
 
 		animatioms.emplace(-1, std::make_pair(spine::String("Stable left"), std::make_pair(1, true)));
 		animatioms.emplace(-2, std::make_pair(spine::String("Stable right"), std::make_pair(1, true)));

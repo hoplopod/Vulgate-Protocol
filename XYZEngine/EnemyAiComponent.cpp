@@ -7,13 +7,15 @@
 HopEngine::EnemyAiComponent::EnemyAiComponent(GameObject* gameObject) : Component(gameObject)
 {
 	enemy_transform = gameObject->GetComponent<TransformComponent>();
+    pve = gameObject->GetComponent<PVEComponent>();
 }
 
 void HopEngine::EnemyAiComponent::Update(float deltaTime)
 {
-    float dist = abs(purpose_transform->GetWorldPosition().x - enemy_transform->GetWorldPosition().x);
-
     horizontalAxis = 0.f;
+    if (pve->getDeath()) return;
+
+    float dist = abs(purpose_transform->GetWorldPosition().x - enemy_transform->GetWorldPosition().x);
 
     if (at_type == AttackType::None && dist < attackRange + 0.5f && dist > minSafeDistance) at_type = ChooseAttack();
     else {
