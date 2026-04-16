@@ -32,6 +32,8 @@ namespace HopEngine
 		TriggerSystem() {}
 		~TriggerSystem() {}
 
+		void Reset();
+
 		TriggerSystem(TriggerSystem const&) = delete;
 		TriggerSystem& operator= (TriggerSystem const&) = delete;
 

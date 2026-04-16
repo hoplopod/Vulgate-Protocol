@@ -3,11 +3,29 @@
 
 namespace Roguelike {
 
-    class Menu_Button {
-    protected:
+    class Menu_Buttons {
+    public:
+        sf::RectangleShape button_shape;
+
         virtual void Action() = 0;
 
-        sf::RectangleShape button_shape;
+        bool wasPressed = false;
+        bool isPressedInside = false;
+
+    };
+
+    class Start_Button : public Menu_Buttons {
+    public:
+        Start_Button();
+
+        void Action() override;
+    };
+
+    class Exit_Button : public Menu_Buttons {
+    public:
+        Exit_Button();
+
+        void Action() override;
     };
 
 }

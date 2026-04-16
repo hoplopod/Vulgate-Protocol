@@ -20,6 +20,13 @@ int main()
 	ResourceSystem::Instance()->LoadSpineFiles("player", "Resources/SpineData/Player/Player.atlas", "Resources/SpineData/Player/Player.json");
 	ResourceSystem::Instance()->LoadSpineFiles("baptist", "Resources/SpineData/Baptist/Baptist.atlas", "Resources/SpineData/Baptist/Baptist.json");
 
+	//Logo
+	ResourceSystem::Instance()->LoadTexture("logo", "Resources/Textures/logo vulgata.png");
+
+	//Buttons
+	ResourceSystem::Instance()->LoadTexture("start_button", "Resources/Textures/Buttons/start button.png");
+	ResourceSystem::Instance()->LoadTexture("exit_button", "Resources/Textures/Buttons/exit button.png");
+
 	//Start
 
 	GameManager::Instance()->Run();
