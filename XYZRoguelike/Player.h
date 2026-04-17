@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "Vector.h"
 #include <PlayerSpineComponent.h>
+#include "UiComponent.h"
 
 namespace Roguelike
 {

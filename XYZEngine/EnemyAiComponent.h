@@ -29,10 +29,12 @@ namespace HopEngine {
 		void SetSpeed(float newSpeed);
 		float GetSpeed() const;
 		AttackType getAttackType() const;
-		
+		void ResetAttack();
+
 		float getDir();
 	private:
 		TransformComponent* enemy_transform;
+		PVEComponent* pve;
 
 		TransformComponent* purpose_transform;
 		PlayerSpineComponent* pl_spine;

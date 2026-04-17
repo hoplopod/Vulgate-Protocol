@@ -2,6 +2,7 @@
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
 #include <SpineTriggersSystem.h>
+#include <UiComponent.h>
 
 namespace Roguelike{
 
@@ -20,6 +21,18 @@ namespace Roguelike{
 		collider->SetMapCollision({ -80, 0, 160, 10 });
 
 		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
+		pve->setMaxHP(10);
+		pve->setHP(10);
+		pve->onDeath = [this](HopEngine::PVEComponent*)
+			{
+				HopEngine::TimerSystem::Instance()->addTimer("end_game", 4.f);
+				HopEngine::GameWorld::Instance()->set_world_end(HopEngine::world_end::player_win);
+				HopEngine::GameWorld::Instance()->RequestGameOver();
+			};
+		pve->onTakeDamageSound = [this]()
+			{
+				HopEngine::SoundSystem::Instance()->Play_Sound("Sound: player hit");
+			};
 
 		auto ai = gameObject->AddComponent<HopEngine::EnemyAiComponent>();
 		ai->SetPurpose(HopEngine::GameWorld::Instance()->FindGameObject("player"));
@@ -36,6 +49,8 @@ namespace Roguelike{
 		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "Sword right hitbox", "Sword right hitbox");
 		HopEngine::SpineTriggerSystem::Instance()->Subscribe_HitBoxes(gameObject, spine, "Sword left hitbox", "Sword left hitbox");
 
+		auto ui = gameObject->AddComponent<HopEngine::HealthBarComponent>();
+		ui->getBar().setSize({ 200, 10 });
 	}
 
 	HopEngine::GameObject* Baptist::GetGameObject()
@@ -46,6 +61,8 @@ namespace Roguelike{
 	std::map<int, std::pair<spine::String, std::pair<int, bool>>> Baptist::createAnimations()
 	{
 		std::map<int, std::pair<spine::String, std::pair<int, bool>>> animatioms;
+
+		animatioms.emplace(-3, std::make_pair(spine::String("Death"), std::make_pair(3, false)));
 
 		animatioms.emplace(-1, std::make_pair(spine::String("Stable left"), std::make_pair(1, true)));
 		animatioms.emplace(-2, std::make_pair(spine::String("Stable right"), std::make_pair(1, true)));

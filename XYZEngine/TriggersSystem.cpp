@@ -237,4 +237,10 @@ namespace HopEngine
 	{
 		hitbox_of_camera = collider;
 	}
+	
+	void TriggerSystem::Reset() {
+		colliders_for_a_map.clear();
+		hitboxes.clear();
+		triggersEnteredPair.clear();
+	}
 }

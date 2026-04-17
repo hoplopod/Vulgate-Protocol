@@ -2,10 +2,8 @@
 // Authored by Aleksandr Rybalka (polterageist@gmail.com)
 
 #include <SFML/Graphics.hpp>
-#include "Player.h"
-#include "Engine.h"
+#include "StateManager.h"
 #include "ResourceSystem.h"
-#include "DeveloperLevel.h"
 #include "Matrix2D.h"
 
 using namespace Roguelike;
@@ -14,23 +12,33 @@ int main()
 {
 	HopEngine::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1280, 720), "Roguelike"));
 	
-	ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/ball.png");
-	ResourceSystem::Instance()->LoadTextureMap("level_floors", "Resources/TextureMaps/Floor.png", { 16, 16 }, 49, false);
-	ResourceSystem::Instance()->LoadTextureMap("level_walls", "Resources/TextureMaps/Wall.png", { 16, 16 }, 48, false);
+	//Map
+	ResourceSystem::Instance()->LoadTextureMap("level_floors", "Resources/TextureMaps/floor vulgata.png", { 32, 32 }, 5, false);
+	ResourceSystem::Instance()->LoadTextureMap("level_walls", "Resources/TextureMaps/Floor.png", { 16, 16 }, 49, false);
 	
 	//Spine
 	ResourceSystem::Instance()->LoadSpineFiles("player", "Resources/SpineData/Player/Player.atlas", "Resources/SpineData/Player/Player.json");
 	ResourceSystem::Instance()->LoadSpineFiles("baptist", "Resources/SpineData/Baptist/Baptist.atlas", "Resources/SpineData/Baptist/Baptist.json");
 
-	//Debugging resources
-	//ResourceSystem::Instance()->LoadSound("music", "Resources/Sounds/AppleEat.wav");
-	ResourceSystem::Instance()->LoadTexture("bone", "Resources/TextureMaps/Bone.png", false);
+	//Logo
+	ResourceSystem::Instance()->LoadTexture("logo", "Resources/Textures/logo vulgata.png");
+
+	//Buttons
+	ResourceSystem::Instance()->LoadTexture("start_button", "Resources/Textures/Buttons/start button.png");
+	ResourceSystem::Instance()->LoadTexture("exit_button", "Resources/Textures/Buttons/exit button.png");
+
+	//Audio
+	ResourceSystem::Instance()->LoadSound("fight", "Resources/Audio/fight.wav");
+	ResourceSystem::Instance()->LoadSound("enemy hit", "Resources/Audio/enemy hit.wav");
+	ResourceSystem::Instance()->LoadSound("player hit", "Resources/Audio/player hit.wav");
+	ResourceSystem::Instance()->LoadSound("sword clash", "Resources/Audio/sword clash.wav");
+	ResourceSystem::Instance()->LoadSound("block", "Resources/Audio/block.wav");
+	ResourceSystem::Instance()->LoadSound("death", "Resources/Audio/death.wav");
+	ResourceSystem::Instance()->LoadSound("win", "Resources/Audio/win.wav");
 
 	//Start
-	auto developerLevel = std::make_shared<DeveloperLevel>();
-	developerLevel->Start();
 
-	HopEngine::Engine::Instance()->Run();
+	GameManager::Instance()->Run();
 
 	return 0;
 }

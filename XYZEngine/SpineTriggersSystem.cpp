@@ -188,6 +188,12 @@ sf::Vector2f HopEngine::SpineTriggerSystem::getNormal(
     return sf::Vector2f(-edge.y, edge.x);
 }
 
+void HopEngine::SpineTriggerSystem::Reset() {
+    hitboxes.clear();
+    activePairs.clear();
+    currentFramePairs.clear();
+}
+
 bool HopEngine::SpineTriggerSystem::checkHitboxIntersectionSAT(
     const std::vector<sf::Vector2f>& a,
     const std::vector<sf::Vector2f>& b)

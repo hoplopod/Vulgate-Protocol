@@ -3,6 +3,7 @@
 #include <iostream>
 #include "GameWorld.h"
 #include "RenderSystem.h"
+#include "SoundSystem.h"
 
 namespace HopEngine
 {
@@ -27,6 +28,9 @@ namespace HopEngine
 
 		LOG_INFO("Program was started!");
 		
+		SoundSystem::Instance()->Play_Sound("Music: fight");
+		HopEngine::GameWorld::Instance()->set_world_end(HopEngine::world_end::nothing);
+
 		while (RenderSystem::Instance()->GetMainWindow().isOpen())
 		{
 			sf::Time dt = gameClock.restart();
@@ -44,6 +48,12 @@ namespace HopEngine
 			{
 				break;
 			}
+
+			if (GameWorld::Instance()->checkGameOverRequested() && TimerSystem::Instance()->checkTimer("end_game") != TimerState::In_Process) {
+				break;
+			}
+
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) break;
 
 			RenderSystem::Instance()->GetMainWindow().clear();
 

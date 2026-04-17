@@ -69,6 +69,11 @@ namespace HopEngine
 	}
 	void GameWorld::Clear()
 	{
+		TimerSystem::Instance()->Reset();
+		SpineTriggerSystem::Instance()->Reset();
+		TriggerSystem::Instance()->Reset();
+		SoundSystem::Instance()->Reset();
+
 		for (int i = gameObjects.size() - 1; i >= 0; i--)
 		{
 			if (gameObjects[i] == nullptr)
@@ -82,6 +87,7 @@ namespace HopEngine
 			}
 		}
 
+		gameOverRequested = false;
 		fixedCounter = 0.f;
 	}
 

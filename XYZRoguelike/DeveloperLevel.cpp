@@ -1,6 +1,4 @@
 #include "DeveloperLevel.h"
-#include "Wall.h"
-#include "MazeGenerator.h"
 
 using namespace HopEngine;
 
@@ -17,13 +15,29 @@ namespace Roguelike
 		for (int i = 0; i < gameLevel.map_interior.size(); ++i) {
 			switch (gameLevel.map_interior[i].second)
 			{
-			case MapInterior::wall:
-				walls.push_back(std::make_unique<Wall>(std::forward<HopEngine::Vector2Df>(
-					{ gameLevel.map_interior[i].first.x * 128.f, gameLevel.map_interior[i].first.y * 128.f }), std::forward<int>(10)));
+			case MapInterior::edge_left:
+				floors.push_back(std::make_unique<Floor>(std::forward<HopEngine::Vector2Df>(
+					{ gameLevel.map_interior[i].first.x * 128.f, gameLevel.map_interior[i].first.y * 128.f }), std::forward<int>(3)));
 				break;
-			case MapInterior::floor:
+			case MapInterior::ledge_left:
+				floors.push_back(std::make_unique<Floor>(std::forward<HopEngine::Vector2Df>(
+					{ gameLevel.map_interior[i].first.x * 128.f, gameLevel.map_interior[i].first.y * 128.f }), std::forward<int>(4)));
+				break;
+			case MapInterior::block:
 				floors.push_back(std::make_unique<Floor>(std::forward<HopEngine::Vector2Df>(
 					{ gameLevel.map_interior[i].first.x * 128.f, gameLevel.map_interior[i].first.y * 128.f }), std::forward<int>(0)));
+				break;
+			case MapInterior::ledge_right:
+				floors.push_back(std::make_unique<Floor>(std::forward<HopEngine::Vector2Df>(
+					{ gameLevel.map_interior[i].first.x * 128.f, gameLevel.map_interior[i].first.y * 128.f }), std::forward<int>(1)));
+				break;
+			case MapInterior::edge_right:
+				floors.push_back(std::make_unique<Floor>(std::forward<HopEngine::Vector2Df>(
+					{ gameLevel.map_interior[i].first.x * 128.f, gameLevel.map_interior[i].first.y * 128.f }), std::forward<int>(2)));
+				break;
+			case MapInterior::wall:
+				walls.push_back(std::make_unique<Wall>(std::forward<HopEngine::Vector2Df>(
+					{ gameLevel.map_interior[i].first.x * 128.f, gameLevel.map_interior[i].first.y * 128.f }), std::forward<int>(48)));
 				break;
 			case MapInterior::nothing:
 				break;
@@ -33,10 +47,17 @@ namespace Roguelike
 		}
 
 		
-		cameraBox = std::make_unique<CameraBox>(std::forward<HopEngine::Vector2Df>({ 800, 64 }));
-		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ 700, 64}));
-		baptist = std::make_unique<Baptist>(std::forward<HopEngine::Vector2Df>({ 1200, 64 }));
-		//music = std::make_unique<Music>("music");
+		cameraBox = std::make_unique<CameraBox>(std::forward<HopEngine::Vector2Df>({ 1500, 64 }));
+		player = std::make_unique<Player>(std::forward<HopEngine::Vector2Df>({ 1300, 64}));
+		baptist = std::make_unique<Baptist>(std::forward<HopEngine::Vector2Df>({ 1800, 64 }));
+		
+		music.push_back(std::make_unique<Music>("fight"));
+		sound.push_back(std::make_unique<Sound>("player hit"));
+		sound.push_back(std::make_unique<Sound>("enemy hit"));
+		sound.push_back(std::make_unique<Sound>("sword clash"));
+		sound.push_back(std::make_unique<Sound>("block"));
+		sound.push_back(std::make_unique<Sound>("death"));
+		sound.push_back(std::make_unique<Sound>("win"));
 	}
 	void DeveloperLevel::Restart()
 	{

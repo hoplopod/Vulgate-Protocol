@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PlayerSpineComponent.h"
+#include "SoundSystem.h"
 
 HopEngine::PlayerSpineComponent::PlayerSpineComponent(GameObject* gameObject) : SpineComponent(gameObject)
 {
@@ -16,6 +17,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 	//player stan
 	bool takeDamage = pve->getTakedDamage();
 	if (takeDamage && !stanConsumed) {
+		pve->HP_minus(1);
 		num = 13;
 		stanConsumed = true;
 		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
@@ -55,6 +57,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			state = PlayerState::block;
 			return;
 		}
+		else if (!block) blockConsumed = false;
 
 		//player stab
 		bool stab = input->GetPlayerStab();

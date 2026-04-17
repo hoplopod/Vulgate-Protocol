@@ -1,8 +1,9 @@
 #pragma once
 #include "Component.h"
 #include "GameObject.h"
-
+#include <functional>
 #include "TimerSystem.h"
+#include "SoundSystem.h"
 
 namespace HopEngine {
 
@@ -14,33 +15,54 @@ namespace HopEngine {
 		void Render() override;
 
 		void setHP(int newHp) { hp = newHp; }
+		void setMaxHP(int newHp) { max_hp = newHp; }
 		void HP_minus(int minus) { hp -= minus; }
 		void HP_plus(int plus) { hp += plus; }
+		int getMaxHp() const { return max_hp; }
+		int getHp() const { return hp; }
+		bool getDeath() const { return isDead; }
 
 		void setStamina(int newStamina) { stamina = newStamina; }
 		void Stamina_minus(int minus) { stamina -= minus; }
 		void Stamina_plus(int plus) { stamina += plus; }
 
-		void setBlocked(bool newBlocked, float time) { wasBlocked = newBlocked; TimerSystem::Instance()->addTimer("block_" + gameObject->GetName(), time); 
+		void setBlocked(bool newBlocked, float time) {
+			if (wasBlocked != newBlocked) {
+				SoundSystem::Instance()->Play_Sound("Sound: block"); wasBlocked = newBlocked;
+				TimerSystem::Instance()->addTimer("block_" + gameObject->GetName(), time);
+			}
 		};
 		bool getBlocked() const { return wasBlocked; };
 
-		void setTakedDamage(bool newTakedDamage, float time) { wasTakedDamage = newTakedDamage; TimerSystem::Instance()->addTimer("takedamage_" + gameObject->GetName(), time);
+		void setTakedDamage(bool newTakedDamage, float time) {
+			if (wasTakedDamage != newTakedDamage) {
+				onTakeDamageSound();
+				wasTakedDamage = newTakedDamage; 
+				TimerSystem::Instance()->addTimer("takedamage_" + gameObject->GetName(), time);
+			}
 		};
 		bool getTakedDamage() const { return wasTakedDamage; };
 
-		void setStanned(bool newStanned, float time) { wasStanned = newStanned; TimerSystem::Instance()->addTimer("stan_" + gameObject->GetName(), time);
+		void setStanned(bool newStanned, float time) {
+			if (wasStanned != newStanned) {
+				wasStanned = newStanned; TimerSystem::Instance()->addTimer("stan_" + gameObject->GetName(), time);
+			}
 		};
 		bool getStanned() const { return wasStanned; };
 
+		std::function<void(PVEComponent*)> onDeath;
+
+		std::function<void()> onTakeDamageSound;
 	private:
 		int hp = 0;
 		int stamina = 0;
+		int max_hp = 0;
 
 		//flags
 		bool wasBlocked = false;
 		bool wasTakedDamage = false;
 		bool wasStanned = false;
+		bool isDead = false;
 	};
 
 }

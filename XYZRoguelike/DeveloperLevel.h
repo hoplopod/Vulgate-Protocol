@@ -5,12 +5,12 @@
 #include "Scene.h"
 #include "Player.h"
 #include "Baptist.h"
-#include "Music.h"
+#include "Audio.h"
 #include "Floor.h"
-#include "Wall.h"
 #include "CameraBox.h"
 #include "GameLayers.h"
 #include "GameLevel.h"
+#include "Wall.h"
 
 using namespace HopEngine;
 
@@ -23,15 +23,16 @@ namespace Roguelike
 		void Restart() override;
 		void Stop() override;
 
-		std::vector<std::unique_ptr<Wall>> walls;
 		std::vector<std::unique_ptr<Floor>> floors;
+		std::vector<std::unique_ptr<Wall>> walls;
 
 	private:
 		std::unique_ptr<Player> player;
 		std::unique_ptr<Baptist> baptist;
 		std::shared_ptr<CameraBox> cameraBox;
 		std::shared_ptr<Layers> layer_system;
-		std::unique_ptr<Music> music;
+		std::vector<std::unique_ptr<Music>> music;
+		std::vector<std::unique_ptr<Sound>> sound;
 		std::shared_ptr<LevelLoader> loader;
 
 	};

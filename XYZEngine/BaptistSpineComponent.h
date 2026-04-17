@@ -7,7 +7,7 @@
 
 namespace HopEngine {
 
-	enum class BaptistState {other, attack, block, stan, damages};
+	enum class BaptistState {other, attack, block, stan, damages, dead};
 
 	enum class BaptistDirection { left, right };
 

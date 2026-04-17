@@ -8,9 +8,13 @@
 namespace Roguelike {
 
 	enum class MapInterior {
-		nothing,
 		wall,
-		floor
+		nothing,
+		edge_left,
+		ledge_left,
+		block,
+		edge_right,
+		ledge_right
 	};
 
 	struct Level {

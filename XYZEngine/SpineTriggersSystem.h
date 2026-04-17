@@ -6,6 +6,7 @@
 #include <tuple>
 #include <algorithm>
 
+#include "GameWorld.h"
 #include "Vector.h"
 #include "SpineComponent.h"
 
@@ -37,9 +38,12 @@ namespace HopEngine
         bool checkHitboxIntersectionSAT(const std::vector<sf::Vector2f>& a,
             const std::vector<sf::Vector2f>& b);
 
+        friend class GameWorld;
     private:
         SpineTriggerSystem() = default;
         ~SpineTriggerSystem() = default;
+
+        void Reset();
 
         struct HitboxRecord
         {

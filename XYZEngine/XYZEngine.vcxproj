@@ -73,6 +73,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)XYZRoguelike\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)XYZRoguelike\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -133,11 +136,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)Spine\src;$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Spine\spine-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -146,6 +150,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioComponent.h" />
@@ -170,6 +177,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerSpineComponent.h" />
     <ClInclude Include="PVEComponent.h" />
+    <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="SpineComponent.h" />
     <ClInclude Include="SpineTriggersSystem.h" />
     <ClInclude Include="TimerSystem.h" />
@@ -186,6 +194,7 @@
     <ClInclude Include="SpriteRendererComponent.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="Trigger.h" />
+    <ClInclude Include="UiComponent.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +221,7 @@
     </ClCompile>
     <ClCompile Include="PlayerSpineComponent.cpp" />
     <ClCompile Include="PVEComponent.cpp" />
+    <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="SpineComponent.cpp" />
     <ClCompile Include="SpineTriggersSystem.cpp" />
     <ClCompile Include="TimerSystem.cpp" />
@@ -226,6 +236,7 @@
     <ClCompile Include="SpriteRendererComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="Trigger.cpp" />
+    <ClCompile Include="UiComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Spine\build\spine-sfml-cpp.vcxproj">

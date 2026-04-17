@@ -26,9 +26,13 @@ namespace HopEngine
 
 		void Subscribe_Map_Collision(ColliderComponent* collider_for_a_map);
 		void Unsubscribe_Map_Collision(ColliderComponent* collider_for_a_map);
+
+		friend class GameWorld;
 	private:
 		TriggerSystem() {}
 		~TriggerSystem() {}
+
+		void Reset();
 
 		TriggerSystem(TriggerSystem const&) = delete;
 		TriggerSystem& operator= (TriggerSystem const&) = delete;
