@@ -72,6 +72,7 @@ namespace HopEngine
 		TimerSystem::Instance()->Reset();
 		SpineTriggerSystem::Instance()->Reset();
 		TriggerSystem::Instance()->Reset();
+		SoundSystem::Instance()->Reset();
 
 		for (int i = gameObjects.size() - 1; i >= 0; i--)
 		{

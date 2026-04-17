@@ -29,6 +29,7 @@ namespace HopEngine
 		LOG_INFO("Program was started!");
 		
 		SoundSystem::Instance()->Play_Sound("Music: fight");
+		HopEngine::GameWorld::Instance()->set_world_end(HopEngine::world_end::nothing);
 
 		while (RenderSystem::Instance()->GetMainWindow().isOpen())
 		{

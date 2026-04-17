@@ -25,7 +25,8 @@ namespace Roguelike{
 		pve->setHP(10);
 		pve->onDeath = [this](HopEngine::PVEComponent*)
 			{
-				HopEngine::TimerSystem::Instance()->addTimer("end_game", 30.f);
+				HopEngine::TimerSystem::Instance()->addTimer("end_game", 4.f);
+				HopEngine::GameWorld::Instance()->set_world_end(HopEngine::world_end::player_win);
 				HopEngine::GameWorld::Instance()->RequestGameOver();
 			};
 		pve->onTakeDamageSound = [this]()

@@ -15,6 +15,7 @@ namespace HopEngine
 		void Subscribe_Sound(const std::string& name, AudioComponent* new_sound);
 		void Unsubscribe_Sound(const std::string& name);
 
+		void Reset();
 	private:
 
 		std::map<std::string, AudioComponent*> audios;

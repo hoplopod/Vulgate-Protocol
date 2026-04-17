@@ -9,12 +9,11 @@ namespace Roguelike {
     enum class GameState
     {
         Playing,
-        Death,
-        Win,
         Menu,
         Close,
         Fade,
-        Enter_Menu
+        Enter_Menu,
+        End_Screen
     };
 
     class Menu_Buttons;

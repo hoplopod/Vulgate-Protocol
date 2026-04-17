@@ -37,13 +37,33 @@ namespace Roguelike {
             switch (state)
             {
             case GameState::Enter_Menu:
+                developer->Start();
                 CreateMenuUI();
-                state = GameState::Fade;
+                switch (HopEngine::GameWorld::Instance()->get_world_end())
+                {
+                case HopEngine::world_end::player_death:
+                    HopEngine::SoundSystem::Instance()->Play_Sound("Sound: death");
+                    HopEngine::TimerSystem::Instance()->addTimer("end_sound_menu", 6.f);
+                    break;
+                case HopEngine::world_end::player_win:
+                    HopEngine::SoundSystem::Instance()->Play_Sound("Sound: win");
+                    HopEngine::TimerSystem::Instance()->addTimer("end_sound_menu", 4.f);
+                    HopEngine::TimerSystem::Instance()->addTimer("blue_screen", 4.f);
+                    break;
+                default:
+                    break;
+                }
+                state = GameState::End_Screen;
                 break;
-            
+
+            case GameState::End_Screen:
+                HopEngine::TimerSystem::Instance()->Update(deltaTime);
+                if (HopEngine::TimerSystem::Instance()->checkTimer("end_sound_menu") != TimerState::In_Process) state = GameState::Fade;
+                break;
+
             case GameState::Fade:
-                FadeIn(logo->logo_shape, logo->fadeAlpha, 200.f, deltaTime);
-                for (auto& btn : buttons) FadeIn(btn->button_shape, btn->fadeAlpha, 200.f, deltaTime);
+                FadeIn(logo->logo_shape, logo->fadeAlpha, logo->fadeSpeed, deltaTime);
+                for (auto& btn : buttons) FadeIn(btn->button_shape, btn->fadeAlpha, btn->fadeSpeed, deltaTime);
                 break;
             
             case GameState::Menu:
@@ -51,11 +71,10 @@ namespace Roguelike {
                 break;
 
             case GameState::Playing:
-                developer->Start();
                 HopEngine::Engine::Instance()->Run();
-                developer->Stop();
                 for (auto& btn : buttons) btn->ResetFade();
                 logo->ResetFade();
+                developer->Stop();
                 state = GameState::Enter_Menu;
                 break;
 
@@ -108,14 +127,17 @@ namespace Roguelike {
 
     void GameManager::Render(sf::RenderWindow& window) {
         
-        window.clear(sf::Color::White);
+        if(HopEngine::TimerSystem::Instance()->checkTimer("blue_screen") != TimerState::In_Process) window.clear(sf::Color::White);
+        else window.clear(sf::Color::Blue);
 
         window.setView(window.getDefaultView());
 
-        window.draw(logo->logo_shape);
+        if (HopEngine::TimerSystem::Instance()->checkTimer("end_sound_menu") != TimerState::In_Process) {
+            window.draw(logo->logo_shape);
 
-        for (auto& btn : buttons) {
-            window.draw(btn->button_shape);
+            for (auto& btn : buttons) {
+                window.draw(btn->button_shape);
+            }
         }
         
         window.display();

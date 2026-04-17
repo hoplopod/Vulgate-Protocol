@@ -33,6 +33,8 @@ int main()
 	ResourceSystem::Instance()->LoadSound("player hit", "Resources/Audio/player hit.wav");
 	ResourceSystem::Instance()->LoadSound("sword clash", "Resources/Audio/sword clash.wav");
 	ResourceSystem::Instance()->LoadSound("block", "Resources/Audio/block.wav");
+	ResourceSystem::Instance()->LoadSound("death", "Resources/Audio/death.wav");
+	ResourceSystem::Instance()->LoadSound("win", "Resources/Audio/win.wav");
 
 	//Start
 

@@ -56,6 +56,8 @@ namespace Roguelike
 		sound.push_back(std::make_unique<Sound>("enemy hit"));
 		sound.push_back(std::make_unique<Sound>("sword clash"));
 		sound.push_back(std::make_unique<Sound>("block"));
+		sound.push_back(std::make_unique<Sound>("death"));
+		sound.push_back(std::make_unique<Sound>("win"));
 	}
 	void DeveloperLevel::Restart()
 	{

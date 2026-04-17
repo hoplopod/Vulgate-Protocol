@@ -30,3 +30,7 @@ void HopEngine::SoundSystem::Unsubscribe_Sound(const std::string& name)
         audios.erase(it);
     }
 }
+
+void HopEngine::SoundSystem::Reset() {
+    audios.clear();
+}
