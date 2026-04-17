@@ -52,6 +52,10 @@ namespace Roguelike
 		baptist = std::make_unique<Baptist>(std::forward<HopEngine::Vector2Df>({ 1800, 64 }));
 		
 		music.push_back(std::make_unique<Music>("fight"));
+		sound.push_back(std::make_unique<Sound>("player hit"));
+		sound.push_back(std::make_unique<Sound>("enemy hit"));
+		sound.push_back(std::make_unique<Sound>("sword clash"));
+		sound.push_back(std::make_unique<Sound>("block"));
 	}
 	void DeveloperLevel::Restart()
 	{

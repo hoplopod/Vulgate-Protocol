@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BaptistSpineComponent.h"
+#include "SoundSystem.h"
 
 HopEngine::BaptistSpineComponent::BaptistSpineComponent(GameObject* gameObject) : SpineComponent(gameObject)
 {
@@ -34,6 +35,7 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 		}
 		spine::TrackEntry* newEntry =  drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
 		newEntry->setMixDuration(0.3f);
+		SoundSystem::Instance()->Play_Sound("Sound: sword clash");
 		TimerSystem::Instance()->addTimer("enemy_action", 1.2f);
 		TimerSystem::Instance()->addTimer("enemy_stan", 1.2f);
 		state = BaptistState::stan;
@@ -68,7 +70,7 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 		case BaptistDirection::right: num = 20; break;
 		}
 		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-		TimerSystem::Instance()->addTimer("enemy_action", 2.3f);
+		TimerSystem::Instance()->addTimer("enemy_action", 1.8f);
 		state = BaptistState::damages;
 		return;
 	}
@@ -111,8 +113,6 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 			state = BaptistState::attack;
 			return;
 		}
-
-		
 
 		//move
 		state = BaptistState::other;

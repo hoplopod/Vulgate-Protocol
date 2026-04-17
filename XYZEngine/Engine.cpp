@@ -28,7 +28,7 @@ namespace HopEngine
 
 		LOG_INFO("Program was started!");
 		
-		SoundSystem::Instance()->Play_Sound(std::string("Music: fight"));
+		SoundSystem::Instance()->Play_Sound("Music: fight");
 
 		while (RenderSystem::Instance()->GetMainWindow().isOpen())
 		{

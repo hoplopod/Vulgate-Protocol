@@ -12,7 +12,7 @@ Roguelike::Music::Music(const std::string& soundName)
 
 Roguelike::Sound::Sound(const std::string& soundName)
 {
-	gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Music: " + soundName);
+	gameObject = HopEngine::GameWorld::Instance()->CreateGameObject("Sound: " + soundName);
 	auto sound = gameObject->AddComponent<HopEngine::AudioComponent>();
 	sound->SetAudio(*HopEngine::ResourceSystem::Instance()->GetSound(soundName));
 	sound->SetLoop(false);

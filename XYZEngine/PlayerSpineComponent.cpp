@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PlayerSpineComponent.h"
+#include "SoundSystem.h"
 
 HopEngine::PlayerSpineComponent::PlayerSpineComponent(GameObject* gameObject) : SpineComponent(gameObject)
 {
@@ -56,6 +57,7 @@ void HopEngine::PlayerSpineComponent::Update(float deltaTime)
 			state = PlayerState::block;
 			return;
 		}
+		else if (!block) blockConsumed = false;
 
 		//player stab
 		bool stab = input->GetPlayerStab();

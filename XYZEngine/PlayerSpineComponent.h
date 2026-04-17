@@ -36,6 +36,7 @@ namespace HopEngine {
 		PVEComponent* pve;
 
 		bool stanConsumed = false;
+		bool blockConsumed = false;
 	};
 
 }

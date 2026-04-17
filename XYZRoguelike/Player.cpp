@@ -7,7 +7,6 @@
 #include <LayerRenderingComponent.h>
 #include <SpineTriggersSystem.h>
 
-
 namespace Roguelike
 {
 	Player::Player(const HopEngine::Vector2Df& position)
@@ -35,6 +34,10 @@ namespace Roguelike
 		pve->onDeath = [this](HopEngine::PVEComponent*)
 			{
 				HopEngine::GameWorld::Instance()->RequestGameOver();
+			};
+		pve->onTakeDamageSound = [this]()
+			{
+				HopEngine::SoundSystem::Instance()->Play_Sound("Sound: enemy hit");
 			};
 
 		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();

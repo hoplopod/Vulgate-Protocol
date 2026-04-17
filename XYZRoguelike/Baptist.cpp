@@ -28,6 +28,10 @@ namespace Roguelike{
 				HopEngine::TimerSystem::Instance()->addTimer("end_game", 30.f);
 				HopEngine::GameWorld::Instance()->RequestGameOver();
 			};
+		pve->onTakeDamageSound = [this]()
+			{
+				HopEngine::SoundSystem::Instance()->Play_Sound("Sound: player hit");
+			};
 
 		auto ai = gameObject->AddComponent<HopEngine::EnemyAiComponent>();
 		ai->SetPurpose(HopEngine::GameWorld::Instance()->FindGameObject("player"));
