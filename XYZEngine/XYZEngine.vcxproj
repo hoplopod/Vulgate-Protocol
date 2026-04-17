@@ -177,6 +177,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerSpineComponent.h" />
     <ClInclude Include="PVEComponent.h" />
+    <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="SpineComponent.h" />
     <ClInclude Include="SpineTriggersSystem.h" />
     <ClInclude Include="TimerSystem.h" />
@@ -220,6 +221,7 @@
     </ClCompile>
     <ClCompile Include="PlayerSpineComponent.cpp" />
     <ClCompile Include="PVEComponent.cpp" />
+    <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="SpineComponent.cpp" />
     <ClCompile Include="SpineTriggersSystem.cpp" />
     <ClCompile Include="TimerSystem.cpp" />

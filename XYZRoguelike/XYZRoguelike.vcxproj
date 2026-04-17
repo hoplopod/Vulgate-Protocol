@@ -166,7 +166,7 @@
     <ClCompile Include="DeveloperLevel.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="GameLevel.cpp" />
-    <ClCompile Include="Music.cpp" />
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="StateManager.cpp" />
@@ -182,7 +182,7 @@
     <ClInclude Include="GameLayers.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Logo.h" />
-    <ClInclude Include="Music.h" />
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="randomizer.h" />
     <ClInclude Include="StateManager.h" />

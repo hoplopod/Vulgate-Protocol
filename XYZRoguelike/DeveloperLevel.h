@@ -5,7 +5,7 @@
 #include "Scene.h"
 #include "Player.h"
 #include "Baptist.h"
-#include "Music.h"
+#include "Audio.h"
 #include "Floor.h"
 #include "CameraBox.h"
 #include "GameLayers.h"
@@ -31,7 +31,8 @@ namespace Roguelike
 		std::unique_ptr<Baptist> baptist;
 		std::shared_ptr<CameraBox> cameraBox;
 		std::shared_ptr<Layers> layer_system;
-		std::unique_ptr<Music> music;
+		std::vector<std::unique_ptr<Music>> music;
+		std::vector<std::unique_ptr<Sound>> sound;
 		std::shared_ptr<LevelLoader> loader;
 
 	};

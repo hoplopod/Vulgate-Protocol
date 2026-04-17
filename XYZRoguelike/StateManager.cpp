@@ -17,14 +17,21 @@ namespace Roguelike {
         
         auto developer = std::make_shared<DeveloperLevel>();
 
-        while (window.isOpen())
+        while (RenderSystem::Instance()->GetMainWindow().isOpen())
         {
             float deltaTime = clock.restart().asSeconds();
 
-            while (window.pollEvent(event))
+            while (RenderSystem::Instance()->GetMainWindow().pollEvent(event))
             {
                 if (event.type == sf::Event::Closed)
-                    window.close();
+                {
+                    RenderSystem::Instance()->GetMainWindow().close();
+                }
+            }
+
+            if (!RenderSystem::Instance()->GetMainWindow().isOpen())
+            {
+                break;
             }
 
             switch (state)

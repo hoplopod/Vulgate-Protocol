@@ -3,6 +3,7 @@
 #include <iostream>
 #include "GameWorld.h"
 #include "RenderSystem.h"
+#include "SoundSystem.h"
 
 namespace HopEngine
 {
@@ -27,6 +28,8 @@ namespace HopEngine
 
 		LOG_INFO("Program was started!");
 		
+		SoundSystem::Instance()->Play_Sound(std::string("Music: fight"));
+
 		while (RenderSystem::Instance()->GetMainWindow().isOpen())
 		{
 			sf::Time dt = gameClock.restart();

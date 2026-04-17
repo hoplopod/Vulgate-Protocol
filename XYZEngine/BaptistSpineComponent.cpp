@@ -32,12 +32,15 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 		case BaptistDirection::left: num = 21; break;
 		case BaptistDirection::right: num = 22; break;
 		}
-		drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
-		TimerSystem::Instance()->addTimer("enemy_action", 1.8f);
+		spine::TrackEntry* newEntry =  drawable->state->setAnimation(animations->at(num).second.first, animations->at(num).first, animations->at(num).second.second);
+		newEntry->setMixDuration(0.3f);
+		TimerSystem::Instance()->addTimer("enemy_action", 1.2f);
+		TimerSystem::Instance()->addTimer("enemy_stan", 1.2f);
 		state = BaptistState::stan;
 		return;
 	}
 	else if (!stan) stanConsumed = false;
+	if (TimerSystem::Instance()->checkTimer("enemy_stan") != TimerState::In_Process && state == BaptistState::stan) state = BaptistState::other;
 
 	bool block = pve->getBlocked();
 	if (block && !blockConsumed && state != BaptistState::stan) {
@@ -53,6 +56,7 @@ void HopEngine::BaptistSpineComponent::Update(float deltaTime)
 		return;
 	}
 	else if (!block) blockConsumed = false;
+	
 
 	bool damage = pve->getTakedDamage();
 	if (damage && !damageConsumed && state == BaptistState::stan) {
