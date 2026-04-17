@@ -23,6 +23,11 @@ namespace Roguelike{
 		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
 		pve->setMaxHP(10);
 		pve->setHP(1);
+		pve->onDeath = [this](HopEngine::PVEComponent*)
+			{
+				HopEngine::TimerSystem::Instance()->addTimer("end_game", 30.f);
+				HopEngine::GameWorld::Instance()->RequestGameOver();
+			};
 
 		auto ai = gameObject->AddComponent<HopEngine::EnemyAiComponent>();
 		ai->SetPurpose(HopEngine::GameWorld::Instance()->FindGameObject("player"));

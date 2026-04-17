@@ -24,13 +24,11 @@ namespace Roguelike {
 			fadeAlpha = 0.f;
 			fadingIn = true;
 
-			logo_shape.setFillColor(
-				sf::Color(255, 255, 255, 0)
-			);
+			logo_shape.setFillColor(sf::Color(255, 255, 255, 0));
 		}
 
 		float fadeAlpha = 0.f;
-		float fadeSpeed = 200.f;
+		float fadeSpeed = 150.f;
 		bool fadingIn = true;
 
 		sf::RectangleShape logo_shape;

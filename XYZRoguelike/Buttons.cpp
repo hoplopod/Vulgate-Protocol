@@ -26,9 +26,7 @@ void Roguelike::Menu_Buttons::ResetFade()
 	fadeAlpha = 0.f;
 	fadingIn = true;
 
-	button_shape.setFillColor(
-		sf::Color(255, 255, 255, 0)
-	);
+	button_shape.setFillColor(sf::Color(255, 255, 255, 0));
 }
 
 Roguelike::Exit_Button::Exit_Button()

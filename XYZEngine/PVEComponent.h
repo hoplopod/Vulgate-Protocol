@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "GameObject.h"
-
+#include <functional>
 #include "TimerSystem.h"
 
 namespace HopEngine {
@@ -37,6 +37,7 @@ namespace HopEngine {
 		};
 		bool getStanned() const { return wasStanned; };
 
+		std::function<void(PVEComponent*)> onDeath;
 	private:
 		int hp = 0;
 		int stamina = 0;

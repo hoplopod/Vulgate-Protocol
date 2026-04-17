@@ -32,6 +32,11 @@ namespace Roguelike
 		pve->setMaxHP(20);
 		pve->setHP(20);
 
+		pve->onDeath = [this](HopEngine::PVEComponent*)
+			{
+				HopEngine::GameWorld::Instance()->RequestGameOver();
+			};
+
 		auto spine = gameObject->AddComponent<HopEngine::PlayerSpineComponent>();
 		spine->SetData(HopEngine::ResourceSystem::Instance()->GetSkeletonData("player"));
 		spine->setStartSkin("standart_right_direction");

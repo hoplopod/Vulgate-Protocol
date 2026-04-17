@@ -45,7 +45,11 @@ namespace HopEngine
 				break;
 			}
 
-			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) return;
+			if (GameWorld::Instance()->checkGameOverRequested() && TimerSystem::Instance()->checkTimer("end_game") != TimerState::In_Process) {
+				break;
+			}
+
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) break;
 
 			RenderSystem::Instance()->GetMainWindow().clear();
 

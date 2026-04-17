@@ -24,6 +24,13 @@ namespace HopEngine
 		void Clear();
 
 		void Print() const;
+
+		void RequestGameOver() {
+			gameOverRequested = true;
+		}
+		bool checkGameOverRequested() const{
+			return gameOverRequested;
+		}
 	private:
 		GameWorld() {}
 		~GameWorld() {}
@@ -32,6 +39,7 @@ namespace HopEngine
 		GameWorld& operator= (GameWorld const&) = delete;
 
 		float fixedCounter = 0.f;
+		bool gameOverRequested = false;
 
 		std::vector<GameObject*> gameObjects = {};
 		std::vector<GameObject*> markedToDestroyGameObjects = {};

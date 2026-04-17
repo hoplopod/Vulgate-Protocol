@@ -86,6 +86,7 @@ namespace HopEngine
 			}
 		}
 
+		gameOverRequested = false;
 		fixedCounter = 0.f;
 	}
 

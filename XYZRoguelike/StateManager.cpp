@@ -17,10 +17,6 @@ namespace Roguelike {
         
         auto developer = std::make_shared<DeveloperLevel>();
 
-        logo = std::make_unique<Logo>();
-        buttons.push_back(std::make_unique<Start_Button>());
-        buttons.push_back(std::make_unique<Exit_Button>());
-
         while (window.isOpen())
         {
             float deltaTime = clock.restart().asSeconds();
@@ -31,15 +27,20 @@ namespace Roguelike {
                     window.close();
             }
 
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) state = GameState::Playing;
-
-            
-            if(state != GameState::Fade) MouseCheck(window, event);
-            Render(window);
-
             switch (state)
             {
+            case GameState::Enter_Menu:
+                CreateMenuUI();
+                state = GameState::Fade;
+                break;
+            
+            case GameState::Fade:
+                FadeIn(logo->logo_shape, logo->fadeAlpha, 200.f, deltaTime);
+                for (auto& btn : buttons) FadeIn(btn->button_shape, btn->fadeAlpha, 200.f, deltaTime);
+                break;
+            
             case GameState::Menu:
+                MouseCheck(window, event);
                 break;
 
             case GameState::Playing:
@@ -48,19 +49,16 @@ namespace Roguelike {
                 developer->Stop();
                 for (auto& btn : buttons) btn->ResetFade();
                 logo->ResetFade();
-                state = GameState::Menu;
+                state = GameState::Enter_Menu;
                 break;
 
             case GameState::Close:
                 window.close();
                 break;
 
-            case GameState::Fade:
-                FadeIn(logo->logo_shape, logo->fadeAlpha, 200.f, deltaTime);
-                for (auto& btn : buttons) FadeIn(btn->button_shape, btn->fadeAlpha, 200.f, deltaTime);
-                break;
             }
-            
+
+            Render(window);
         }
 	}
 
@@ -130,6 +128,15 @@ namespace Roguelike {
             color.a = static_cast<sf::Uint8>(alpha);
             shape.setFillColor(color);
         }
+    }
+
+    void GameManager::CreateMenuUI()
+    {
+        buttons.clear();
+
+        logo = std::make_unique<Logo>();
+        buttons.push_back(std::make_unique<Start_Button>());
+        buttons.push_back(std::make_unique<Exit_Button>());
     }
 
 }

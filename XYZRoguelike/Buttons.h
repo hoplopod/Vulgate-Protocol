@@ -13,7 +13,7 @@ namespace Roguelike {
         bool isPressedInside = false;
 
         float fadeAlpha = 0.f;
-        float fadeSpeed = 200.f;
+        float fadeSpeed = 150.f;
         bool fadingIn = true;
 
         void ResetFade();
