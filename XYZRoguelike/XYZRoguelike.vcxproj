@@ -166,7 +166,6 @@
     <ClCompile Include="DeveloperLevel.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="GameLevel.cpp" />
-    <ClCompile Include="MazeGenerator.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="GameMain.cpp" />
@@ -183,7 +182,6 @@
     <ClInclude Include="GameLayers.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Logo.h" />
-    <ClInclude Include="MazeGenerator.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="randomizer.h" />

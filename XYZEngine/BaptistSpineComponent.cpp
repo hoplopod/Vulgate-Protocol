@@ -168,4 +168,10 @@ HopEngine::BaptistState HopEngine::BaptistSpineComponent::checkBaptistState() co
 
 void HopEngine::BaptistSpineComponent::callback(spine::AnimationState* state, spine::EventType type, spine::TrackEntry* entry, spine::Event* event) {
 
+	if (entry->getAnimation()->getName() == animations->at(3).first || entry->getAnimation()->getName() == animations->at(4).first) {
+		if (type == spine::EventType_Start) {
+			entry->setTimeScale(0.7f);
+		}
+	}
+
 }

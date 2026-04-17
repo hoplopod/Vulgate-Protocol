@@ -12,9 +12,8 @@ int main()
 {
 	HopEngine::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1280, 720), "Roguelike"));
 	
-	ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/ball.png");
-	ResourceSystem::Instance()->LoadTextureMap("level_floors", "Resources/TextureMaps/Floor.png", { 16, 16 }, 49, false);
-	ResourceSystem::Instance()->LoadTextureMap("level_walls", "Resources/TextureMaps/Wall.png", { 16, 16 }, 48, false);
+	ResourceSystem::Instance()->LoadTextureMap("level_floors", "Resources/TextureMaps/floor vulgata.png", { 32, 32 }, 5, false);
+	ResourceSystem::Instance()->LoadTextureMap("level_walls", "Resources/TextureMaps/Floor.png", { 16, 16 }, 49, false);
 	
 	//Spine
 	ResourceSystem::Instance()->LoadSpineFiles("player", "Resources/SpineData/Player/Player.atlas", "Resources/SpineData/Player/Player.json");

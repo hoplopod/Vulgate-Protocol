@@ -22,7 +22,7 @@ namespace Roguelike{
 
 		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
 		pve->setMaxHP(10);
-		pve->setHP(1);
+		pve->setHP(10);
 		pve->onDeath = [this](HopEngine::PVEComponent*)
 			{
 				HopEngine::TimerSystem::Instance()->addTimer("end_game", 30.f);

@@ -43,7 +43,7 @@ namespace HopEngine
 	}
 	void SpriteColliderComponent::Render()
 	{
-		if (map_bounds.height != 0 && map_bounds.width != 0) {
+		/*if (map_bounds.height != 0 && map_bounds.width != 0) {
 			sf::RectangleShape rectangle(sf::Vector2f(map_bounds.width, map_bounds.height));
 			rectangle.setPosition(map_bounds.left, map_bounds.top);
 			rectangle.setFillColor(sf::Color::Transparent);
@@ -51,7 +51,7 @@ namespace HopEngine
 			rectangle.setOutlineThickness(3);
 
 			RenderSystem::Instance()->Render(rectangle);
-		}
+		}*/
 
 	}
 }

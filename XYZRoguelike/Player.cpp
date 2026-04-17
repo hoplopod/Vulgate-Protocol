@@ -30,7 +30,7 @@ namespace Roguelike
 
 		auto pve = gameObject->AddComponent<HopEngine::PVEComponent>();
 		pve->setMaxHP(20);
-		pve->setHP(20);
+		pve->setHP(17);
 
 		pve->onDeath = [this](HopEngine::PVEComponent*)
 			{

@@ -39,9 +39,21 @@ namespace Roguelike {
 		switch (symbol)
 		{
 		case '1':
-			type = MapInterior::floor;
+			type = MapInterior::edge_left;
 			break;
 		case '2':
+			type = MapInterior::ledge_left;
+			break;
+		case '0':
+			type = MapInterior::block;
+			break;
+		case '3':
+			type = MapInterior::ledge_right;
+			break;
+		case '4':
+			type = MapInterior::edge_right;
+			break;
+		case '*':
 			type = MapInterior::wall;
 			break;
 		default:

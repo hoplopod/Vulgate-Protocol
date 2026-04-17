@@ -7,10 +7,10 @@
 #include "Baptist.h"
 #include "Music.h"
 #include "Floor.h"
-#include "Wall.h"
 #include "CameraBox.h"
 #include "GameLayers.h"
 #include "GameLevel.h"
+#include "Wall.h"
 
 using namespace HopEngine;
 
@@ -23,8 +23,8 @@ namespace Roguelike
 		void Restart() override;
 		void Stop() override;
 
-		std::vector<std::unique_ptr<Wall>> walls;
 		std::vector<std::unique_ptr<Floor>> floors;
+		std::vector<std::unique_ptr<Wall>> walls;
 
 	private:
 		std::unique_ptr<Player> player;
