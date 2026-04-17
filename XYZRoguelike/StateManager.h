@@ -9,10 +9,11 @@ namespace Roguelike {
     enum class GameState
     {
         Playing,
-        DeathFade,
-        WinFade,
+        Death,
+        Win,
         Menu,
-        Close
+        Close,
+        Fade
     };
 
     class Menu_Buttons;
@@ -29,6 +30,7 @@ namespace Roguelike {
 
         void MouseCheck(sf::RenderWindow& window, sf::Event& event);
         void Render(sf::RenderWindow& window);
+        void FadeIn(sf::RectangleShape& shape, float& alpha, float speed, float deltaTime);
 
         void setState(GameState new_state) {
             state = new_state;
@@ -37,7 +39,7 @@ namespace Roguelike {
         GameManager();
         ~GameManager() = default;
 
-        GameState state = GameState::Menu;
+        GameState state = GameState::Fade;
         std::vector<std::unique_ptr<Menu_Buttons>> buttons;
         std::unique_ptr<Logo> logo;
     };

@@ -12,6 +12,12 @@ namespace Roguelike {
         bool wasPressed = false;
         bool isPressedInside = false;
 
+        float fadeAlpha = 0.f;
+        float fadeSpeed = 200.f;
+        bool fadingIn = true;
+
+        void ResetFade();
+
     };
 
     class Start_Button : public Menu_Buttons {

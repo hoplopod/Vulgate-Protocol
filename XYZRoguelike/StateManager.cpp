@@ -34,7 +34,7 @@ namespace Roguelike {
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) state = GameState::Playing;
 
             
-            MouseCheck(window, event);
+            if(state != GameState::Fade) MouseCheck(window, event);
             Render(window);
 
             switch (state)
@@ -46,11 +46,18 @@ namespace Roguelike {
                 developer->Start();
                 HopEngine::Engine::Instance()->Run();
                 developer->Stop();
+                for (auto& btn : buttons) btn->ResetFade();
+                logo->ResetFade();
                 state = GameState::Menu;
                 break;
 
             case GameState::Close:
                 window.close();
+                break;
+
+            case GameState::Fade:
+                FadeIn(logo->logo_shape, logo->fadeAlpha, 200.f, deltaTime);
+                for (auto& btn : buttons) FadeIn(btn->button_shape, btn->fadeAlpha, 200.f, deltaTime);
                 break;
             }
             
@@ -107,6 +114,22 @@ namespace Roguelike {
         }
         
         window.display();
+    }
+
+    void GameManager::FadeIn(sf::RectangleShape& shape, float& alpha, float speed, float deltaTime)
+    {
+        if (alpha < 255.f)
+        {
+            alpha += speed * deltaTime;
+            if (alpha > 255.f) {
+                state = GameState::Menu;
+                alpha = 255.f;
+            }
+
+            auto color = shape.getFillColor();
+            color.a = static_cast<sf::Uint8>(alpha);
+            shape.setFillColor(color);
+        }
     }
 
 }

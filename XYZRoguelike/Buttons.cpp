@@ -9,6 +9,8 @@ Roguelike::Start_Button::Start_Button()
 	auto& window = RenderSystem::Instance()->GetMainWindow();
 	sf::Vector2u winSize = window.getSize();
 
+	button_shape.setFillColor(sf::Color(255, 255, 255, 0));
+
 	button_shape.setPosition(winSize.x / 2.f, winSize.y / 2.f + 50);
 
 	button_shape.setTexture(ResourceSystem::Instance()->GetTextureCopy("start_button"));
@@ -19,6 +21,16 @@ void Roguelike::Start_Button::Action()
 	GameManager::Instance()->setState(GameState::Playing);
 }
 
+void Roguelike::Menu_Buttons::ResetFade()
+{
+	fadeAlpha = 0.f;
+	fadingIn = true;
+
+	button_shape.setFillColor(
+		sf::Color(255, 255, 255, 0)
+	);
+}
+
 Roguelike::Exit_Button::Exit_Button()
 {
 	button_shape.setSize({ 300.f, 100.f });
@@ -27,6 +39,8 @@ Roguelike::Exit_Button::Exit_Button()
 
 	auto& window = RenderSystem::Instance()->GetMainWindow();
 	sf::Vector2u winSize = window.getSize();
+
+	button_shape.setFillColor(sf::Color(255, 255, 255, 0));
 
 	button_shape.setPosition(winSize.x / 2.f, winSize.y / 2.f + 150);
 
